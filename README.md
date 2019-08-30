@@ -8,8 +8,7 @@
     * Search - Ability to search albums/songs/artists
     * Upload/Download songs - upload/download songs
     * BONUS
-    * Playlists?
-    * Song Purchase
+    * Discover filter
     * Follows
 
 ### Technologies and Technical Challenges
