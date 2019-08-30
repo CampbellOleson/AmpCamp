@@ -17,6 +17,10 @@
     * Uploading/Downloading
     * Docker
     * Heroku Container Registry
+    * MERN stack
+    * REACT
+    * GraphQL
+    * Apollo
 
 ### Accomplished over the Weekend
 
@@ -24,8 +28,7 @@
     * Audio Player research/testing - (Ken/Arshia)
     * Designing/Mapping out Schema - API research for music downloads - possible model layouts (Campbell)
 
-
-### Group Members & Work Breakdown 
+### Group Members & Work Breakdown
 
     * Wireframe for layouts of Artist Page, Home page, Nav Bar (Arshia - Today)
     * User Auth Front End/Back End (Ken/Arshia - Today)
