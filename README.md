@@ -1,4 +1,4 @@
-# BandCamp
+# AmpCamp
 
 ### Project Description:
 
