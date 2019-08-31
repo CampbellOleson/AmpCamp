@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean } = graphql;
+const User = mongoose.model('users');
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLBoolean, GraphQLList } = graphql;
 
 const UserType = new GraphQLObjectType({
   name: "UserType",
@@ -10,7 +11,16 @@ const UserType = new GraphQLObjectType({
     username: { type: GraphQLString },
     email: { type: GraphQLString },
     token: { type: GraphQLString },
-    loggedIn: { type: GraphQLBoolean }
+    loggedIn: { type: GraphQLBoolean },
+    artist: { type: GraphQLBoolean },
+    albums: {type: new GraphQLList(require('./album_type')),
+        resolve(parentValue) {
+            return User.findById(parentValue._id)
+                .populate('albums')
+                .then(user => user.albums)
+                .catch(err => err);
+        }
+    }
   })
 });
 

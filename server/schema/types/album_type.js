@@ -23,7 +23,7 @@ const AlbumType = new GraphQLObjectType({
       }
     },
     artist: {
-      type: { UserType },
+      type: UserType,
       resolve(parentValue) {
         return User.findById(parentValue.artist)
           .then(artist => artist)
