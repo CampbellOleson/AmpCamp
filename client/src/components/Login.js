@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import { withRouter } from "react-router";
 import Mutations from '../graphql/mutations.js'
 const {LOGIN_USER} = Mutations
 
@@ -17,7 +16,7 @@ class Login extends Component {
   }
 
   updateCache(client, {data}){
-    console.log(data);
+    // console.log(data);
 
     client.writeData({
         data: { isLoggedIn: data.login.loggedIn}
@@ -34,8 +33,9 @@ class Login extends Component {
       <Mutation
         mutation={LOGIN_USER}
         onCompleted={data => {
-          const { token } = data.login;
+          const { token, username } = data.login;
           localStorage.setItem("auth-token", token);
+          localStorage.setItem('username', username)
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
@@ -74,4 +74,4 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+export default Login;

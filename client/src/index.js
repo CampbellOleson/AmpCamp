@@ -19,7 +19,10 @@ const cache = new InMemoryCache({
 });
 
 const httpLink = createHttpLink({
-    uri: "http://localhost:5000/graphql"
+    uri: "http://localhost:5000/graphql",
+    headers: {
+        authorization: localStorage.getItem('auth-token')
+    }
 })
 
 const errorLink = onError(({ graphQLErrors}) => {
@@ -44,7 +47,7 @@ cache.writeData({
   }
 });
 
-if (token) {
+if (token) { // bootstraps user
   client
     .mutate({ mutation: VERIFY_USER, variables: { token } })
     .then(({ data }) => {
