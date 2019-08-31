@@ -7,15 +7,17 @@ export default {
       token
       loggedIn
       username
+      artist
     }
   }
   `,
  REGISTER_USER: gql`
-  mutation RegisterUser($email: String!, $username: String!, $password: String!) {
-    register(email: $email, username: $username, password: $password) {
+  mutation RegisterUser($email: String!, $username: String!, $password: String!, $artist: Boolean) {
+    register(email: $email, username: $username, password: $password, artist: $artist) {
       token
       loggedIn
       username
+      artist
     }
   }
   `,

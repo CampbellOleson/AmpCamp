@@ -16,7 +16,7 @@ const register = async data => {
             throw new Error(message)
         }
 
-        const { username, email, password} = data;
+        const { username, email, password, artist} = data;
 
         const existingUser = await User.findOne({email});
 
@@ -29,7 +29,8 @@ const register = async data => {
         const user = new User({
             username,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            artist
         },
             err => {
                 if (err) throw err;

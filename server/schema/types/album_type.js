@@ -17,14 +17,13 @@ const AlbumType = new GraphQLObjectType({
     songs: {
       type: new GraphQLList(require("./song_type")),
       resolve(parentValue) {
-          return Album.allSongs
-        // return Album.findById(parentValue._id)
-        //   .populate("songs")
-        //   .then(album => album.songs);
+        return Album.findById(parentValue._id)
+          .populate("songs")
+          .then(album => album.songs);
       }
     },
     artist: {
-      type: { UserType },
+      type: UserType ,
       resolve(parentValue) {
         return User.findById(parentValue.artist)
           .then(artist => artist)

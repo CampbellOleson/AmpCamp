@@ -5,7 +5,6 @@ const User = mongoose.model("users");
 const UserType = require("./user_type");
 const AlbumType = require("./album_type");
 const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
-// const Album = mongoose.model('albums')
 
 const SongType = new GraphQLObjectType({
   name: "SongType",
@@ -14,7 +13,7 @@ const SongType = new GraphQLObjectType({
     title: { type: GraphQLString },
     audioUrl: { type: GraphQLString },
     album: {
-      type: { AlbumType },
+      type: AlbumType,
       resolve(parentValue) {
         return Album.findById(parentValue.album)
           .then(album => album)
@@ -22,7 +21,7 @@ const SongType = new GraphQLObjectType({
       }
     },
     artist: {
-      type: { UserType },
+      type: UserType,
       resolve(parentValue) {
         return User.findById(parentValue.artist)
           .then(artist => artist)

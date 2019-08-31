@@ -28,8 +28,12 @@ const AlbumSchema = Schema({
   }
 });
 
-AlbumSchema.statics.associateArtist = (album, artist) => {
-
+AlbumSchema.statics.associateArtist = (albumId, artistId) => {
+  const User = mongoose.model("users");
+  User.findById(artistId).then(artist => {
+    artist.albums.push(albumId);
+    artist.save();
+  });
 };
 
 module.exports = mongoose.model("albums", AlbumSchema);
