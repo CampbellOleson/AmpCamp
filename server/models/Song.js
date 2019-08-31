@@ -20,6 +20,9 @@ const SongSchema = Schema({
   }
 });
 
-
+SongSchema.statics.associateAlbum = (songId, albumId) => {
+  const Album = mongoose.models("albums");
+  Album.findById(albumId).then(album => album.songs.push(songId));
+};
 
 module.exports = mongoose.model("songs", SongSchema);
