@@ -60,7 +60,7 @@ const logout = async data => {
 
 const login = async data => {
     try {
-        console.log(data)
+        // console.log(data)
         const { message, isValid } = validateLogin(data);
 
         if (!isValid) {
