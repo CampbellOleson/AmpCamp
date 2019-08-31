@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const keys = require('../../config/keys');
 
+const validateLogin = require('../validation/login')
+
 const validateRegister = require('../validation/register');
 
 const register = async data => {
@@ -41,7 +43,64 @@ const register = async data => {
     } catch (err) {
         throw err;
     }
-
 };
 
-module.exports = { register };
+const logout = async data => {
+    try {
+        const existingUser = await User.findById(data._id);
+
+        if (!existingUser) throw new Error("This User does not exist fam!");
+
+        const token = '';
+        return { token, loggedIn: false, ...existingUser._doc, password: null }
+    } catch (err) {
+        throw err;
+    }
+}
+
+const login = async data => {
+    try {
+        console.log(data)
+        const { message, isValid } = validateLogin(data);
+
+        if (!isValid) {
+            throw new Error(message);
+        }
+
+        const { username, password } = data;
+
+        const existingUser = await User.findOne({ username })
+
+        if (!existingUser) throw new Error('This User does not Exist homie');
+
+        const validPWord = await bcrypt.compareSync(password, existingUser.password)
+
+        if (!validPWord) throw new Error('Invalid Password!')
+
+        const token = jwt.sign({ id: existingUser._id}, keys.secretOrKey);
+
+        return { token, loggedIn: true, ...existingUser._doc, password: null };
+
+    } catch (err) {
+        throw err;
+    }   
+};
+
+const verifyUser = async data => {
+    try {
+        const { token } = data;
+
+        const decoded = jwt.verify(token, keys.secretOrKey);
+        const { id } = decoded;
+
+        const loggedIn = await User.findById(id).then(user => {
+            return user ? true : false
+        });
+
+        return { loggedIn };
+    } catch (err) {
+        return { loggedIn: false };
+    }
+}
+
+module.exports = { register, logout, login, verifyUser };

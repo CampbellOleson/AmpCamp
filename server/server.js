@@ -5,6 +5,7 @@ const db = require('../config/keys.js').MONGO_URI;
 const expressGraphQL = require('express-graphql');
 const app = express();
 const schema = require('./schema/schema')
+const cors = require("cors")
 
 if (!db) {
     throw new Error("You must provide a string to connect to MongoDB... DUH");
@@ -16,6 +17,8 @@ mongoose
     .catch(err => console.log(err));
 
 app.use(bodyParser.json());
+
+app.use(cors());
 
 app.use(
     '/graphql',
