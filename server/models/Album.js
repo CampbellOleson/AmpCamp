@@ -9,6 +9,9 @@ const AlbumSchema = Schema({
   description: {
     type: String
   },
+  by: {
+    type: String
+  },
   coverPhotoUrl: {
     type: String,
     required: true
@@ -22,10 +25,11 @@ const AlbumSchema = Schema({
   artist: {
     type: Schema.Types.ObjectId,
     ref: "artist"
-  },
-  by: {
-    type: String
   }
 });
+
+AlbumSchema.statics.associateArtist = (album, artist) => {
+
+};
 
 module.exports = mongoose.model("albums", AlbumSchema);
