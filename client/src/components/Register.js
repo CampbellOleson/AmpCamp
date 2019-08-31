@@ -75,7 +75,7 @@ class Register extends Component {
             <select onChange={this.updateSelect("artist")}>
               <option
                 value={Boolean(false)}
-                selected
+                defaultValue
               >
                 Listener
               </option>
