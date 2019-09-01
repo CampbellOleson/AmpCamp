@@ -10,7 +10,6 @@ import Home from './Home';
 const App = () => {
   return (
     <div>
-      <h1>AmpCamp</h1>
       <Route path='/' component={Nav}/> 
       <Switch>
         <Route exact path="/" component={Home} />

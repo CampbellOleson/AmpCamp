@@ -1,0 +1,97 @@
+ul{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.nav-search{
+margin-top: 11px;
+
+}
+
+.outer-nav-container{
+    width: 100%;
+    background-color: #222;
+}
+.nav ul li {
+  float: right;
+}
+
+.nav{
+  width: 100%;
+    background-color: #222;
+}
+
+.nav{
+  background-color: #222;
+  height: 40px;
+  margin: auto;
+  max-width: 900px;
+  
+}
+
+.logo{
+  float: left;
+  margin: 10px;
+  color: white;
+
+}
+
+.logo ul{
+    margin-top:20;
+}
+ul li{
+  float: left;
+  width: 200px;
+  height: 40px;
+  background-color: #222;
+  line-height: 40px;
+  text-align: center;
+  font-size: 13px;
+  color: white;
+}
+
+ul li a{
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+/* .nav{
+  width: 1100;
+  background-color: black;
+} */
+
+
+.login-or-signup a{
+  text-decoration: none;
+  color: white;
+  display: block;
+  list-style-type: none;
+  display: inline;
+  float: right;
+  margin-top: 6px;
+  font-size: 12px;
+  padding-left: 3px;
+  margin-right: 1px;
+}
+
+.login-or-signup{
+    margin-right: 50px;
+}
+
+
+
+
+ul li a:hover{
+  background-color: #111;
+  cursor: pointer;
+}
+
+ul li ul li {
+  display: none;
+}
+
+ul li:hover ul li {
+  display: block
+}
