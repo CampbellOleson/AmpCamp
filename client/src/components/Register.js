@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../graphql/mutations";
+import './RegisterForm.css'
 const { REGISTER_USER } = Mutations;
 class Register extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class Register extends Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {registerUser => (
-          <form
+          <form className="registerForm"
             onSubmit={e => {
               e.preventDefault();
               registerUser({
@@ -54,38 +55,44 @@ class Register extends Component {
                 }
               });
             }}
+
           >
-            <div>{this.state.errors}</div>
-            <input
-              type="email"
-              value={this.state.email}
-              placeholder="enter email"
-              onChange={this.update("email")}
-            />
-            <input
-              type="text"
-              value={this.state.username}
-              placeholder="enter username"
-              onChange={this.update("username")}
-            />
-            <input
-              type="password"
-              value={this.state.password}
-              placeholder="enter password"
-              onChange={this.update("password")}
-            />
-            <select onChange={this.updateSelect("artist")}>
-              <option
-                value={Boolean(false)}
-                selected
-              >
-                Listener
+            <div className="register-content">
+              <h1> Sign up for a fan account</h1>
+
+              <input
+                type="email"
+                value={this.state.email}
+                placeholder="enter email"
+                onChange={this.update("email")}
+              />
+              <input
+                type="text"
+                value={this.state.username}
+                placeholder="enter username"
+                onChange={this.update("username")}
+              />
+              <input
+                type="password"
+                value={this.state.password}
+                placeholder="enter password"
+                onChange={this.update("password")}
+              />
+              <select onChange={this.updateSelect("artist")}>
+                <option
+                  value={Boolean(false)}
+                  selected
+                >
+                  Listener
               </option>
-              <option value={Boolean(true)}>
-                Artist
+                <option value={Boolean(true)}>
+                  Artist
               </option>
-            </select>
-            <button type="submit">Register</button>
+              </select>
+              <button type="submit">Register</button>
+              <div className="register-errors">{this.state.errors}</div>
+
+            </div>
           </form>
         )}
       </Mutation>

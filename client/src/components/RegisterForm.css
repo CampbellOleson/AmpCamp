@@ -1,0 +1,59 @@
+.registerForm{
+    width: 400px;
+    margin: 0 auto;
+    height: 50%;
+    position: absolute;
+    left: 35%;
+    top: 20%;
+    background-color: #222;
+    height: 33%;
+    border-radius: 10px;
+    height: 43%;
+    border: 1px solid black;
+    display: grid;
+}
+
+.register-content{
+      width: 80%;
+    display: grid;
+    margin: auto;
+}
+
+.registerForm h1{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.registerForm input{
+    display: block;
+    margin: auto;
+    margin: 20px;
+    height: 30px;
+}
+
+.registerForm select{
+    display: block;
+    margin: auto;
+    margin: 20px;
+}
+
+.registerForm button{
+display: block;
+    margin: auto;
+ 
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    background-color: #555;
+    border: 0;
+    margin: 10px 20px 30px;
+}
+
+.register-errors {
+    margin: auto;
+    padding-bottom: px;
+    color: red;
+    margin-top: -13px;
+}

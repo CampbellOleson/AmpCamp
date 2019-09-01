@@ -1,0 +1,70 @@
+.log-form{
+    width: 400px;
+    margin: 0 auto;
+    height: 50%;
+    position: absolute;
+    left: 35%;
+    top: 20%;
+    background-color: #222;
+    height: 33%;
+    border-radius: 10px;
+    height: 43%;
+    border: 1px solid black;
+    display: grid;
+ 
+}
+
+.login-content{
+      width: 80%;
+    display: grid;
+    margin: auto;
+}
+
+.log-form h1{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.log-form input{
+    display: block;
+    margin: auto;
+    margin: 20px;
+    height: 30px;
+}
+
+.log-form select{
+    display: block;
+    margin: auto;
+    margin: 20px;
+}
+
+.log-form button{
+display: block;
+    margin: auto;
+ 
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    background-color: #555;
+    border: 0;
+    margin: 10px 20px 30px;
+}
+
+.login-errors {
+    margin: auto;
+    padding-bottom: px;
+    color: red;
+    margin-top: -13px;
+}
+
+.login-label{
+    color: white;
+    margin:20px;
+}
+
+
+.hide{
+    display: none;
+}

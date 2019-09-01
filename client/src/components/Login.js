@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import Mutations from '../graphql/mutations.js'
+import './LoginForm.css'
 const { LOGIN_USER } = Mutations
-
 // loginUser may be login from auth.js
 
 class Login extends Component {
+
   constructor(props) {
     super(props);
 
@@ -13,31 +14,27 @@ class Login extends Component {
       username: "",
       password: "",
       errors: []
-
     };
+
+
   }
 
-  //   componentWillReceiveProps(nextProps){
-  // console.log('hi!')
-  //   }
-
   updateCache(client, { data }) {
-    // console.log(data);
     client.writeData({
       data: { isLoggedIn: data.login.loggedIn }
     });
   }
-
 
   update(field) {
     return e => this.setState({ [field]: e.target.value });
   }
 
   render() {
+
     return (
       <Mutation
         mutation={LOGIN_USER}
-        onError={err => { this.setState({errors:err.graphQLErrors[0].message})}}
+        onError={err => { this.setState({ errors: err.graphQLErrors[0].message }) }}
         onCompleted={data => {
 
           const { token, username } = data.login;
@@ -49,7 +46,7 @@ class Login extends Component {
       >
         {login => (
           <div>
-            <form
+            <form id="login-form" className="log-form"
               onSubmit={e => {
                 e.preventDefault();
                 login({
@@ -60,26 +57,33 @@ class Login extends Component {
                 });
               }}
             >
-              <div>{this.state.errors}</div>
+
+              <div className="login-errors">{this.state.errors}</div>
+              <label labelfor="username">username</label>
               <input
                 value={this.state.username}
+                name="username"
                 onChange={this.update("username")}
-                placeholder="Username"
+
+                id="username"
               />
+              <label htmlFor="passWord">password</label>
 
               <input
+                name="passWord"
                 value={this.state.password}
                 onChange={this.update("password")}
                 type="password"
+                id="passWord"
                 placeholder="Password"
               />
               <button type="submit">Log In</button>
             </form>
+
           </div>
         )}
       </Mutation>
     );
   }
 }
-
 export default Login;

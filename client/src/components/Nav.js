@@ -3,20 +3,21 @@ import { ApolloConsumer } from "react-apollo";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
-import './Register.css'
+import './RegisterPopup.css'
 import './Nav.css'
 const { IS_LOGGED_IN } = Queries;
-
 const Nav = props => {
 
-  const revealRegister = () => {
-    let regform = document.getElementById('reg-form')
-    if (regform.className === 'hideRegister') {
-      regform.className = 'showRegister'
-    } else {
-      regform.className = 'hideRegister'
-    }
 
+  const showRegister = () => {
+    let regform = document.getElementById('reg-form')
+    regform.classList = 'showRegister'
+
+  }
+
+  const hideRegister = () => {
+    let regform = document.getElementById('reg-form')
+    regform.classList = 'hideRegister'
   }
 
   return (
@@ -32,7 +33,6 @@ const Nav = props => {
                     <div className="nav">
                       <ul className="logo">AmpCamp</ul>
                       <ul>
-                        <input type="text" className="nav-search" placeholder="find some music"></input>
                         <li><a>Profile</a>
                           <ul>
                             <li><a onClick={e => {
@@ -45,19 +45,22 @@ const Nav = props => {
                           </ul>
                         </li>
                       </ul>
+                      <input type="text" className="nav-search" placeholder="find some music"></input>
                     </div>
                   </div>
                 )
               } else {
                 return (
+
                   <div className="outer-nav-container">
 
                     <div className="nav">
+                    <input type="text" className="nav-search" placeholder="find some music"></input>
                       <ul className="logo">AmpCamp</ul>
                       <div className="login-or-signup">
-                        <a><Link id="nav-signup" onClick={revealRegister}> Sign Up</Link></a>
+                        <a><Link id="nav-signup" onClick={showRegister}>Sign Up</Link></a>
 
-                        <a ><Link id="nav-login" to="/login"> Login &nbsp;&nbsp;|</Link></a>
+                        <a ><Link onClick={hideRegister} id="nav-login" to="/login"> Login &nbsp;&nbsp;|</Link></a>
 
                         <form id="reg-form" className="hideRegister">
                           <h1> Sign up for an Amp Camp account</h1>
@@ -70,13 +73,11 @@ const Nav = props => {
                                 Sell directly to your fans with total control over your
                                 music and pricing. Easy access to your customers’ data,
                                 real-time stats, music chart reporting, and more.
-
                             </li>
                             </div>
-
                             <div className="register-info-items">
                               <img src="guitar.svg" />
-                              <a><Link id="register-fan" to="/register">Sign up as a fan</Link></a>
+                              <a><Link onClick={hideRegister} id="register-fan" to="/register">Sign up as a fan</Link></a>
 
                               <li id="fan-description">
                                 Sign up as a fan Follow your favorite artists,

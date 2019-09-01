@@ -5,8 +5,9 @@ ul{
 }
 
 .nav-search{
-margin-top: 11px;
-
+margin-top: 8px;
+height: 20px;
+width: 200px;
 }
 
 .outer-nav-container{
