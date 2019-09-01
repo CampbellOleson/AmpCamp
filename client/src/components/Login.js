@@ -35,7 +35,7 @@ class Login extends Component {
         onCompleted={data => {
           const { token, username } = data.login;
           localStorage.setItem("auth-token", token);
-          localStorage.setItem('username', username)
+          localStorage.setItem('username', username);
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
