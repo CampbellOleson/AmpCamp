@@ -57,13 +57,34 @@ ul li a{
   display: block;
 }
 
-/* .nav{
-  width: 1100;
-  background-color: black;
-} */
 
+.login-or-signup {
+  text-decoration: none;
+  color: white;
+  display: block;
+  list-style-type: none;
+  display: inline;
+  float: right;
+  margin-top: 6px;
+  font-size: 12px;
+  padding-left: 3px;
+  margin-right: 1px;
+}
 
-.login-or-signup a{
+#nav-signup{
+  text-decoration: none;
+  color: white;
+  display: block;
+  list-style-type: none;
+  display: inline;
+  float: right;
+  margin-top: 6px;
+  font-size: 12px;
+  padding-left: 3px;
+  margin-right: 1px;
+}
+
+#nav-login{
   text-decoration: none;
   color: white;
   display: block;

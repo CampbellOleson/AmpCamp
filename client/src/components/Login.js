@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import Mutations from '../graphql/mutations.js'
-const {LOGIN_USER} = Mutations
+const { LOGIN_USER } = Mutations
 
 // loginUser may be login from auth.js
 
@@ -11,15 +11,20 @@ class Login extends Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      errors: []
+
     };
   }
 
-  updateCache(client, {data}){
-    // console.log(data);
+  //   componentWillReceiveProps(nextProps){
+  // console.log('hi!')
+  //   }
 
+  updateCache(client, { data }) {
+    // console.log(data);
     client.writeData({
-        data: { isLoggedIn: data.login.loggedIn}
+      data: { isLoggedIn: data.login.loggedIn }
     });
   }
 
@@ -32,7 +37,9 @@ class Login extends Component {
     return (
       <Mutation
         mutation={LOGIN_USER}
+        onError={err => { this.setState({errors:err.graphQLErrors[0].message})}}
         onCompleted={data => {
+
           const { token, username } = data.login;
           localStorage.setItem("auth-token", token);
           localStorage.setItem('username', username)
@@ -53,6 +60,7 @@ class Login extends Component {
                 });
               }}
             >
+              <div>{this.state.errors}</div>
               <input
                 value={this.state.username}
                 onChange={this.update("username")}

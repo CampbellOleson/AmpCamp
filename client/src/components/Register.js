@@ -23,7 +23,7 @@ class Register extends Component {
   update(field) {
     return e => this.setState({ [field]: e.target.value });
   }
-  
+
   updateSelect(field) {
     return e => this.setState({ [field]: Boolean(e.target.value) });
   }
@@ -32,6 +32,7 @@ class Register extends Component {
     return (
       <Mutation
         mutation={REGISTER_USER}
+        onError={err => { this.setState({ errors: err.graphQLErrors[0].message }) }}
         onCompleted={data => {
           const { token, username } = data.register;
           localStorage.setItem("auth-token", token);
@@ -54,6 +55,7 @@ class Register extends Component {
               });
             }}
           >
+            <div>{this.state.errors}</div>
             <input
               type="email"
               value={this.state.email}
