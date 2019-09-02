@@ -1,7 +1,15 @@
+.form-fader{
+    
+    opacity: 0.7;
+    position: absolute;
+    
+    width: 100%;
+}
+
+
 .featured-master-container{
     width: 100%;
     height: 500px;
-    border: 1px solid blue;
     background: black;
 
     
@@ -11,41 +19,36 @@
 width: 58.5%;
 height: 100%;
 margin: auto;
-border: 1px solid red;
 display: flex;
+text-align: center;
 
 }
 
 .featured-photo{
-width: 80%;
+width: 60%;
 height: 100%;
-border: 1px solid yellow;
 
 }
 
 
 .featured-photo img{
     max-height: 100%;
-    max-width: 100%;
+    min-width: 500px;
 }
 
-.featured-stack{
-      max-height: 100%;
-      width: 50%;
-      border: 23px solid blue;
-}
 
-.featured-stack li {
-    float: left;
-    clear: left;
-    border: 1px solid white;
-}
 
 .featured-stack img{
-    max-height: 80%;
+    float: left; 
+    clear: left; 
+    max-height: 100%;
     width: 100%;
+    max-height: 163px;
+    
 }
 
+
+
 .featured-stack{
-    border: 1px solid white;
+
 }

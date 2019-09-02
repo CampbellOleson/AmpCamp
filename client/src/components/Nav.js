@@ -20,6 +20,11 @@ const Nav = props => {
     regform.classList = 'hideRegister'
   }
 
+  const closeForm = () => {
+    let regform = document.getElementById('reg-form')
+    regform.classList = 'hideRegister'
+  }
+
   return (
     <div>
       <ApolloConsumer>
@@ -45,7 +50,7 @@ const Nav = props => {
                           </ul>
                         </li>
                       </ul>
-                      <input type="text" className="nav-search" placeholder="find some music"></input>
+                      <input type="text" className="nav-search" placeholder="find some killer music"></input>
                     </div>
                   </div>
                 )
@@ -58,11 +63,13 @@ const Nav = props => {
                       <input type="text" className="nav-search" placeholder="find some music"></input>
                       <ul className="logo">AmpCamp</ul>
                       <div className="login-or-signup">
-                        <a><Link id="nav-signup" onClick={showRegister}>Sign Up</Link></a>
+                        <a><Link id="nav-signup" onClick={showRegister}>&nbsp;Sign Up</Link></a>
 
                         <a ><Link onClick={hideRegister} id="nav-login" to="/login"> Login &nbsp;&nbsp;|</Link></a>
 
                         <form id="reg-form" className="hideRegister">
+                          <div onClick={closeForm} className="close-register-button">X</div>
+
                           <h1> Sign up for an Amp Camp account</h1>
 
                           <div className="register-info-container">
@@ -76,7 +83,7 @@ const Nav = props => {
                             </li>
                             </div>
                             <div className="register-info-items">
-                              <img src="guitar.svg" />
+                              <img src="fan.svg" />
                               <a><Link onClick={hideRegister} id="register-fan" to="/register">Sign up as a fan</Link></a>
 
                               <li id="fan-description">

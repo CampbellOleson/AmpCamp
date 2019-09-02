@@ -1,14 +1,26 @@
+.close{
+    display: none;
+}
+
+.close-button{
+    color: white;
+    top: -40px;
+    position: relative;
+    left: 320px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
 .registerForm{
     width: 400px;
     margin: 0 auto;
-    height: 50%;
     position: absolute;
-    left: 35%;
+    left: 42%;
     top: 20%;
     background-color: #222;
-    height: 33%;
     border-radius: 10px;
-    height: 43%;
+    height: 450px;
     border: 1px solid black;
     display: grid;
 }
@@ -40,9 +52,8 @@
 }
 
 .registerForm button{
-display: block;
+    display: block;
     margin: auto;
- 
     height: 50px;
     color: white;
     font-size: 20px;

@@ -15,7 +15,7 @@ class Login extends Component {
       password: "",
       errors: []
     };
-
+    this.closeForm = this.closeForm.bind(this)
 
   }
 
@@ -29,12 +29,28 @@ class Login extends Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
+  closeForm() {
+    let logform = document.getElementById('login-form')
+    logform.classList = 'close'
+  }
+
+  componentDidUpdate() {
+    let logform = document.getElementById('login-form')
+    logform.classList = 'log-form'
+  }
+
   render() {
 
     return (
       <Mutation
         mutation={LOGIN_USER}
-        onError={err => { this.setState({ errors: err.graphQLErrors[0].message }) }}
+        onError={err => {
+          this.setState({
+            errors: err.graphQLErrors[0].message,
+            username: '',
+            password: ''
+          })
+        }}
         onCompleted={data => {
 
           const { token, username } = data.login;
@@ -57,8 +73,9 @@ class Login extends Component {
                 });
               }}
             >
-
               <h1>Log in to your account</h1>
+              <div onClick={this.closeForm} className="close-button-login">X</div>
+
               <div className="input-container">
                 <img src="./user.svg" className="fa fa-user icon"></img>
 
@@ -66,8 +83,8 @@ class Login extends Component {
                   value={this.state.username}
                   name="username"
                   onChange={this.update("username")}
+                  placeholder="Username"
 
-                  id="username"
                 />
               </div>
 
@@ -79,7 +96,6 @@ class Login extends Component {
                   value={this.state.password}
                   onChange={this.update("password")}
                   type="password"
-                  id="passWord"
                   placeholder="Password"
                 />
               </div>

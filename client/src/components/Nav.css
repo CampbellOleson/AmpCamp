@@ -71,6 +71,7 @@ ul li a{
   margin-right: 1px;
 }
 
+
 #nav-signup{
   text-decoration: none;
   color: white;
@@ -97,9 +98,17 @@ ul li a{
   margin-right: 1px;
 }
 
-.login-or-signup{
-    margin-right: 8px;
+#nav-signup:hover{
+  color: yellow;
+  text-shadow: 2px 10px 10px red;
 }
+#nav-login:hover{
+  color: yellow;
+  text-shadow: 2px 10px 10px red;
+}
+
+
+
 
 
 

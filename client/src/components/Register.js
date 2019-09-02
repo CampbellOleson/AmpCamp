@@ -13,6 +13,7 @@ class Register extends Component {
       password: "",
       artist: false
     };
+    this.closeForm = this.closeForm.bind(this)
   }
 
   updateCache(client, { data }) {
@@ -29,11 +30,25 @@ class Register extends Component {
     return e => this.setState({ [field]: Boolean(e.target.value) });
   }
 
+  closeForm() {
+    let regform = document.getElementById('register-form')
+    regform.classList = 'close'
+  }
+
+  componentDidUpdate() {
+    let regform = document.getElementById('register-form')
+    regform.classList = 'registerForm'
+  }
+
   render() {
     return (
       <Mutation
         mutation={REGISTER_USER}
-        onError={err => { this.setState({ errors: err.graphQLErrors[0].message }) }}
+        onError={err => { 
+          this.setState({ 
+            errors: err.graphQLErrors[0].message,
+            
+           }) }}
         onCompleted={data => {
           const { token, username } = data.register;
           localStorage.setItem("auth-token", token);
@@ -43,7 +58,7 @@ class Register extends Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {registerUser => (
-          <form className="registerForm"
+          <form id="register-form" className="registerForm"
             onSubmit={e => {
               e.preventDefault();
               registerUser({
@@ -59,23 +74,27 @@ class Register extends Component {
           >
             <div className="register-content">
               <h1> Sign up for a fan account</h1>
+              <div onClick={this.closeForm} className="close-button">X</div>
 
               <input
                 type="email"
                 value={this.state.email}
                 placeholder="enter email"
+                autocomplete="off"
                 onChange={this.update("email")}
               />
               <input
                 type="text"
                 value={this.state.username}
                 placeholder="enter username"
+                autocomplete="off"
                 onChange={this.update("username")}
               />
               <input
                 type="password"
                 value={this.state.password}
                 placeholder="enter password"
+                autocomplete="off"
                 onChange={this.update("password")}
               />
               <select onChange={this.updateSelect("artist")}>
