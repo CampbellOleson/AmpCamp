@@ -95,11 +95,16 @@
 
 .close-button-login{
       color: white;
-    top: -60px;
+    top: -52px;
     position: relative;
     left: 345px;
     width: 20px;
     height: 20px;
     cursor: pointer;
     font-size: 20px;
+    z-index: 20;
+}
+
+.close-button-login:hover{
+  color: red;
 }

@@ -76,16 +76,16 @@ ul li a{
 
 
 #nav-signup{
-  text-decoration: none;
-  color: white;
-  display: block;
-  list-style-type: none;
-  display: inline;
-  float: right;
-  margin-top: 6px;
-  font-size: 12px;
-  padding-left: 3px;
-  margin-right: 1px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    list-style-type: none;
+    display: inline;
+    float: right;
+    margin-top: 6px;
+    font-size: 12px;
+    padding-left: 3px;
+    margin-right: 1px;
 }
 
 #nav-login{

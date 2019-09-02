@@ -14,7 +14,8 @@ class Login extends Component {
       password: "",
       errors: []
     };
-    this.closeForm = this.closeForm.bind(this)
+    this.submitForm = this.submitForm.bind(this)
+    this.closeFormX = this.closeFormX.bind(this)
   }
 
   updateCache(client, { data }) {
@@ -27,23 +28,20 @@ class Login extends Component {
     return e => this.setState({ [field]: e.target.value });
   }
 
-  closeForm() {
-    let logform = document.getElementById('login-form')
-    logform.classList = 'close'
-    document.getElementById('form-fader').classList = 'close'
+  closeFormX() {
+    let logform = document.getElementById('login-form').classList = 'close'
+  }
+
+  submitForm() {
+    document.getElementById('login-form').classList = 'close'
   }
 
   componentDidMount() {
-    document.getElementById('form-fader').classList = 'form-fader'
-    let fade = document.getElementById('form-fader').classList = 'form-fader'
-
+    document.getElementById('login-form').classList = 'log-form'
   }
 
-
-  componentDidUpdate() {
-    let logform = document.getElementById('login-form')
-    logform.classList = 'log-form'
-    document.getElementById('form-fader').classList = 'form-fader'
+  componentWillUpdate() {
+    document.getElementById('login-form').classList = 'log-form'
   }
 
   render() {
@@ -82,7 +80,7 @@ class Login extends Component {
               }}
             >
               <h1>Log in to your account</h1>
-              <div onClick={this.closeForm} className="close-button-login">X</div>
+              <div onClick={this.closeFormX} className="close-button-login">X</div>
 
               <div className="input-container">
                 <img src="./user.svg" className="fa fa-user icon"></img>
@@ -107,7 +105,7 @@ class Login extends Component {
                   placeholder="Password"
                 />
               </div>
-              <button onClick={this.closeForm} type="submit">Log In</button>
+              <button onClick={this.submitForm} type="submit">Log In</button>
               <div className="login-errors">{this.state.errors}</div>
 
             </form>

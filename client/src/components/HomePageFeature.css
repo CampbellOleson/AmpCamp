@@ -4,7 +4,7 @@
     width: 100%;
     animation-name: fadein;
     animation-duration: 0.0s;
-
+    display: none;
 }
 
 @keyframes fadein{
