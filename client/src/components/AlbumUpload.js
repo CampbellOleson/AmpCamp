@@ -106,14 +106,14 @@ class AlbumUpload extends React.Component {
       // append audio file to append
 
       const formData = new FormData();
-      formData.append('audio[audio]', file);
+      formData.set('audio', file);
 
       const res = await FAPI.uploadAudio(formData);
 
       const newSong = await this.props.newSong({
         variables: {
           title,
-          audioUrl: res.audioUrl,
+          audioUrl: res.data.audioUrl,
           album: newAlbum.data.newAlbum._id,
           artist: cUserId
         }
@@ -197,7 +197,6 @@ class AlbumUpload extends React.Component {
 export default compose(
   graphql(NEW_ALBUM, { name: "newAlbum" }),
   graphql(NEW_SONG, { name: "newSong" }),
-  graphql(S3_SIGN, { name: "s3Sign" })
 )(AlbumUpload);
 
 // handleSubmit(e) {
