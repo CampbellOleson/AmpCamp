@@ -15,6 +15,9 @@ const Song = mongoose.model("songs");
 const AlbumType = require("./types/album_type");
 const SongType = require("./types/song_type");
 const AuthService = require("../services/auth");
+const s3PayloadType = require("./types/s3_type.js");
+const s3Bucket = process.env.S3_BUCKET; // CREATE THIS
+const aws = require("aws-sdk");
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
@@ -89,12 +92,72 @@ const mutation = new GraphQLObjectType({
         album: { type: GraphQLID }
       },
       async resolve(_, { title, audioUrl, artist, album }) {
-        const song = await new Song({ title, audioUrl, artist, album }).save()
-          Song.associateAlbum(song._id, album);
-          return song;
-        }
+        const song = await new Song({ title, audioUrl, artist, album }).save();
+        Song.associateAlbum(song._id, album);
+        return song;
+      }
+    },
+    signS3: {
+      type: s3PayloadType,
+      args: {
+        filename: { type: GraphQLString },
+        filetype: { type: GraphQLString }
+      },
+      async resolve(_, { filename, filetype }) {
+        // AWS_ACCESS_KEY_ID
+        // AWS_SECRET_ACCESS_KEY
+        const s3 = new aws.S3({
+          signatureVersion: "v4",
+          region: "us-east-2"
+        });
+
+        const s3Params = {
+          Bucket: s3Bucket,
+          Key: filename,
+          Expires: 60,
+          ContentType: filetype,
+          ACL: "public-read"
+        };
+
+        const signedRequest = await s3.getSignedUrl("putObject", s3Params);
+        const url = `https://${s3Bucket}.s3.amazonaws.com/${filename}`;
+
+        return {
+          signedRequest,
+          url
+        };
       }
     }
+  }
 });
 
 module.exports = mutation;
+
+// Mutation: {
+//   signS3: async (parent, {
+//     filename,
+//     filetype,
+//   }) => {
+//     // AWS_ACCESS_KEY_ID
+//     // AWS_SECRET_ACCESS_KEY
+//     const s3 = new aws.S3({
+//       signatureVersion: 'v4',
+//       region: 'us-east-2',
+//     });
+
+//     const s3Params = {
+//       Bucket: s3Bucket,
+//       Key: filename,
+//       Expires: 60,
+//       ContentType: filetype,
+//       ACL: 'public-read',
+//     };
+
+//     const signedRequest = await s3.getSignedUrl('putObject', s3Params);
+//     const url = `https://${s3Bucket}.s3.amazonaws.com/${filename}`;
+
+//     return {
+//       signedRequest,
+//       url,
+//     };
+//   },
