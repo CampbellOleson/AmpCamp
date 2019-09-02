@@ -4,6 +4,7 @@ export default {
   LOGIN_USER: gql`
     mutation LoginUser($username: String!, $password: String!) {
       login(username: $username, password: $password) {
+        _id
         token
         loggedIn
         username
@@ -24,6 +25,7 @@ export default {
         password: $password
         artist: $artist
       ) {
+        _id
         token
         loggedIn
         username
@@ -38,18 +40,49 @@ export default {
       }
     }
   `,
-  CREATE_SONG: gql`
-    mutation CreateSong(
+  // are we going to have to make the artist fields somehow GraphQLID?
+  NEW_ALBUM: gql`
+    mutation newAlbum(
       $title: String!
-      $audioUrl: String!
-      $artist: Int!
-      $album: Int!
+      $description: String!
+      $by: String!
+      $coverPhotoUrl: String!
+      $artist: ID!
     ) {
-      createSong(
+      newAlbum(
+        title: $title
+        description: $description
+        by: $by
+        coverPhotoUrl: $coverPhotoUrl
+        artist: $artist
+      ) {
+        _id
+        title
+        description
+        by
+        coverPhotoUrl
+        artist {
+          _id
+          username
+        }
+        songs {
+          title
+        }
+      }
+    }
+  `,
+  NEW_SONG: gql`
+    mutation newSong(
+      $title: String!,
+      $audioUrl: String!,
+      $artist: ID!,
+      $album: ID!
+    ) {
+      newSong(
         title: $title
         audioUrl: $audioUrl
         artist: $artist
-        album: $album
+        album: $album 
       ) {
         title
         audioUrl
@@ -70,39 +103,5 @@ export default {
       }
     }
   `,
-  // CREATE_ALBUM: gql`
-  //   mutation CreateAlbum(
-  //     $title: String!
-  //     $description: String!
-  //     $by: String!
-  //     $coverPhotoUrl: String!
-  //     $artist: Int!
-  //   ) {
-  //     createAlbum(
-  //       title: $title
-  //       description: $description
-  //       by: $by
-  //       coverPhotoUrl: $coverPhotoUrl
-  //       artist: $artist
-  //     ) {
-  //       title
-  //       description
-  //       by
-  //       coverPhotoUrl
-  //       artist {
-  //         _id
-  //         username
-  //       }
-  //       songs
-  //     }
-  //   }
-  // `,
-  // s3SignMutation: gql`
-  //   mutations($filename: String!, $filetype: String!) {
-  //     signS3(filename: $filename, filetype: $filetype) {
-  //       url
-  //       signedRequest
-  //     }
-  //   }
-  // `,
 };
+

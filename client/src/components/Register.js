@@ -33,9 +33,10 @@ class Register extends Component {
       <Mutation
         mutation={REGISTER_USER}
         onCompleted={data => {
-          const { token, username } = data.register;
+          const { token, username, _id } = data.register;
           localStorage.setItem("auth-token", token);
           localStorage.setItem("username", username);
+          localStorage.setItem("currentUserId", _id);
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
@@ -75,7 +76,7 @@ class Register extends Component {
             <select onChange={this.updateSelect("artist")}>
               <option
                 value={Boolean(false)}
-                selected
+                defaultValue
               >
                 Listener
               </option>
