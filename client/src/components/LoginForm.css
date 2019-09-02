@@ -1,0 +1,110 @@
+
+.log-form{
+    width: 400px;
+    margin: 0 auto;
+    position: absolute;
+    left: 40%;
+    top: 20%;
+    background-color: #222;
+    border-radius: 10px;
+    height: 40%;
+    border: 1px solid black;
+    display: grid;
+}
+
+.login-content{
+      width: 80%;
+    display: grid;
+    margin: auto;
+}
+
+.log-form h1{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+      margin-top: 35px;
+}
+
+.log-form input{
+
+    height: 20px;
+    width: 60%;
+  padding: 10px;
+  outline: none;
+
+}
+
+.log-form select{
+    display: block;
+    margin: auto;
+    margin: 20px;
+}
+
+.log-form button{
+    margin: auto;
+    width: 77.5%;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    background-color: #555;
+    border: 0;
+    margin: 10px 49px 30px;
+}
+
+.log-form label{
+    color: white;
+   display:grid;
+    grid-template-columns: max-content max-content;
+    grid-gap:5px;
+}
+
+.login-errors {
+    margin: auto;
+    padding-bottom: px;
+    color: red;
+    margin-top: -13px;
+}
+
+.hide{
+    display: none;
+}
+
+
+.icon {
+  padding: 10px;
+  color: white;
+  min-width: 24px;
+    height: 24px;
+  text-align: center;
+}
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-left: 50px; 
+  margin-bottom: 15px;
+}
+
+
+
+
+.close{
+    display: none;
+}
+
+.close-button-login{
+      color: white;
+    top: -52px;
+    position: relative;
+    left: 345px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 20;
+}
+
+.close-button-login:hover{
+  color: red;
+}

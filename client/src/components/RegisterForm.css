@@ -1,0 +1,102 @@
+
+.registerForm{
+    width: 400px;
+    margin: 0 auto;
+    position: absolute;
+    left: 40%;
+    top: 20%;
+    background-color: #222;
+    border-radius: 10px;
+    height: 450px;
+    border: 1px solid black;
+    display: grid;
+}
+
+.register-content{
+    width: 80%;
+    display: grid;
+    margin: auto;
+    margin-top: -30px;
+}
+
+.registerForm h1{
+  text-align: center;
+    color: white;
+    font-size: 20px;
+    /* margin-bottom: 20px; */
+    margin: 0;
+    margin-top: 35px;
+}
+
+.registerForm input{
+    display: block;
+    margin: auto;
+    margin: 20px;
+    height: 30px;
+    margin-left: 30px;
+}
+
+.registerForm select{
+    display: block;
+    margin: auto;
+    margin: 20px;
+}
+
+.registerForm button{
+    display: block;
+    margin: auto;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    background-color: #555;
+    border: 0;
+    margin: 10px 20px 30px;
+}
+
+.register-errors {
+    margin: auto;
+    padding-bottom: 0px;
+    color: red;
+    margin-top: -23px;
+}
+
+
+.close{
+    display: none;
+}
+
+.close-button{
+    color: white;
+    top: -20px;
+    position: relative;
+    left: 320px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+.close-button:hover{
+  color: red;
+}
+
+
+.register-input-field{
+  width: 70%;
+}
+
+.register-icon{
+width: 35px;
+margin-left: 20px;
+
+}
+
+.reg-item{
+display: flex;
+}
+
+.account-type{
+    display: inline;
+    height: 40px;
+    width: 230px;
+}

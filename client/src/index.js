@@ -26,7 +26,9 @@ const httpLink = createHttpLink({
 })
 
 const errorLink = onError(({ graphQLErrors}) => {
+   
     if (graphQLErrors) graphQLErrors.map(({message}) => console.log(message))
+    
 })
 
 const client = new ApolloClient({

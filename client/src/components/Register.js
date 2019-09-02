@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import Mutations from "../graphql/mutations";
+import './RegisterForm.css'
 const { REGISTER_USER } = Mutations;
 class Register extends Component {
   constructor(props) {
@@ -10,8 +11,13 @@ class Register extends Component {
       username: "",
       email: "",
       password: "",
+      errors: '',
       artist: false
     };
+    this.submitForm = this.submitForm.bind(this)
+    this.closeFormX = this.closeFormX.bind(this)
+    this.determineAccount = this.determineAccount.bind(this)
+
   }
 
   updateCache(client, { data }) {
@@ -23,15 +29,66 @@ class Register extends Component {
   update(field) {
     return e => this.setState({ [field]: e.target.value });
   }
-  
+
   updateSelect(field) {
     return e => this.setState({ [field]: Boolean(e.target.value) });
   }
+
+  closeFormX() {
+    let regform = document.getElementById('register-form').classList = 'close'
+    let fade = document.getElementById('form-fader').classList = 'close'
+  }
+
+
+  submitForm() {
+    let fade = document.getElementById('form-fader').classList = 'close'
+  }
+
+  componentDidMount() {
+    let fade = document.getElementById('form-fader').classList = 'form-fader'
+    let account = document.getElementById('account-selector')
+    let photo = document.getElementById('account-type-photo')
+
+    if (account.selectedIndex === 0) {
+      photo.src = './rockstaraccount.svg'
+    } else {
+      photo.src = './fanaccount.svg'
+    }
+
+  }
+
+  componentDidUpdate() {
+    let regform = document.getElementById('register-form')
+    let fade = document.getElementById('form-fader').classList = 'form-fader'
+    regform.classList = 'registerForm'
+
+  }
+
+  determineAccount() {
+
+    let fade = document.getElementById('form-fader').classList = 'form-fader'
+    let account = document.getElementById('account-selector')
+    let photo = document.getElementById('account-type-photo')
+
+    if (account.selectedIndex === 0) {
+      photo.src = './rockstaraccount.svg'
+    } else {
+      photo.src = './fanaccount.svg'
+    }
+
+  }
+
 
   render() {
     return (
       <Mutation
         mutation={REGISTER_USER}
+        onError={err => {
+          this.setState({
+            errors: err.graphQLErrors[0].message,
+
+          })
+        }}
         onCompleted={data => {
           const { token, username, _id } = data.register;
           localStorage.setItem("auth-token", token);
@@ -42,7 +99,7 @@ class Register extends Component {
         update={(client, data) => this.updateCache(client, data)}
       >
         {registerUser => (
-          <form
+          <form id="register-form" className="registerForm"
             onSubmit={e => {
               e.preventDefault();
               registerUser({
@@ -54,37 +111,69 @@ class Register extends Component {
                 }
               });
             }}
+
           >
-            <input
-              type="email"
-              value={this.state.email}
-              placeholder="enter email"
-              onChange={this.update("email")}
-            />
-            <input
-              type="text"
-              value={this.state.username}
-              placeholder="enter username"
-              onChange={this.update("username")}
-            />
-            <input
-              type="password"
-              value={this.state.password}
-              placeholder="enter password"
-              onChange={this.update("password")}
-            />
-            <select onChange={this.updateSelect("artist")}>
-              <option
-                value={Boolean(false)}
-                defaultValue
-              >
-                Listener
+            <div className="register-content">
+              <h1> Sign up for a fan account</h1>
+              <div onClick={this.closeFormX} className="close-button">X</div>
+
+              <div className="reg-item">
+                <img className='register-icon' src="./email.svg"></img>
+
+                <input
+                  className='register-input-field'
+                  type="email"
+                  value={this.state.email}
+                  placeholder="enter email"
+                  autocomplete="off"
+                  onChange={this.update("email")}
+                />
+              </div>
+              <div className="reg-item">
+                <img className='register-icon' src="./user.svg"></img>
+                <input
+                  className='register-input-field'
+                  type="text"
+                  value={this.state.username}
+                  placeholder="enter username"
+                  autocomplete="off"
+                  onChange={this.update("username")}
+                />
+              </div>
+
+
+
+              <div className="reg-item">
+                <img className='register-icon' src="./lock.svg"></img>
+                <input
+                  className='register-input-field'
+
+                  type="password"
+                  value={this.state.password}
+                  placeholder="enter password"
+                  autocomplete="off"
+                  onChange={this.update("password")}
+                />
+              </div>
+
+              <div className='reg-item'>
+                <img id='account-type-photo' className='register-icon'></img>
+                <select onChange={this.determineAccount} id='account-selector' className='account-type' onChange={this.updateSelect("artist")}>
+                  <option
+                    value={Boolean(false)}
+                    selected
+                  >
+                    Listener
               </option>
-              <option value={Boolean(true)}>
-                Artist
+                  <option value={Boolean(true)}>
+                    Artist
               </option>
-            </select>
-            <button type="submit">Register</button>
+                </select>
+              </div>
+              <button onClick={this.submitForm} type="submit">Register</button>
+              <div className="register-errors">{this.state.errors}</div>
+
+            </div>
           </form>
         )}
       </Mutation>

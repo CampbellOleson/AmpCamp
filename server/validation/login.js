@@ -12,7 +12,7 @@ module.exports = function validateLogin(data){
         return { message: "Username Required", isValid: false };
     }
     if (Validator.isEmpty(data.password)) {
-        return { message: "Email is required", isValid: false };
+        return { message: "Password is required", isValid: false };
     }
 
     return {

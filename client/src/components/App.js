@@ -7,11 +7,19 @@ import AuthRoute from '../util/route_util';
 import Nav from './Nav';
 import Home from './Home';
 import AlbumUpload from './AlbumUpload';
+import HomePageFeature from "./HomePageFeature";
+
 
 const App = () => {
+
+
   return (
     <div>
-      <Route path='/' component={Nav}/> 
+   
+      <img id="form-fader" className="close" src='./black.jpg'></img>
+      <Route path='/' component={Nav} />
+      <HomePageFeature />
+
       <Switch>
         <Route exact path="/" component={Home} />
         <AuthRoute exact path="/login" component={Login} routeType='auth' />

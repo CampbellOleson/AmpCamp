@@ -5,14 +5,18 @@ ul{
 }
 
 .nav-search{
-margin-top: 11px;
-
+margin-top: 8px;
+height: 20px;
+width: 200px;
 }
 
 .outer-nav-container{
     width: 100%;
     background-color: #222;
+    position: relative;
+    z-index: 50;
 }
+
 .nav ul li {
   float: right;
 }
@@ -26,15 +30,14 @@ margin-top: 11px;
   background-color: #222;
   height: 40px;
   margin: auto;
-  max-width: 900px;
-  
+  max-width: 1200px;
 }
 
 .logo{
-  float: left;
-  margin: 10px;
-  color: white;
-
+    float: left;
+    margin: 10px;
+    color: white;
+    margin-left: 10px;
 }
 
 .logo ul{
@@ -57,13 +60,8 @@ ul li a{
   display: block;
 }
 
-/* .nav{
-  width: 1100;
-  background-color: black;
-} */
 
-
-.login-or-signup a{
+.login-or-signup {
   text-decoration: none;
   color: white;
   display: block;
@@ -76,9 +74,44 @@ ul li a{
   margin-right: 1px;
 }
 
-.login-or-signup{
-    margin-right: 50px;
+
+#nav-signup{
+    text-decoration: none;
+    color: white;
+    display: block;
+    list-style-type: none;
+    display: inline;
+    float: right;
+    margin-top: 6px;
+    font-size: 12px;
+    padding-left: 3px;
+    margin-right: 1px;
 }
+
+#nav-login{
+  text-decoration: none;
+  color: white;
+  display: block;
+  list-style-type: none;
+  display: inline;
+  float: right;
+  margin-top: 6px;
+  font-size: 12px;
+  padding-left: 3px;
+  margin-right: 1px;
+}
+
+#nav-signup:hover{
+  color: yellow;
+  text-shadow: 2px 10px 10px red;
+}
+#nav-login:hover{
+  color: yellow;
+  text-shadow: 2px 10px 10px red;
+}
+
+
+
 
 
 
