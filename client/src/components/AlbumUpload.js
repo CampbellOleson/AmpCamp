@@ -37,7 +37,20 @@ class AlbumUpload extends React.Component {
   }
 
   uploadToS3 = async (file, signedRequest) => {
-    const options = { headers: { "Content-Type": file.type } };
+    const options = {
+      headers: {
+        'Content-Type': file.type,
+        'Access-Control-Allow-Origin': "*",
+      }
+    };
+    // let http_request = new XMLHttpRequest();
+    // http_request.onreadystatechange = function () { /* .. */};
+    // http_request.open('PUT', signedRequest)
+    // http_request.withCredentials = true;
+    // http_request.setHeader('Content-Type', file.type)
+    // http_request.setHeader("Access-Control-Allow-Origin", '*');
+    // http_request.setRequestHeader("Access-Control-Allow-Origin", true);
+    // await http_request.send(file);
     await axios.put(signedRequest, file, options);
   };
 
@@ -70,7 +83,6 @@ class AlbumUpload extends React.Component {
     // or maybe for each?
 
     files.forEach(async file => {
-      console.log(file)
       const res = await this.props.s3Sign({
         variables: {
           filename: this.formatFileName(file.name),

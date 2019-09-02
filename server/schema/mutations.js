@@ -16,7 +16,7 @@ const AlbumType = require("./types/album_type");
 const SongType = require("./types/song_type");
 const AuthService = require("../services/auth");
 const s3PayloadType = require("./types/s3_type.js");
-const s3Bucket = process.env.S3_BUCKET; // CREATE THIS
+const s3Bucket = require('../../config/keys').S3_BUCKET;
 const aws = require("aws-sdk");
 
 const mutation = new GraphQLObjectType({
@@ -110,7 +110,9 @@ const mutation = new GraphQLObjectType({
           signatureVersion: "v4",
           region: "us-east-2"
         });
-
+        // console.log(filename);
+        // console.log(filetype);
+        // console.log(s3Bucket);
         const s3Params = {
           Bucket: s3Bucket,
           Key: filename,
@@ -121,7 +123,8 @@ const mutation = new GraphQLObjectType({
 
         const signedRequest = await s3.getSignedUrl("putObject", s3Params);
         const url = `https://${s3Bucket}.s3.amazonaws.com/${filename}`;
-
+        // console.log(signedRequest)
+        // console.log(url);
         return {
           signedRequest,
           url
