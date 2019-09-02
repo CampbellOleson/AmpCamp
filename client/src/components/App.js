@@ -6,6 +6,8 @@ import Register from "./Register";
 import AuthRoute from '../util/route_util';
 import Nav from './Nav';
 import Home from './Home';
+import HomePageFeature from "./HomePageFeature";
+
 
 const App = () => {
   return (
@@ -17,6 +19,7 @@ const App = () => {
         <AuthRoute exact path="/login" component={Login} routeType='auth' />
         <AuthRoute exact path="/register" component={Register} routeType='auth' />
       </Switch>
+      <HomePageFeature />
     </div>
   );
 };

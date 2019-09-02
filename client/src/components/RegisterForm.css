@@ -53,7 +53,7 @@ display: block;
 
 .register-errors {
     margin: auto;
-    padding-bottom: px;
+    padding-bottom: 0px;
     color: red;
     margin-top: -13px;
 }

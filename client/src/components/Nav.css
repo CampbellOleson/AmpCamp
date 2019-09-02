@@ -27,15 +27,14 @@ width: 200px;
   background-color: #222;
   height: 40px;
   margin: auto;
-  max-width: 900px;
-  
+  max-width: 1200px;
 }
 
 .logo{
-  float: left;
-  margin: 10px;
-  color: white;
-
+    float: left;
+    margin: 10px;
+    color: white;
+    margin-left: 10px;
 }
 
 .logo ul{
@@ -99,7 +98,7 @@ ul li a{
 }
 
 .login-or-signup{
-    margin-right: 50px;
+    margin-right: 8px;
 }
 
 

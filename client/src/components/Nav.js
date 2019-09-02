@@ -33,7 +33,7 @@ const Nav = props => {
                     <div className="nav">
                       <ul className="logo">AmpCamp</ul>
                       <ul>
-                        <li><a>Profile</a>
+                        <li><a>{localStorage.getItem('username')}</a>
                           <ul>
                             <li><a onClick={e => {
                               e.preventDefault()
@@ -55,7 +55,7 @@ const Nav = props => {
                   <div className="outer-nav-container">
 
                     <div className="nav">
-                    <input type="text" className="nav-search" placeholder="find some music"></input>
+                      <input type="text" className="nav-search" placeholder="find some music"></input>
                       <ul className="logo">AmpCamp</ul>
                       <div className="login-or-signup">
                         <a><Link id="nav-signup" onClick={showRegister}>Sign Up</Link></a>

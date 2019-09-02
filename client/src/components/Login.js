@@ -58,26 +58,34 @@ class Login extends Component {
               }}
             >
 
-              <div className="login-errors">{this.state.errors}</div>
-              <label labelfor="username">username</label>
-              <input
-                value={this.state.username}
-                name="username"
-                onChange={this.update("username")}
+              <h1>Log in to your account</h1>
+              <div className="input-container">
+                <img src="./user.svg" className="fa fa-user icon"></img>
 
-                id="username"
-              />
-              <label htmlFor="passWord">password</label>
+                <input
+                  value={this.state.username}
+                  name="username"
+                  onChange={this.update("username")}
 
-              <input
-                name="passWord"
-                value={this.state.password}
-                onChange={this.update("password")}
-                type="password"
-                id="passWord"
-                placeholder="Password"
-              />
+                  id="username"
+                />
+              </div>
+
+              <div className="input-container">
+                <img src="./lock.svg" className="fa fa-user icon"></img>
+
+                <input
+                  name="passWord"
+                  value={this.state.password}
+                  onChange={this.update("password")}
+                  type="password"
+                  id="passWord"
+                  placeholder="Password"
+                />
+              </div>
               <button type="submit">Log In</button>
+              <div className="login-errors">{this.state.errors}</div>
+
             </form>
 
           </div>
@@ -87,3 +95,6 @@ class Login extends Component {
   }
 }
 export default Login;
+
+
+

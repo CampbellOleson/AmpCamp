@@ -3,14 +3,18 @@
     margin: 0 auto;
     height: 50%;
     position: absolute;
-    left: 31%;
+    left: 32%;
     top: 20%;
     background-color: #222;
     height: 33%;
     border-radius: 10px;
-    height: 43%;
-        z-index: 20;
+    height: 45%;
+    z-index: 20;
+    box-shadow: 5px 10px 18px red;
+    border-radius: 20px;
 }
+
+
 
 .hideRegister{
     display: none;
@@ -29,7 +33,7 @@
 }
 
 .showRegister img{
-      width: 100px;
+    width: 100px;
     float: left;
     margin-top: 6px;
 }
@@ -40,13 +44,15 @@
     list-style-type: none;
     margin: auto;
     padding: 20px;
-    border: 1px solid;
+    transition: 1s ease-in;
     padding: 10px;
-    border: 1px solid red;
+    /* border: 1px solid red;
     box-shadow: 5px 10px 18px red;
-    border-radius: 20px;
+    border-radius: 20px; */
      margin-top: 40px;
 }
+
+
 
 .register-info-items{
     margin-top: 10px;
