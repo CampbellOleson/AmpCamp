@@ -10,8 +10,12 @@ import HomePageFeature from "./HomePageFeature";
 
 
 const App = () => {
+
+
   return (
     <div>
+   
+      <img id="form-fader" className="close" src='./black.jpg'></img>
       <Route path='/' component={Nav} />
       <Switch>
         <Route exact path="/" component={Home} />

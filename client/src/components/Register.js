@@ -11,9 +11,12 @@ class Register extends Component {
       username: "",
       email: "",
       password: "",
+      errors: '',
       artist: false
     };
     this.closeForm = this.closeForm.bind(this)
+    this.closeFormX = this.closeFormX.bind(this)
+
   }
 
   updateCache(client, { data }) {
@@ -30,25 +33,43 @@ class Register extends Component {
     return e => this.setState({ [field]: Boolean(e.target.value) });
   }
 
+  closeFormX() {
+    let regform = document.getElementById('register-form').classList = 'close'
+    let fade = document.getElementById('form-fader').classList = 'close'
+  }
+
+  componentWillUnmount() {
+    // this.setState({ errors: '', username: '', password: '', email: '' })
+  }
+
+
   closeForm() {
-    let regform = document.getElementById('register-form')
-    regform.classList = 'close'
+    let fade = document.getElementById('form-fader').classList = 'close'
+
+  }
+
+  componentDidMount() {
+    let fade = document.getElementById('form-fader').classList = 'form-fader'
+
   }
 
   componentDidUpdate() {
     let regform = document.getElementById('register-form')
+    let fade = document.getElementById('form-fader').classList = 'form-fader'
     regform.classList = 'registerForm'
+
   }
 
   render() {
     return (
       <Mutation
         mutation={REGISTER_USER}
-        onError={err => { 
-          this.setState({ 
+        onError={err => {
+          this.setState({
             errors: err.graphQLErrors[0].message,
-            
-           }) }}
+
+          })
+        }}
         onCompleted={data => {
           const { token, username } = data.register;
           localStorage.setItem("auth-token", token);
@@ -74,7 +95,7 @@ class Register extends Component {
           >
             <div className="register-content">
               <h1> Sign up for a fan account</h1>
-              <div onClick={this.closeForm} className="close-button">X</div>
+              <div onClick={this.closeFormX} className="close-button">X</div>
 
               <input
                 type="email"
@@ -108,7 +129,7 @@ class Register extends Component {
                   Artist
               </option>
               </select>
-              <button type="submit">Register</button>
+              <button onClick={this.closeForm} type="submit">Register</button>
               <div className="register-errors">{this.state.errors}</div>
 
             </div>

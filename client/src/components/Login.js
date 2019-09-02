@@ -32,11 +32,20 @@ class Login extends Component {
   closeForm() {
     let logform = document.getElementById('login-form')
     logform.classList = 'close'
+    document.getElementById('form-fader').classList = 'close'
   }
+
+  componentDidMount() {
+    document.getElementById('form-fader').classList = 'form-fader'
+    let fade = document.getElementById('form-fader').classList = 'form-fader'
+
+  }
+
 
   componentDidUpdate() {
     let logform = document.getElementById('login-form')
     logform.classList = 'log-form'
+    document.getElementById('form-fader').classList = 'form-fader'
   }
 
   render() {
@@ -62,6 +71,7 @@ class Login extends Component {
       >
         {login => (
           <div>
+
             <form id="login-form" className="log-form"
               onSubmit={e => {
                 e.preventDefault();
@@ -99,7 +109,7 @@ class Login extends Component {
                   placeholder="Password"
                 />
               </div>
-              <button type="submit">Log In</button>
+              <button onClick={this.closeForm} type="submit">Log In</button>
               <div className="login-errors">{this.state.errors}</div>
 
             </form>

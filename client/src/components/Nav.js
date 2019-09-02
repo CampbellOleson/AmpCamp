@@ -12,7 +12,7 @@ const Nav = props => {
   const showRegister = () => {
     let regform = document.getElementById('reg-form')
     regform.classList = 'showRegister'
-
+    let fade = document.getElementById('form-fader').classList = 'form-fader'
   }
 
   const hideRegister = () => {
@@ -21,8 +21,12 @@ const Nav = props => {
   }
 
   const closeForm = () => {
-    let regform = document.getElementById('reg-form')
-    regform.classList = 'hideRegister'
+    let regform = document.getElementById('reg-form').classList = 'close'
+    let realform = document.getElementById('register-form')
+    if (realform) realform.classList = 'close'
+    let fade = document.getElementById('form-fader').classList = 'close'
+    let logform = document.getElementById('login-form')
+    if (logform) logform.classList = 'close'
   }
 
   return (
