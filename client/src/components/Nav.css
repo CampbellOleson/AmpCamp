@@ -13,7 +13,10 @@ width: 200px;
 .outer-nav-container{
     width: 100%;
     background-color: #222;
+    position: relative;
+    z-index: 50;
 }
+
 .nav ul li {
   float: right;
 }

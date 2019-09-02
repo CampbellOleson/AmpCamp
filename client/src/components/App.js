@@ -17,12 +17,13 @@ const App = () => {
    
       <img id="form-fader" className="close" src='./black.jpg'></img>
       <Route path='/' component={Nav} />
+      <HomePageFeature />
+
       <Switch>
         <Route exact path="/" component={Home} />
         <AuthRoute exact path="/login" component={Login} routeType='auth' />
         <AuthRoute exact path="/register" component={Register} routeType='auth' />
       </Switch>
-      <HomePageFeature />
     </div>
   );
 };

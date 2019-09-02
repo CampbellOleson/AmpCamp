@@ -9,14 +9,12 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       username: "",
       password: "",
       errors: []
     };
     this.closeForm = this.closeForm.bind(this)
-
   }
 
   updateCache(client, { data }) {

@@ -38,10 +38,6 @@ class Register extends Component {
     let fade = document.getElementById('form-fader').classList = 'close'
   }
 
-  componentWillUnmount() {
-    // this.setState({ errors: '', username: '', password: '', email: '' })
-  }
-
 
   closeForm() {
     let fade = document.getElementById('form-fader').classList = 'close'
