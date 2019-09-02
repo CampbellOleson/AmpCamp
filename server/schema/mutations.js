@@ -15,9 +15,9 @@ const Song = mongoose.model("songs");
 const AlbumType = require("./types/album_type");
 const SongType = require("./types/song_type");
 const AuthService = require("../services/auth");
-const s3PayloadType = require("./types/s3_type.js");
-const s3Bucket = require('../../config/keys').S3_BUCKET;
-const aws = require("aws-sdk");
+// const s3PayloadType = require("./types/s3_type.js");
+// const s3Bucket = require('../../config/keys').S3_BUCKET;
+// const aws = require("aws-sdk");
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
@@ -97,40 +97,40 @@ const mutation = new GraphQLObjectType({
         return song;
       }
     },
-    signS3: {
-      type: s3PayloadType,
-      args: {
-        filename: { type: GraphQLString },
-        filetype: { type: GraphQLString }
-      },
-      async resolve(_, { filename, filetype }) {
-        // AWS_ACCESS_KEY_ID
-        // AWS_SECRET_ACCESS_KEY
-        const s3 = new aws.S3({
-          signatureVersion: "v4",
-          region: "us-east-2"
-        });
-        // console.log(filename);
-        // console.log(filetype);
-        // console.log(s3Bucket);
-        const s3Params = {
-          Bucket: s3Bucket,
-          Key: filename,
-          Expires: 60,
-          ContentType: filetype,
-          ACL: "public-read"
-        };
+    // signS3: {
+    //   type: s3PayloadType,
+    //   args: {
+    //     filename: { type: GraphQLString },
+    //     filetype: { type: GraphQLString }
+    //   },
+    //   async resolve(_, { filename, filetype }) {
+    //     // AWS_ACCESS_KEY_ID
+    //     // AWS_SECRET_ACCESS_KEY
+    //     const s3 = new aws.S3({
+    //       signatureVersion: "v4",
+    //       region: "us-east-2"
+    //     });
+    //     // console.log(filename);
+    //     // console.log(filetype);
+    //     // console.log(s3Bucket);
+    //     const s3Params = {
+    //       Bucket: s3Bucket,
+    //       Key: filename,
+    //       Expires: 60,
+    //       ContentType: filetype,
+    //       ACL: "public-read"
+    //     };
 
-        const signedRequest = await s3.getSignedUrl("putObject", s3Params);
-        const url = `https://${s3Bucket}.s3.amazonaws.com/${filename}`;
-        // console.log(signedRequest)
-        // console.log(url);
-        return {
-          signedRequest,
-          url
-        };
-      }
-    }
+    //     const signedRequest = await s3.getSignedUrl("putObject", s3Params);
+    //     const url = `https://${s3Bucket}.s3.amazonaws.com/${filename}`;
+    //     console.log(signedRequest)
+    //     console.log(url);
+    //     return {
+    //       signedRequest,
+    //       url
+    //     };
+    //   }
+    // }
   }
 });
 

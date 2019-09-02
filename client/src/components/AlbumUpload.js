@@ -5,6 +5,7 @@ import { compose, gql, graphql } from "react-apollo";
 // import { toPromise } from 'apollo-link';
 import Mutations from "../graphql/mutations";
 const { NEW_ALBUM, NEW_SONG, S3_SIGN } = Mutations;
+const FAPI = require("../util/fapi");
 
 class AlbumUpload extends React.Component {
   constructor(props) {
@@ -36,31 +37,32 @@ class AlbumUpload extends React.Component {
     };
   }
 
-  uploadToS3 = async (file, signedRequest) => {
-    const options = {
-      headers: {
-        'Content-Type': file.type,
-        'Access-Control-Allow-Origin': "*",
-      }
-    };
-    // let http_request = new XMLHttpRequest();
-    // http_request.onreadystatechange = function () { /* .. */};
-    // http_request.open('PUT', signedRequest)
-    // http_request.withCredentials = true;
-    // http_request.setHeader('Content-Type', file.type)
-    // http_request.setHeader("Access-Control-Allow-Origin", '*');
-    // http_request.setRequestHeader("Access-Control-Allow-Origin", true);
-    // await http_request.send(file);
-    await axios.put(signedRequest, file, options);
-  };
+  // uploadToS3 = async (file, signedRequest) => {
+  //   // console.log(file.type)
+  //   const options = {
+  //     headers: {
+  //       "Content-Type": "application/x-www-form-urlencoded",
+  //       "Access-Control-Allow-Origin": "*"
+  //     }
+  //   };
+  // let http_request = new XMLHttpRequest();
+  // http_request.onreadystatechange = function () { /* .. */};
+  // http_request.open('PUT', signedRequest)
+  // http_request.withCredentials = true;
+  // http_request.setHeader('Content-Type', file.type)
+  // http_request.setHeader("Access-Control-Allow-Origin", '*');
+  // http_request.setRequestHeader("Access-Control-Allow-Origin", true);
+  // await http_request.send(file);
+  //   await axios.post(signedRequest, file, options);
+  // };
 
-  formatFileName = filename => {
-    const date = new Date();
-    const albumTitle = this.state.title;
-    const cleanFileName = filename.toLowerCase().replace(/[^a-z0-9]/g, "-");
-    const newFileName = `albums/${date}/-${albumTitle}-${cleanFileName}`;
-    return newFileName.substring(0, 60);
-  };
+  // formatFileName = filename => {
+  //   const date = new Date();
+  //   const albumTitle = this.state.title;
+  //   const cleanFileName = filename.toLowerCase().replace(/[^a-z0-9]/g, "-");
+  //   const newFileName = `albums/${date}/-${albumTitle}-${cleanFileName}`;
+  //   return newFileName.substring(0, 60);
+  // };
 
   handleSubmit = async e => {
     e.preventDefault();
@@ -83,15 +85,15 @@ class AlbumUpload extends React.Component {
     // or maybe for each?
 
     files.forEach(async file => {
-      const res = await this.props.s3Sign({
-        variables: {
-          filename: this.formatFileName(file.name),
-          filetype: file.type
-        }
-      });
-      console.log(res)
-      const { signedRequest, url } = res.data.signS3;
-      await this.uploadToS3(file, signedRequest);
+      //   const res = await this.props.s3Sign({
+      //     variables: {
+      //       filename: this.formatFileName(file.name),
+      //       filetype: file.type
+      //     }
+      //   });
+      //   console.log(res)
+      //   const { signedRequest, url } = res.data.signS3;
+      //   await this.uploadToS3(file, signedRequest);
 
       // we'll use the information return from the url response creating
       // a song url from S3
@@ -100,16 +102,25 @@ class AlbumUpload extends React.Component {
       // in those components
       // console.log(newAlbum.data)
       // console.log(newAlbum.data.newAlbum._id)
+      // use form data to append to file upload
+      // append audio file to append
+
+      const formData = new FormData();
+      formData.append('audio[audio]', file);
+
+      const res = await FAPI.uploadAudio(formData);
+
       const newSong = await this.props.newSong({
         variables: {
           title,
-          audioUrl: url,
+          audioUrl: res.audioUrl,
           album: newAlbum.data.newAlbum._id,
           artist: cUserId
         }
       });
-      console.log(newSong)
-    })
+
+      console.log(newSong);
+    });
 
     // might not need to make this a constant? maybe we could get
     // away with just making this createSong for every song in the
@@ -188,3 +199,15 @@ export default compose(
   graphql(NEW_SONG, { name: "newSong" }),
   graphql(S3_SIGN, { name: "s3Sign" })
 )(AlbumUpload);
+
+// handleSubmit(e) {
+//     e.preventDefault();
+//     const formData = new FormData();
+//     formData.append('photo[title]', this.state.title);
+//     formData.append('photo[description]', this.state.description);
+//     formData.append('photo[photo]', this.state.photoFile);
+//     formData.append('photo[photographer_id]', this.props.currentUser.id);
+//     this.props.uploadPhoto(formData).then( () => (
+//         this.props.history.push(`/users/${this.props.currentUser.id}`))
+//     );
+// };
