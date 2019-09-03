@@ -8,7 +8,8 @@ import Nav from './Nav';
 import Home from './Home';
 import AlbumUpload from './AlbumUpload';
 import HomePageFeature from "./HomePageFeature";
-
+import SongIndex from './SongIndex';
+import './cssreset.css'
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
         <AuthRoute exact path="/login" component={Login} routeType='auth' />
         <AuthRoute exact path="/register" component={Register} routeType='auth' />
         <AuthRoute exact path="/albumupload" component={AlbumUpload} />
+        <AuthRoute exact path="/songindex" component={SongIndex} />
       </Switch>
     </div>
   );
