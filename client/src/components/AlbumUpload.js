@@ -109,7 +109,7 @@ class AlbumUpload extends React.Component {
       formData.set('audio', file);
 
       const res = await FAPI.uploadAudio(formData);
-
+      console.log(res);
       const newSong = await this.props.newSong({
         variables: {
           title,

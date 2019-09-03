@@ -8,17 +8,17 @@ const { FETCH_SONGS } = Queries;
 class SongIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.aud = this.aud.bind(this)
+    // this.aud = this.aud.bind(this)
   }
 
-  componentDidMount(){
-    this.aud()
-  }
+  // componentDidMount(){
+  //   this.aud()
+  // }
 
-  aud() {
-    let aud = new Audio('https://ampcamp3910.s3.us-east-2.amazonaws.com/1567466358654')
-    aud.play()
-  }
+  // aud() {
+  //   let aud = new Audio('https://ampcamp3910.s3.us-east-2.amazonaws.com/1567466358654')
+  //   aud.play()
+  // }
 
   render() {
     return (
@@ -29,10 +29,9 @@ class SongIndex extends React.Component {
             // console.log(data)
             // debugger;
           return (
-            
             <div className="song-index">
               <ReactAudioPlayer
-                src="https://ampcamp3910.s3.us-east-2.amazonaws.com/1567466358654"
+                src="https://ampcamp3910.s3.us-east-2.amazonaws.com/1567527154735"
                 autoPlay
                 controls
               />
