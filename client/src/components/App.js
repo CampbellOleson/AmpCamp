@@ -8,7 +8,7 @@ import Nav from './Nav';
 import Home from './Home';
 import AlbumUpload from './AlbumUpload';
 import HomePageFeature from "./HomePageFeature";
-
+import SearchBar from "./SearchBar";
 
 const App = () => {
 
@@ -18,6 +18,7 @@ const App = () => {
    
       <img id="form-fader" className="close" src='./black.jpg'></img>
       <Route path='/' component={Nav} />
+      <Route path='/' component={SearchBar} />
       <HomePageFeature />
 
       <Switch>
