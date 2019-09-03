@@ -5,6 +5,8 @@ import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
 import './RegisterPopup.css'
 import './Nav.css'
+import SearchBar from "./SearchBar";
+
 const { IS_LOGGED_IN } = Queries;
 const Nav = props => {
 
@@ -54,7 +56,7 @@ const Nav = props => {
                           </ul>
                         </li>
                       </ul>
-                      <input type="text" className="nav-search" placeholder="find some killer music"></input>
+                      <SearchBar />
                     </div>
                   </div>
                 )
@@ -64,7 +66,7 @@ const Nav = props => {
                   <div className="outer-nav-container">
 
                     <div className="nav">
-                      <input type="text" className="nav-search" placeholder="find some music"></input>
+                      <SearchBar />
                       <ul className="logo">AmpCamp</ul>
                       <div className="login-or-signup">
                         <a><Link id="nav-signup" onClick={showRegister}>&nbsp;Sign Up</Link></a>

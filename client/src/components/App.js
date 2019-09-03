@@ -15,10 +15,9 @@ const App = () => {
 
   return (
     <div>
-   
+
       <img id="form-fader" className="close" src='./black.jpg'></img>
       <Route path='/' component={Nav} />
-      <Route path='/' component={SearchBar} />
       <HomePageFeature />
 
       <Switch>

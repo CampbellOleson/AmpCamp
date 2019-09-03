@@ -7,6 +7,25 @@ export default {
         }
     `,
 
+    FETCH_ALBUMS: gql`
+    {
+        albums{
+           title
+           by
+           coverPhotoUrl
+        }
+    }`,
+
+    FETCH_ALBUM: gql`
+    
+        query fetchAlbum($id: ID!){
+            album(id: $id){
+           title
+           by
+           coverPhotoUrl
+            }
+    }`,
+
     FETCH_SONGS: gql`
         {
         songs {

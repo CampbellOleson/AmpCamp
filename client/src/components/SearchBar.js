@@ -2,8 +2,8 @@ import React from 'react'
 
 import { Query } from "react-apollo";
 import Queries from '../graphql/queries'
-
-const { FETCH_SONGS } = Queries
+import Autosuggest from 'react-autosuggest'
+const { FETCH_ALBUMS } = Queries
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
     }
 
     componentDidMount() {
-      
+
     }
 
     filterResults() {
@@ -23,20 +23,29 @@ class SearchBar extends React.Component {
 
         return (
             <div>
-                <Query query={FETCH_SONGS}>
+
+                <Query query={FETCH_ALBUMS}>
                     {({ loading, errors, data }) => {
                         console.log(data)
 
                         return (
-
-                            <input type="text"
-                                className="nav-search"
-                                placeholder="HELLO THERE" />
+                            <div className="search-completer">
+                                <input type="text" className="nav-search" placeholder="find some killer music YO"></input>
+                                <ul>
+                                    <li>Test Album by Tony Smith Mcfishumz</li>
+                                    <li>Test Album by Tony Smith Mcfishumz</li>
+                                    <li>Test Album by Tony Smith Mcfishumz</li>
+                                </ul>
+                            </div>
 
                         )
+
+
                     }
                     }
+
                 </Query>
+
             </div>
         )
     }
