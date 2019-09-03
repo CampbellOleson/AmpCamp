@@ -1,10 +1,16 @@
-    
-    
-.search-completer ul{
-    display: inline-grid;
+.search-bar{
+    height: 22px;
+    width: 220px;
+    margin-top: 6px;
 }
 
+.search-completer{
+    border: 1px solid white;
+    color: white;
+    display: grid;
+    width: fit-content;
+}
 
-.search-completer div{
-    display: inline-grid;
+.search-completer li{
+    width: 224px;
 }
