@@ -40,7 +40,7 @@ class Login extends Component {
     document.getElementById('login-form').classList = 'log-form'
   }
 
-  componentWillUpdate() {
+  UNSAFE_componentWillUpdate() {
     document.getElementById('login-form').classList = 'log-form'
   }
 

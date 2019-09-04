@@ -49,6 +49,9 @@ export default {
             _id
             title
             audioUrl
+            artist {
+                username
+            }
           }
         }
       }
