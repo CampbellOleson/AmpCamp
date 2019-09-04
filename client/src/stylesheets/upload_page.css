@@ -1,0 +1,143 @@
+#root {
+  background-color: #f0f0f0;
+}
+
+.main-content-container {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 975px;
+  height: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.album-form-wrapper {
+  box-shadow: 2px 2px 6px gray;
+  height: 700px;
+  width: 45%;
+  background-color: #ffffff;
+}
+
+.album-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-form input {
+  height: 30px;
+}
+
+.album-form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.album-form input {
+  margin-top: 10px;
+  border-radius: 2px;
+  padding-left: 15px;
+  font-size: 12px;
+}
+
+#album-title-input {
+  height: 40px;
+  font-size: 18px;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.photo-drop-container {
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#album-description-input {
+  border: 1px solid #e8e8e8;
+  font-size: 12px;
+  padding-left: 15px;
+  padding-top: 10px;
+  background-color: white;
+  color: inherit;
+  border-radius: 2px;
+  margin-top: 10px;
+  min-height: 40px;
+  resize: none;
+}
+
+#submit-album-button {
+  width: 90%;
+  border: 1px solid darkgray;
+  height: 30px;
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color: green;
+  color: whitesmoke;
+  margin-bottom: 10px;
+}
+
+#submit-album-button:hover {
+  background-color: cadetblue;
+  cursor: pointer;
+}
+
+.tags-component {
+  margin-top: 30px;
+  width: 100%;
+  height: 100px;
+  background-color: purple;
+}
+
+.album-form-label {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.album-infobar {
+  box-shadow: 2px 2px 6px gray;
+  border-left: 2px solid #0687f5;
+  background-color: #ffffff;
+  padding-top: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.album-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.album-display-photo {
+  width: 90px;
+  margin: 10px;
+  height: 90px;
+  background-color: red;
+}
+
+.track-header {
+  font-weight: 600;
+}
+
+#album-display-title {
+  font-size: 25px;
+  font-weight: 550;
+  color: #282828;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+#album-display-description {
+  font-size: 15px;
+  color: #282828;
+  margin-top: 5px;
+  margin-left: 22px;
+}
+
+#album-display-artist {
+  font-size: 15px;
+  color: #282828;
+  margin-top: 5px;
+  margin-left: 22px;
+}

@@ -1,0 +1,88 @@
+.tracks-list-container {
+  height: 700px;
+  width: 55%;
+  background-color: #f0f0f0;
+}
+
+.new-track-form {
+  display: flex;
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.new-track-form input {
+  height: 30px;
+  width: 250px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 2px;
+}
+
+.new-track-form button {
+  border: 1px solid darkgray;
+  height: 30px;
+  width: 16%;
+  margin-top: 11px;
+  margin-right: 11px;
+  border-radius: 4px;
+  background-color: green;
+  color: whitesmoke;
+}
+
+.new-track-form button:hover {
+  background-color: cadetblue;
+  cursor: pointer;
+}
+
+input {
+  padding-left: 15px;
+  font-size: 12px;
+  border: 1px solid #e8e8e8;
+}
+
+.track-index-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.track-index-div div {
+  font-size: 25px;
+}
+
+.track-index-item {
+  height: 80px;
+  width: 100%;
+  list-style: none;
+  background-color: white;
+  color: black;
+  border-bottom: 1px solid #282828;
+}
+
+.track-delete-button {
+  border: 1px solid darkgray;
+  height: 30px;
+  width: 16%;
+  margin: 11px;
+  border-radius: 4px;
+  background-color: red;
+  color: whitesmoke;
+}
+
+#track-file-info {
+  font-size: 15px;
+  margin-left: 20px;
+  color: #282828;
+}
+
+#audio-drop {
+  text-decoration: underline;
+}
+
+#audio-drop:hover {
+  cursor: pointer;
+  color: blue;
+}
