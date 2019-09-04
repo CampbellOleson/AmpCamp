@@ -42,8 +42,9 @@ const Nav = props => {
                   <div className="outer-nav-container">
 
                     <div className="nav">
-                      <ul className="logo">AmpCamp</ul>
-                      <ul>
+                      <h1 id="logo" className="logo">AmpCamp</h1>
+                            <SearchBar />
+                      <ul id="user-dropdown">
                         <li><a>{localStorage.getItem('username')}</a>
                           <ul>
                             <li><a onClick={e => {
@@ -56,7 +57,6 @@ const Nav = props => {
                           </ul>
                         </li>
                       </ul>
-                      <SearchBar />
                     </div>
                   </div>
                 )
@@ -66,12 +66,12 @@ const Nav = props => {
                   <div className="outer-nav-container">
 
                     <div className="nav">
+                      <h1 id="logo" className="logo">AmpCamp</h1>
                       <SearchBar />
-                      <ul className="logo">AmpCamp</ul>
                       <div className="login-or-signup">
                         <a><Link id="nav-signup" onClick={showRegister}>&nbsp;Sign Up</Link></a>
 
-                        <a ><Link onClick={hideRegister} id="nav-login" to="/login"> Login &nbsp;&nbsp;|</Link></a>
+                        <a><Link onClick={hideRegister} id="nav-login" to="/login"> Login &nbsp;&nbsp;|</Link></a>
 
                         <form id="reg-form" className="hideRegister">
                           <div onClick={closeForm} className="close-register-button">X</div>

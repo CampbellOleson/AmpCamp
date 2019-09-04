@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import Queries from '../graphql/queries'
 import Autosuggest from 'react-autosuggest'
 import './SearchBar.css'
+import { Link } from 'react-router-dom'
 const { FETCH_ALBUMS } = Queries
 
 class SearchBar extends React.Component {
@@ -20,67 +21,93 @@ class SearchBar extends React.Component {
             'action creator, shmaction greator'
         ]
         this.state = {
-            suggestions: [],
-
+            suggestions: null,
+            test: false
         }
 
         this.renderSuggestions = this.renderSuggestions.bind(this)
     }
 
-    onTextChanged = (e) => {
+    onTextChanged = (e, data) => { // add data 
+        const { albums } = data
+        if (albums) {
+            const value = e.target.value; // current value of search bar
+            let sugs = [];
+            if (value.length > 0) { // if there are letters in search bar...
+                const regex = new RegExp(`${value}`, 'i'); // ?
+                sugs = albums.filter(v => {
+                    return regex.test(v.title)
+                }).sort()
+            }
+            this.setState({ suggestions: sugs })
+            this.setState({ test: !this.state.test })
 
-        const value = e.target.value; // current value of search bar
-        let suggestions = [];
-        let val;
-
-        if (value.length > 0) { // if there are letters in search bar...
-            const regex = new RegExp(`^${value}`, 'i'); // ?
-
-            suggestions = this.items.sort().filter(v => regex.test(v));
-
+            // set local state to trigger rerender
         }
-        this.setState(() => ({ suggestions }));
     }
 
-    renderSuggestions(queryResults) {
-        const { suggestions } = queryResults;
-        if (suggestions.length === 0) {
+
+
+    renderSuggestions() {
+
+        if (!this.state.suggestions || this.state.suggestions.length === 0) {
             return null
         }
-        console.log(suggestions)
-        return (
+
+        return ( // can i map over this.state.suggestions
             <ul className='search-completer'>
-                {suggestions.map((item) => <li>{item}</li>)}
+
+                <div class="autofill-item-container">
+                    {this.state.suggestions.map((item) => {
+                        return (
+                            <Link to={`/artists/${item.by}`}>
+                                <div className="autofill-item">
+                                    <img src={item.coverPhotoUrl} />
+                                    <div className="autofill-artist-info">
+                                        <li>{item.title}</li>
+                                        <li>{item.by}</li>
+                                    </div>
+                                </div>
+                            </Link>
+                        )
+                    })
+                    }
+                </div>
             </ul>
         )
     }
 
     render() {
-        let queryResult
         return (
-            <Query query={FETCH_ALBUMS}>
-                {({ loading, errors, data }) => {
+            <div>
+                <Query query={FETCH_ALBUMS}>
+                    {({ loading, errors, data }) => {
 
-
-                    return (
-                        queryResult = { data }
-                        console.log(queryResult)
-                        < div >
-                        <div className="search-container">
-                            <input
-                                onChange={this.onTextChanged}
-                                type="text"
-                                className="search-bar"
-                                placeholder="find sick music!" />
-                            {this.renderSuggestions(queryResult)}
-                        </div>
-                        </div>
-            )
-        }}
-            </Query>
+                        if (data) {
+                            return (
+                                <div>
+                                    <div className="search-container">
+                                        <input
+                                            onChange={(e) => { this.onTextChanged(e, data) }} // how to take in e and data 
+                                            type="text"
+                                            className="search-bar"
+                                            placeholder="find sick music!" />
+                                    </div>
+                                    {this.renderSuggestions()}
+                                </div>
+                            )
+                        }
+                    }}
+                </Query>
+            </div>
         )
     }
 
 }
 
 export default SearchBar
+
+
+// 1) query not fetching data. 
+// 2) passing in additional argument to onTextChanged of data
+
