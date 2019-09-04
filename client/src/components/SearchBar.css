@@ -25,11 +25,12 @@
     max-width: 1200px;
     padding-top: 10px;
     padding-bottom: 10px;
+     /* border: 1px solid orange; */
 }
 
 .autofill-item-container{
   height: 50px;
-  width: 200px;
+   /* border: 1px solid orange; */
 }
 
 .autofill-item{
