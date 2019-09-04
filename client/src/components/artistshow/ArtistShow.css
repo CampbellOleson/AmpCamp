@@ -1,0 +1,170 @@
+.artist-show-page-container{
+    display: inline-block;
+    margin-right: 225px;
+    margin-left: 225px;
+    /* -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000; */
+    height: 100vh;
+    background: white;
+}
+
+.artist-show-albums-container {
+    width: 100%;
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+}
+
+.song-list-item-container {
+    height: 100%;
+    width: 100%;
+}
+
+.album-list-item-container {
+    display: inline-block;
+    padding: 12px;
+}
+
+.album-cover-art {
+   -moz-box-shadow:    3px 3px 5px 6px #ccc;
+   -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border-radius: 12px;
+}
+
+.banner-photo-container {
+    width: 100%;
+    height: 200px;
+}
+
+.artist-show-banner-image {
+    width: 100%;
+    max-height: 200px;
+}
+
+.audio-player-element {
+    padding: 15px;
+}
+
+.main-page-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.artist-show-album-info {
+    padding: 6px;
+}
+
+.currently-playing {
+   font-family: 'Anton', sans-serif;
+   font-size: 17px;
+}
+
+.audio-player {
+
+}
+
+.artist-show-page-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 45px;
+    padding: 12px;
+}
+
+.loading-status {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: 'Anton', sans-serif;
+    font-size: 50px;
+
+}
+
+.lds-roller {
+  /* display: inline-block; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  background: white;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 32px 32px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: red;
+  margin: -3px 0 0 -3px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 50px;
+  left: 50px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 54px;
+  left: 45px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 57px;
+  left: 39px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 58px;
+  left: 32px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 57px;
+  left: 25px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 54px;
+  left: 19px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 50px;
+  left: 14px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 45px;
+  left: 10px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

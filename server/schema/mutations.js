@@ -97,6 +97,17 @@ const mutation = new GraphQLObjectType({
         return song;
       }
     },
+    updateBannerPhoto: {
+      type: UserType,
+      args: {
+        _id: {type: GraphQLID},
+        bannerPhoto: {type: GraphQLString}
+      },
+      async resolve(_, { _id, bannerPhoto }) {
+        const user = await User.findOneAndUpdate({"_id": _id}, {"$set": {bannerPhoto: bannerPhoto}});
+        return user
+      }
+    }
     // signS3: {
     //   type: s3PayloadType,
     //   args: {

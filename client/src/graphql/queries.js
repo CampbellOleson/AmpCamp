@@ -75,6 +75,7 @@ export default {
         username
         _id
         email
+        bannerPhoto
         albums {
           _id
           title

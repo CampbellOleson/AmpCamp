@@ -12,6 +12,7 @@ const UserType = new GraphQLObjectType({
     email: { type: GraphQLString },
     token: { type: GraphQLString },
     loggedIn: { type: GraphQLBoolean },
+    bannerPhoto: { type: GraphQLString },
     artist: { type: GraphQLBoolean },
     albums: {type: new GraphQLList(require('./album_type')),
         resolve(parentValue) {
