@@ -1,7 +1,6 @@
 import React from 'react'
 import { Query } from "react-apollo";
 import Queries from '../graphql/queries'
-import Autosuggest from 'react-autosuggest'
 import './SearchBar.css'
 import { Link } from 'react-router-dom'
 const { FETCH_ALBUMS } = Queries

@@ -17,7 +17,7 @@ const App = () => {
     <div>
       <img id="form-fader" className="close" src='./black.jpg'></img>
       <Route path='/' component={Nav} />
-      <HomePageFeature />
+      {/* <HomePageFeature /> */}
 
       <Switch>
         <Route exact path="/" component={Home} />

@@ -26,34 +26,26 @@ export default {
             username
           }
         }
-    `,
+      }
+    }
+  `,
 
-    FETCH_ALBUMS: gql`
+  FETCH_ALBUMS: gql`
     {
-        albums{
-           title
-           by
-           coverPhotoUrl
-        }
-    }`,
+      albums {
+        title
+        by
+        coverPhotoUrl
+      }
+    }
+  `,
 
-    FETCH_ALBUM: gql`
-    
-        query fetchAlbum($id: ID!){
-            album(id: $id){
-           title
-           by
-           coverPhotoUrl
-            }
-    }`,
-
-    FETCH_SONGS: gql`
-        {
-        songs {
-        artist {
-          _id
-          username
-        }
+  FETCH_ALBUM: gql`
+    query fetchAlbum($id: ID!) {
+      album(id: $id) {
+        title
+        by
+        coverPhotoUrl
       }
     }
   `,
@@ -74,7 +66,7 @@ export default {
             title
             audioUrl
             artist {
-                username
+              username
             }
           }
         }

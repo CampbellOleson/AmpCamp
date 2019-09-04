@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-  .nav{
+.nav{
   display: flex;
   }
 
-
-=======
->>>>>>> artistShowPage
 .nav ul{
   margin: 0px;
   padding: 0px;
@@ -71,12 +67,9 @@ width: 200px;
     margin-right: 0;
 }
 
-<<<<<<< HEAD
-=======
-.logo ul{
+/* .logo ul{
     margin-top:20;
-}
->>>>>>> artistShowPage
+} */
 .nav ul li{
   float: left;
   width: 200px;
@@ -88,7 +81,6 @@ width: 200px;
 }
 
 .nav ul li a{
-<<<<<<< HEAD
   /* border: 1px solid green; */
     text-decoration: none;
     color: white;
@@ -98,11 +90,6 @@ width: 200px;
     margin-left: auto;
     margin-right: 0;
     width: inherit;
-=======
-  text-decoration: none;
-  color: white;
-  display: block;
->>>>>>> artistShowPage
 }
 
 
@@ -167,15 +154,6 @@ width: 200px;
   text-shadow: 2px 10px 10px red;
 }
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
->>>>>>> artistShowPage
 .nav ul li a:hover{
   background-color: #111;
   cursor: pointer;
