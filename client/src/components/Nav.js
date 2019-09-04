@@ -29,14 +29,19 @@ const Nav = props => {
     if (logform) logform.classList = "close";
   };
 
-  // let document.getElementById('user-dropdown')
-
-
 
   const closeUserTab = () => {
-    // let dropDown = document.getElementById('user-dropdown')
-    // dropDown.style.opacity = '0'
-    // dropDown.style.opacity = '0.40'
+    let el = document.getElementById('user-dropdown')
+    let dropButton = document.getElementById('user-dropdown')
+    console.log(dropButton)
+    
+    let logout = document.getElementById('logout-tab')
+    let profile = document.getElementById('profile-tab')
+    let upload = document.getElementById('upload-tab')
+      logout.classList.toggle('hide')
+    profile.classList.toggle('hide')
+    upload.classList.toggle('hide')
+  
   }
 
 
@@ -54,29 +59,35 @@ const Nav = props => {
                       <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
                       <SearchBar />
                       <ul id="user-dropdown">
-                        <li><a>{localStorage.getItem('username')}</a>
+                        <li><a onClick={e => closeUserTab(e)}>{localStorage.getItem('username')}</a>
                           <ul>
-                            <li>
-                              <a id="logout-tab"
-                                onClick={e => {
-                                  e.preventDefault();
-                                  localStorage.removeItem("auth-token");
-                                  client.writeData({
-                                    data: { isLoggedIn: false }
-                                  });
-                                  props.history.push("/");
-                                }}
-                              >
-                                Logout
+                            <div>
+                              <li>
+                                <a onClick={e=> closeUserTab(e)}></a><a className="drop-down-tabs" id="logout-tab"
+                                  onClick={e => {
+                                    e.preventDefault();
+                                    localStorage.removeItem("auth-token");
+                                    client.writeData({
+                                      data: { isLoggedIn: false }
+                                    });
+                                    props.history.push("/");
+                                  }}
+                                >
+                                  Logout
                               </a>
-                            </li>
-                            <li>
-                              <Link to={`/upload`}><a id="upload-tab">Upload Album</a></Link>
-                            </li>
+                              </li>
 
-                            <li>
-                              <Link onClick={closeUserTab} to={`/artist/${localStorage.currentUserId}`}><a id="profile-tab">View Profile</a></Link>
-                            </li>
+
+                              <li>
+                                <Link onClick={(e) => closeUserTab(e)} to={`/upload`}><a id="upload-tab">Upload Album</a></Link>
+                              </li>
+
+                              <li>
+                                <Link onClick={(e) => closeUserTab(e)} to={`/artist/${localStorage.currentUserId}`}><a id="profile-tab">View Profile</a></Link>
+                              </li>
+
+
+                            </div>
                           </ul>
                         </li>
                       </ul>

@@ -47,7 +47,7 @@ width: 200px;
 }
 
 .nav #user-dropdown li{
-   background: #222;
+
 }
 
 
@@ -82,6 +82,7 @@ width: 200px;
     margin-left: auto;
     margin-right: 0;
     width: inherit;
+    background:#222;
 }
 
 
@@ -164,12 +165,8 @@ width: 200px;
   background-color: #111;
   cursor: pointer;
   opacity: 1;
-
 }
 
-.nav #user-dropdown:hover{
-  opacity: 1;
-}
 
 
 
@@ -183,7 +180,7 @@ width: 200px;
 }
 
 
-.nav ul li ul li {
+.hide{
   display: none;
 }
 
@@ -192,6 +189,11 @@ width: 200px;
     opacity: 1;
 }
 
+.drop-down-tabs{
+  background-color: #111;
+}
 
-
+#user-dropdown:hover{
+  cursor: pointer;
+}
 
