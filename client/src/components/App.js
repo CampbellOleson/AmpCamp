@@ -9,7 +9,7 @@ import Home from "./Home";
 import AlbumUpload from "./upload/AlbumUpload";
 import HomePageFeature from "./HomePageFeature";
 import SongIndex from './SongIndex';
-import ArtistShow from './ArtistShow';
+import ArtistShow from './artistshow/ArtistShow';
 // import './cssreset.css';
 
 const App = () => {

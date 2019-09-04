@@ -75,7 +75,7 @@ class SearchBar extends React.Component {
 
                 <div className="autofill-item-container">
                     {this.state.suggestions.map((item) => {
-
+                        console.log(item)
                         if (item.title) {
                             return (
                                 <Link to={`/artist/${item.artist._id}`} onClick={this.closeSuggestions}>
@@ -92,7 +92,7 @@ class SearchBar extends React.Component {
                         } else {
 
                             return (
-                                <Link to={`/artist/${item.username}`} onClick={this.closeSuggestions}>
+                                <Link to={`/artist/${item._id}`} onClick={this.closeSuggestions}>
 
                                     <div className="autofill-item">
                                         {/* <img src={item.coverPhotoUrl} /> */}
