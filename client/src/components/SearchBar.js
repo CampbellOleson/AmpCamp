@@ -91,7 +91,7 @@ class SearchBar extends React.Component {
                                             onChange={(e) => { this.onTextChanged(e, data) }} // how to take in e and data 
                                             type="text"
                                             className="search-bar"
-                                            placeholder="find sick music!" />
+                                            placeholder="Search and Discover Music" />
                                     </div>
                                     {this.renderSuggestions()}
                                 </div>

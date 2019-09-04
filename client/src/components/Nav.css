@@ -9,6 +9,17 @@
   list-style: none;
 }
 
+.search-container{
+   position: relative;
+}
+
+#search-icon{
+  position: absolute;
+  width: 15px;
+  left:430px;
+  top: 13px;
+}
+
 .nav-search{
 margin-top: 8px;
 height: 20px;
@@ -99,9 +110,11 @@ width: 200px;
     margin-left: 0;
     margin-right: 20px;
     color: white;
-    font-weight:200;
+    font-weight: 200;
     font-size: 18px;
     margin-left: 20px;
+    margin-bottom: 11px;
+    
 }
 
 #nav-signup{

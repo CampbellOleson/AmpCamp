@@ -42,8 +42,9 @@ const Nav = props => {
                   <div className="outer-nav-container">
 
                     <div className="nav">
+                      <img id="search-icon" src="./search.svg" />
                       <h1 id="logo" className="logo">AmpCamp</h1>
-                            <SearchBar />
+                      <SearchBar />
                       <ul id="user-dropdown">
                         <li><a>{localStorage.getItem('username')}</a>
                           <ul>
