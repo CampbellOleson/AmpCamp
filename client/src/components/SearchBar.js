@@ -56,7 +56,7 @@ class SearchBar extends React.Component {
         return ( // can i map over this.state.suggestions
             <ul className='search-completer'>
 
-                <div class="autofill-item-container">
+                <div className="autofill-item-container">
                     {this.state.suggestions.map((item) => {
                         return (
                             <Link to={`/artists/${item.by}`}>

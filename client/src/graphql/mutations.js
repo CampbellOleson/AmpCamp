@@ -40,7 +40,6 @@ export default {
       }
     }
   `,
-  // are we going to have to make the artist fields somehow GraphQLID?
   NEW_ALBUM: gql`
     mutation newAlbum(
       $title: String!
@@ -73,16 +72,16 @@ export default {
   `,
   NEW_SONG: gql`
     mutation newSong(
-      $title: String!,
-      $audioUrl: String!,
-      $artist: ID!,
+      $title: String!
+      $audioUrl: String!
+      $artist: ID!
       $album: ID!
     ) {
       newSong(
         title: $title
         audioUrl: $audioUrl
         artist: $artist
-        album: $album 
+        album: $album
       ) {
         title
         audioUrl
@@ -103,5 +102,20 @@ export default {
       }
     }
   `,
+  UPDATE_BANNER_PHOTO: gql`
+    mutation updateBannerPhoto(
+      $id: ID!
+      $bannerPhoto: String! 
+    ) {
+      updateBannerPhoto(
+        _id: $id
+        bannerPhoto: $bannerPhoto
+      ) {
+        _id
+        username
+        bannerPhoto
+      }
+    }
+  `
 };
 

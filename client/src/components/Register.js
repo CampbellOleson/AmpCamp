@@ -107,7 +107,7 @@ class Register extends Component {
                   email: this.state.email,
                   username: this.state.username,
                   password: this.state.password,
-                  artist: this.state.artist
+                  artist: this.state.artist,
                 }
               });
             }}
