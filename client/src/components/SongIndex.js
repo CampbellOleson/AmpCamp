@@ -3,21 +3,12 @@ import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
 import ReactAudioPlayer from "react-audio-player";
 const { FETCH_SONGS } = Queries;
-
 class SongIndex extends React.Component {
   constructor(props) {
     super(props);
-    // this.aud = this.aud.bind(this)
+
   }
 
-  // componentDidMount(){
-  //   this.aud()
-  // }
-
-  // aud() {
-  //   let aud = new Audio('https://ampcamp3910.s3.us-east-2.amazonaws.com/1567466358654')
-  //   aud.play()
-  // }
 
   render() {
     return (
@@ -25,8 +16,7 @@ class SongIndex extends React.Component {
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
-          // console.log(data)
-          // debugger;
+
           return (
             <div className="song-index">
               <ReactAudioPlayer

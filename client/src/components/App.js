@@ -10,14 +10,13 @@ import AlbumUpload from "./upload/AlbumUpload";
 import HomePageFeature from "./HomePageFeature";
 import SongIndex from './SongIndex';
 import ArtistShow from './ArtistShow';
-import './cssreset.css';
+// import './cssreset.css';
 
 const App = () => {
   return (
     <div>
       <img id="form-fader" className="close" src='./black.jpg'></img>
       <Route path='/' component={Nav} />
-      {/* <HomePageFeature /> */}
 
       <Switch>
         <Route exact path="/" component={Home} />

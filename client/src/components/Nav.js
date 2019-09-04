@@ -29,6 +29,17 @@ const Nav = props => {
     if (logform) logform.classList = "close";
   };
 
+  // let document.getElementById('user-dropdown')
+
+
+
+  const closeUserTab = () => {
+    // let dropDown = document.getElementById('user-dropdown')
+    // dropDown.style.opacity = '0'
+    // dropDown.style.opacity = '0.40'
+  }
+
+
   return (
     <div>
       <ApolloConsumer>
@@ -40,13 +51,13 @@ const Nav = props => {
                   <div className="outer-nav-container">
                     <div className="nav">
                       <img id="search-icon" src="./search.svg" />
-                      <h1 id="logo" className="logo">AmpCamp</h1>
+                      <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
                       <SearchBar />
                       <ul id="user-dropdown">
                         <li><a>{localStorage.getItem('username')}</a>
                           <ul>
                             <li>
-                              <a
+                              <a id="logout-tab"
                                 onClick={e => {
                                   e.preventDefault();
                                   localStorage.removeItem("auth-token");
@@ -60,7 +71,11 @@ const Nav = props => {
                               </a>
                             </li>
                             <li>
-                              <a>Upload Album</a>
+                              <Link to={`/upload`}><a id="upload-tab">Upload Album</a></Link>
+                            </li>
+
+                            <li>
+                              <Link onClick={closeUserTab} to={`/artist/${localStorage.currentUserId}`}><a id="profile-tab">View Profile</a></Link>
                             </li>
                           </ul>
                         </li>
@@ -72,7 +87,7 @@ const Nav = props => {
                 return (
                   <div className="outer-nav-container">
                     <div className="nav">
-                      <h1 id="logo" className="logo">AmpCamp</h1>
+                      <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
                       <SearchBar />
                       <div className="login-or-signup">
                         <a><Link id="nav-signup" onClick={showRegister}>&nbsp;Sign Up</Link></a>
@@ -138,6 +153,7 @@ const Nav = props => {
   );
 };
 
+// export default Nav;
 export default Nav;
 
 {

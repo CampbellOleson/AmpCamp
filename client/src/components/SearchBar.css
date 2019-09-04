@@ -1,6 +1,6 @@
 .search-bar{
     height: 22px;
-    width: 260px;
+    width: 210px;
     margin-top: 6px;
 }
 
@@ -13,6 +13,9 @@
     top: 34px;
 }
 
+.nav a{
+    text-decoration: none;
+}
 
 .autofill-item-container{
   height: 50px;
@@ -20,8 +23,8 @@
 }
 
 .autofill-item{
-     display: flex;
-    width: 265px;
+    display: flex;
+    width: 227px;
  
     /* border: 1px solid white; */
 }
@@ -57,8 +60,12 @@
     border-radius: 90px;
     margin-left: 20px;
     margin-right: 15px;
-    width: 20%;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
+
+
+
 
 .autofill-artist-info li{
     width: 100%;
@@ -88,4 +95,15 @@
   font-size: 12px;
 
   }
-  
+  #artist-first-letter{
+    margin: 2px;
+    min-width: 15%;
+    border-radius: 100px;
+    margin-left: 20px;
+    margin-right: 10px;
+    background: grey;
+    height: 35px;
+    margin-bottom: 5px;
+    text-decoration: none;
+
+}

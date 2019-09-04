@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import Mutations from '../graphql/mutations.js'
 import './LoginForm.css'
+
 const { LOGIN_USER } = Mutations
 // loginUser may be login from auth.js
 
@@ -47,6 +48,9 @@ class Login extends Component {
   render() {
 
     return (
+      <div>
+   
+      
       <Mutation
         mutation={LOGIN_USER}
         onError={err => {
@@ -64,7 +68,7 @@ class Login extends Component {
           this.props.history.push("/");
         }}
         update={(client, data) => this.updateCache(client, data)}
-      >
+        >
         {login => (
           <div>
 
@@ -113,7 +117,8 @@ class Login extends Component {
           </div>
         )}
       </Mutation>
-    );
+    </div>
+    )
   }
 }
 export default Login;

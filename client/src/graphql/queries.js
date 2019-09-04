@@ -36,6 +36,9 @@ export default {
         title
         by
         coverPhotoUrl
+        artist{
+          _id
+        }
       }
     }
   `,
@@ -49,6 +52,23 @@ export default {
       }
     }
   `,
+
+  FETCH_ALBUMS_AND_ARTISTS: gql`{
+
+      albums {
+        title
+        by
+        coverPhotoUrl
+        artist{
+          _id
+        }
+      }
+      users{
+        username
+      }
+    }
+`,
+
   FETCH_ARTIST: gql`
     query FetchArtist($id: ID!) {
       user(_id: $id) {
@@ -73,4 +93,5 @@ export default {
       }
     }
   `
-};
+}
+

@@ -81,7 +81,7 @@ class AlbumUpload extends React.Component {
   };
 
   imageDrop(image) {
-    debugger;
+
     this.setState({ image: image });
   }
 

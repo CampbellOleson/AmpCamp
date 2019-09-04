@@ -75,8 +75,9 @@
   padding: 10px;
   color: white;
   min-width: 24px;
-    height: 24px;
+  height: 24px;
   text-align: center;
+
 }
 .input-container {
   display: -ms-flexbox; /* IE10 */
