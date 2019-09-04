@@ -3,8 +3,10 @@ import { ApolloConsumer } from "react-apollo";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
-import "./RegisterPopup.css";
 import "./Nav.css";
+import './RegisterPopup.css'
+import SearchBar from "./SearchBar";
+
 const { IS_LOGGED_IN } = Queries;
 const Nav = props => {
   const showRegister = () => {
@@ -37,10 +39,11 @@ const Nav = props => {
                 return (
                   <div className="outer-nav-container">
                     <div className="nav">
-                      <ul className="logo">AmpCamp</ul>
-                      <ul>
-                        <li>
-                          <a>{localStorage.getItem("username")}</a>
+                      <img id="search-icon" src="./search.svg" />
+                      <h1 id="logo" className="logo">AmpCamp</h1>
+                      <SearchBar />
+                      <ul id="user-dropdown">
+                        <li><a>{localStorage.getItem('username')}</a>
                           <ul>
                             <li>
                               <a
@@ -62,11 +65,6 @@ const Nav = props => {
                           </ul>
                         </li>
                       </ul>
-                      <input
-                        type="text"
-                        className="nav-search"
-                        placeholder="find some killer music"
-                      ></input>
                     </div>
                   </div>
                 );
@@ -74,29 +72,12 @@ const Nav = props => {
                 return (
                   <div className="outer-nav-container">
                     <div className="nav">
-                      <input
-                        type="text"
-                        className="nav-search"
-                        placeholder="find some music"
-                      ></input>
-                      <ul className="logo">AmpCamp</ul>
+                      <h1 id="logo" className="logo">AmpCamp</h1>
+                      <SearchBar />
                       <div className="login-or-signup">
-                        <a>
-                          <Link id="nav-signup" onClick={showRegister}>
-                            &nbsp;Sign Up
-                          </Link>
-                        </a>
+                        <a><Link id="nav-signup" onClick={showRegister}>&nbsp;Sign Up</Link></a>
 
-                        <a>
-                          <Link
-                            onClick={hideRegister}
-                            id="nav-login"
-                            to="/login"
-                          >
-                            {" "}
-                            Login &nbsp;&nbsp;|
-                          </Link>
-                        </a>
+                        <a><Link onClick={hideRegister} id="nav-login" to="/login"> Login &nbsp;&nbsp;|</Link></a>
 
                         <form id="reg-form" className="hideRegister">
                           <div

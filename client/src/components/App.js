@@ -10,19 +10,19 @@ import AlbumUpload from "./upload/AlbumUpload";
 import HomePageFeature from "./HomePageFeature";
 import SongIndex from './SongIndex';
 import './cssreset.css'
+import SearchBar from "./SearchBar";
 
 const App = () => {
   return (
     <div>
-      <img id="form-fader" className="close" src="./black.jpg"></img>
-      <Route path="/" component={Nav} />
-      <Route exact path="/" component={HomePageFeature} />
+      <img id="form-fader" className="close" src='./black.jpg'></img>
+      <Route path='/' component={Nav} />
+      <HomePageFeature />
 
       <Switch>
         <Route exact path="/" component={Home} />
         <AuthRoute exact path="/login" component={Login} routeType='auth' />
         <AuthRoute exact path="/register" component={Register} routeType='auth' />
-        <AuthRoute exact path="/albumupload" component={AlbumUpload} />
         <AuthRoute exact path="/songindex" component={SongIndex} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
         <AuthRoute
