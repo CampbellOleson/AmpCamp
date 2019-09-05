@@ -1,13 +1,13 @@
 .tracks-list-container {
   height: 700px;
   width: 55%;
-  background-color: #36454F;
+  background-color: #909090;
 }
 
 .tracks-list-wrapper {
   overflow-x: auto;
   height: 420px;
-  z-index: -1
+  z-index: -1;
 }
 
 .new-track-form {
@@ -24,12 +24,15 @@
 .new-track-form input {
   height: 30px;
   width: 250px;
+  padding-left: 15px;
+  font-size: 15px;
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 2px;
-  background-color: #36454F;
+  background-color: #dcdcdc;
   border: 1px solid #141414;
-  color: #004fff;
+  color: #1b1b1b;
+  font-weight: 500;
   box-shadow: 2px 2px 2px inset #181818;
 }
 
@@ -49,14 +52,7 @@
 .new-track-form button:hover {
   background-color: #30b21a;
   cursor: pointer;
-  color: #556b2f
-}
-
-input {
-  padding-left: 15px;
-  font-size: 12px;
-  border: 1px solid #e8e8e8;
-  font-size: 15px;
+  color: #556b2f;
 }
 
 .track-index-div {
@@ -70,7 +66,7 @@ input {
   font-size: 20px;
   margin-top: 20px;
   font-weight: 550;
-  color: #004fff
+  color: #004fff;
 }
 
 .file-name {
@@ -82,7 +78,7 @@ input {
   text-decoration: underline;
 }
 
-.no-file{
+.no-file {
   width: 40%;
   color: #ff0035;
   font-size: 13px;
@@ -98,7 +94,7 @@ input {
 
 .no-file:hover {
   cursor: pointer;
-  color: 	#8B0000;
+  color: #8b0000;
 }
 
 .track-index-item {
@@ -116,7 +112,7 @@ input {
   margin-left: 10px;
   margin-right: 20px;
   border-radius: 4px;
-  background-color: #1b1b1b;;
+  background-color: #1b1b1b;
   color: #ff0035;
   border: none;
   font-size: 20px;
@@ -124,7 +120,7 @@ input {
 
 .track-delete-button:hover {
   cursor: pointer;
-  color: 	#8B0000;
+  color: #8b0000;
 }
 
 #track-file-info {
@@ -136,7 +132,7 @@ input {
 #audio-drop {
   text-decoration: underline;
   margin-top: 19px;
-  color: #004fff
+  color: #004fff;
 }
 
 #audio-drop:hover {
@@ -164,7 +160,30 @@ input {
   height: 300px;
   margin: 0 auto;
   margin-top: 100px;
-  color: #282828;
+  color: #ff0300;
+  opacity: 0.65;
   font-weight: 550;
-  font-size: 30px;
+  font-size: 20px;
+}
+
+#unclickable {
+  color: gray;
+}
+
+#unclickable:hover {
+  color: gray;
+  background-color: #100c08;
+}
+
+#file-preview {
+  color: #bfff00;
+  font-size: 12px;
+  margin-top: 16px;
+  text-decoration: underline;
+  width: 110px;
+}
+
+#file-preview:hover {
+  cursor: pointer;
+  color: green;
 }

@@ -23,7 +23,8 @@ class AlbumUpload extends React.Component {
       coverPhotoUrl: "",
       tracks: {},
       image: null,
-      displayImage: ""
+      imagePreview: null
+      // validUpload: false
     };
   }
 
@@ -33,12 +34,23 @@ class AlbumUpload extends React.Component {
     };
   }
 
+  validUpload() {
+    const { image, title, tracks } = this.state;
+    if (image && title && Object.keys(tracks).length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   updateTitle() {
     return e => {
       if (e.target.value.length > 0) {
         this.setState({ title: e.target.value });
+        this.validUpload();
       } else {
         this.setState({ title: "Untitled Album" });
+        this.validUpload();
       }
     };
   }
@@ -65,6 +77,7 @@ class AlbumUpload extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+    if (!this.validUpload()) return;
     await this.submitPhoto();
     const { title, description, by, coverPhotoUrl } = this.state;
     const cUserId = localStorage.getItem("currentUserId");
@@ -101,8 +114,31 @@ class AlbumUpload extends React.Component {
     });
   };
 
+  // async imageDrop(image) {
+  //   // await this.setState({});
+  //   const reader = new FileReader();
+  //   const cb = async () => {
+  //     console.log(reader);
+  //     console.log(reader["result"]);
+  //     debugger;
+  //     await this.setState({ image: image, imagePreview: reader.result })
+  //   }
+  //   reader.onloadend = await cb();
+  //     await reader.readAsDataURL(image);
+  //     console.log(this.state.imagePreview);
+  //     console.log(this.state.image);
+  //   this.validUpload();
+  // }
+
   imageDrop(image) {
-    this.setState({ image: image });
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ image: image, imagePreview: fileReader.result });
+    };
+    if (image) {
+      fileReader.readAsDataURL(image);
+    }
+    this.validUpload();
   }
 
   addTrack(track) {
@@ -122,65 +158,77 @@ class AlbumUpload extends React.Component {
     });
   }
 
+  publishButtonId() {
+    return this.validUpload() ? "submit-album-button" : "unclickable-publish";
+  }
+
   render() {
+    console.log(this.publishButtonId());
+    const preview = this.state.imagePreview ? (
+      <img className="image-preview" src={this.state.imagePreview} />
+    ) : (
+      <img className="image-preview" />
+    );
     return (
       <div className="background">
-      <div className="main-content-container">
-        <div className="tracks-list-container">
-          <div className="album-infobar">
-            <div className="album-display-photo" />
-            <div className="album-info">
-              <div id="album-display-title" className="album-info-item">
-               {this.state.title}
-              </div>
-              <div id="album-display-description" className="album-info-item">
-                {this.state.description}
-              </div>
-              <div id="album-display-artist" className="album-info-item">
-                by: {this.state.by}
+        <div className="main-content-container">
+          <div className="tracks-list-container">
+            <div className="album-infobar">
+              <div className="album-display-photo">{preview}</div>
+              <div className="album-info">
+                <div id="album-display-title" className="album-info-item">
+                  {this.state.title}
+                </div>
+                <div id="album-display-description" className="album-info-item">
+                  {this.state.description}
+                </div>
+                <div id="album-display-artist" className="album-info-item">
+                  by: {this.state.by}
+                </div>
               </div>
             </div>
+            <p className="track-header">Add some tracks:</p>
+            <p className="track-header track-sub-header">
+              Make sure you file is compatable
+            </p>
+            <NewTrack addTrack={this.addTrack} />
+            <TracksList
+              tracks={Object.values(this.state.tracks)}
+              deleteTrack={this.deleteTrack}
+            />
           </div>
-          <p className="track-header">Add some tracks:</p>
-          <p className="track-header track-sub-header">Make sure you file is compatable</p>
-          <NewTrack addTrack={this.addTrack} />
-          <TracksList
-            tracks={Object.values(this.state.tracks)}
-            deleteTrack={this.deleteTrack}
-          />
+          <div className="album-form-wrapper">
+            <form onSubmit={this.handleSubmit} className="album-form">
+              <div className="photo-drop-container">
+                <StyledDropzone fileDrop={this.imageDrop} />
+              </div>
+              <p id="album-info">Album information</p>
+              <input
+                // value={this.state.title}
+                id="album-title-input"
+                onChange={this.updateTitle()}
+                placeholder="album title"
+              />
+              <label className="album-form-label">About this album:</label>
+              <textarea
+                value={this.state.description}
+                id="album-description-input"
+                onChange={this.update("description")}
+                placeholder="or maybe your music speaks for itself"
+              />
+              <label className="album-form-label">Artist:</label>
+              <input
+                // value={this.state.by}
+                onChange={this.updateArtist()}
+                placeholder="this will default to your username"
+              />
+              <div className="tags-component">
+                tags component (format to be determined)
+              </div>
+              <button id={this.publishButtonId()}>Publish ✓</button>
+            </form>
+          </div>
         </div>
-        <div className="album-form-wrapper">
-          <form onSubmit={this.handleSubmit} className="album-form">
-            <div className="photo-drop-container">
-              <StyledDropzone fileDrop={this.imageDrop} />
-            </div>
-        <p id="album-info">Album information</p>
-            <input
-              // value={this.state.title}
-              id="album-title-input"
-              onChange={this.updateTitle()}
-              placeholder="album title"
-            />
-            <label className="album-form-label">About this album:</label>
-            <textarea
-              value={this.state.description}
-              id="album-description-input"
-              onChange={this.update("description")}
-              placeholder="or maybe your music speaks for itself"
-            />
-            <label className="album-form-label">Artist:</label>
-            <input
-              // value={this.state.by}
-              onChange={this.updateArtist()}
-              placeholder="this will default to your username"
-            />
-            <div className="tags-component">
-              tags component (format to be determined)
-            </div>
-            <button id="submit-album-button">Publish ✓</button>
-          </form>
-        </div>
-      </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
+import Dropzone from "react-dropzone";
 
 const baseStyleImage = {
   flex: 1,
@@ -9,15 +10,16 @@ const baseStyleImage = {
   padding: "20px",
   borderWidth: 2,
   borderRadius: 2,
-  borderColor: "#404040",
+  borderColor: "#004fff",
   borderStyle: "dashed",
-  backgroundColor: "#707070",
-  color: "#404040",
+  backgroundColor: "#DCDCDC",
+  color: "#888888",
   outline: "none",
-  width: "100px",
+  width: "90px",
   height: "90px",
   transition: "border .24s ease-in-out",
-  margin: "20px"
+  margin: "20px",
+  fontWeight: "600"
 };
 
 const activeStyle = {
@@ -53,15 +55,18 @@ const StyledDropzone = props => {
   );
 
   return (
-    <div
-      className="dropzone"
-      onDrop={image => props.fileDrop(image.dataTransfer.files[0])}
-    >
-      <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        <p>drop album artwork here</p>
-      </div>
-    </div>
+    <Dropzone onDrop={image => props.fileDrop(image[0])}>
+      {({ getRootProps, getInputProps }) => {
+        return (
+          <section className="dropzone">
+            <div {...getRootProps({ style })}>
+              <input {...getInputProps()} />
+              <p>drop album artwork here</p>
+            </div>
+          </section>
+        );
+      }}
+    </Dropzone>
   );
 };
 
