@@ -1,16 +1,24 @@
 .tracks-list-container {
   height: 700px;
   width: 55%;
-  background-color: #f0f0f0;
+  background-color: #36454F;
+}
+
+.tracks-list-wrapper {
+  overflow-x: auto;
+  height: 420px;
+  z-index: -1
 }
 
 .new-track-form {
   display: flex;
   background-color: whitesmoke;
-  border: 1px solid lightgray;
+  border: 1px solid #100c08;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 15px;
+  background-color: #1b1b1b;
+  height: 55px;
 }
 
 .new-track-form input {
@@ -19,28 +27,36 @@
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 2px;
+  background-color: #36454F;
+  border: 1px solid #141414;
+  color: #004fff;
+  box-shadow: 2px 2px 2px inset #181818;
 }
 
 .new-track-form button {
   border: 1px solid darkgray;
   height: 30px;
   width: 16%;
-  margin-top: 11px;
-  margin-right: 11px;
+  margin-top: 14px;
+  margin-right: 18px;
   border-radius: 4px;
-  background-color: green;
-  color: whitesmoke;
+  background-color: #100c08;
+  color: #bfff00;
+  box-shadow: 2px 2px 2px #101010;
+  border: none;
 }
 
 .new-track-form button:hover {
-  background-color: cadetblue;
+  background-color: #30b21a;
   cursor: pointer;
+  color: #556b2f
 }
 
 input {
   padding-left: 15px;
   font-size: 12px;
   border: 1px solid #e8e8e8;
+  font-size: 15px;
 }
 
 .track-index-div {
@@ -49,27 +65,66 @@ input {
   justify-content: flex-end;
 }
 
-.track-index-div div {
-  font-size: 25px;
+.track-info-name {
+  width: 40%;
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 550;
+  color: #004fff
+}
+
+.file-name {
+  width: 40%;
+  color: #bfff00;
+  font-size: 13px;
+  margin-top: 22px;
+  margin-right: 20px;
+  text-decoration: underline;
+}
+
+.no-file{
+  width: 40%;
+  color: #ff0035;
+  font-size: 13px;
+  margin-top: 22px;
+  margin-right: 20px;
+  text-decoration: underline;
+}
+
+.file-name:hover {
+  cursor: pointer;
+  color: green;
+}
+
+.no-file:hover {
+  cursor: pointer;
+  color: 	#8B0000;
 }
 
 .track-index-item {
-  height: 80px;
+  z-index: -1;
+  height: 60px;
   width: 100%;
   list-style: none;
-  background-color: white;
-  color: black;
+  background-color: #1b1b1b;
+  color: #ff4500;
   border-bottom: 1px solid #282828;
 }
 
 .track-delete-button {
-  border: 1px solid darkgray;
-  height: 30px;
-  width: 16%;
-  margin: 11px;
+  margin-top: 17px;
+  margin-left: 10px;
+  margin-right: 20px;
   border-radius: 4px;
-  background-color: red;
-  color: whitesmoke;
+  background-color: #1b1b1b;;
+  color: #ff0035;
+  border: none;
+  font-size: 20px;
+}
+
+.track-delete-button:hover {
+  cursor: pointer;
+  color: 	#8B0000;
 }
 
 #track-file-info {
@@ -80,9 +135,36 @@ input {
 
 #audio-drop {
   text-decoration: underline;
+  margin-top: 19px;
+  color: #004fff
 }
 
 #audio-drop:hover {
   cursor: pointer;
   color: blue;
+}
+
+.track-header {
+  font-weight: 600;
+  margin-top: 20px;
+  font-size: 25px;
+  margin-left: 120px;
+  color: #1b1b1b;
+  /* text-shadow: 1px 1px 2px #0098ff; */
+}
+
+.track-sub-header {
+  font-size: 16px;
+  margin-left: 120px;
+  margin-top: 10px;
+}
+
+#no-tracks {
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 100px;
+  color: #282828;
+  font-weight: 550;
+  font-size: 30px;
 }
