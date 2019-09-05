@@ -14,7 +14,7 @@ class HomePageFeature extends React.Component {
         this.album = null
     }
     featuredPhoto(data) {
-        debugger
+
         return (
             this.featuredAlbum = data.albums[Math.floor(Math.random() * data.albums.length)]
         )
@@ -46,11 +46,12 @@ class HomePageFeature extends React.Component {
                                         <div className="featured-photo">
                                             <Link to={`/album/${this.featuredAlbum._id}`}><img id="test" src={this.featuredAlbum.coverPhotoUrl} /></Link>
                                         </div>
-                                        <div className="featured-stack">
-                                            <div><img id="test" src="./metallica.jpg" /></div>
-                                            <div><img id="test" src="./metallica.jpg" /></div>
-                                            <div><img id="test" src="./metallica.jpg" /></div>
+
+                                        <div className="featured-info">
+                                            <h1>{this.featuredAlbum.title}</h1>
+                                            <hr></hr>
                                         </div>
+
 
                                     </div>
                                 </div>
