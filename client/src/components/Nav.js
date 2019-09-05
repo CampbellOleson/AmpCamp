@@ -65,7 +65,6 @@ class Nav extends React.Component {
     upload.classList.toggle('hide')
   }
 
-
   render() {
     return (
       <div>
