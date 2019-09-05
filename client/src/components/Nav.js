@@ -15,6 +15,20 @@ const Nav = props => {
     let fade = (document.getElementById("form-fader").classList = "form-fader");
   };
 
+  document.addEventListener('DOMContentLoaded' , ()=> {
+hideUserTabsOnLoad()
+  })
+
+  const hideUserTabsOnLoad = () =>{
+    let logout = document.getElementById('logout-tab')
+    let profile = document.getElementById('profile-tab')
+    let upload = document.getElementById('upload-tab')
+    logout.classList.toggle('hide')
+    profile.classList.toggle('hide')
+    upload.classList.toggle('hide')
+    console.log('loaded')
+  }
+
   const hideRegister = () => {
     let regform = document.getElementById("reg-form");
     regform.classList = "hideRegister";
@@ -51,6 +65,7 @@ const Nav = props => {
         {client => (
           <Query query={IS_LOGGED_IN}>
             {({ data }) => {
+              
               if (data.isLoggedIn) {
                 return (
                   <div className="outer-nav-container">

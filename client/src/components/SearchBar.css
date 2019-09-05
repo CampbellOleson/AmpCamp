@@ -35,13 +35,14 @@
 .autofill-item{
     display: flex;
     width: 227px;
- 
+    margin-left: -29px
     /* border: 1px solid white; */
 }
 
 .autofill-item:nth-child(odd) {
     background: #222;
     border: 1px solid #333;
+
 }
 .autofill-item:nth-child(even) {
     background: #783;
