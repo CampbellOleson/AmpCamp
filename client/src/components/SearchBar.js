@@ -78,7 +78,7 @@ class SearchBar extends React.Component {
                         console.log(item)
                         if (item.title) {
                             return (
-                                <Link to={`/artist/${item.artist._id}`} onClick={this.closeSuggestions}>
+                                <Link to={`/album/${item._id}`} onClick={this.closeSuggestions}>
 
                                     <div className="autofill-item">
                                         <img src={item.coverPhotoUrl} />

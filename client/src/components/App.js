@@ -10,6 +10,7 @@ import AlbumUpload from "./upload/AlbumUpload";
 import HomePageFeature from "./HomePageFeature";
 import SongIndex from './SongIndex';
 import ArtistShow from './artistshow/ArtistShow';
+import AlbumShow from './albumshow/AlbumShow';
 import './cssreset.css';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
         <AuthRoute exact path="/login" component={Login} routeType='auth' />
         <AuthRoute exact path="/register" component={Register} routeType='auth' />
         <AuthRoute exact path="/artist/:id" component={ArtistShow} />
+        <AuthRoute exact path="/album/:id" component={AlbumShow} />
         <AuthRoute exact path="/songindex" component={SongIndex} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
         <AuthRoute

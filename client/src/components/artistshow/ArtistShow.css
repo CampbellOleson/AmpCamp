@@ -71,6 +71,10 @@
     padding: 15px;
 }
 
+.audio-player {
+    /* display: none; */
+}
+
 .main-page-container {
     display: flex;
     flex-direction: column;
@@ -125,7 +129,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: red;
+  background: darkred;
   margin: -3px 0 0 -3px;
 }
 .lds-roller div:nth-child(1) {
