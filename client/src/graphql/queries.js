@@ -56,6 +56,7 @@ export default {
   FETCH_ALBUMS_AND_ARTISTS: gql`
     {
       albums {
+        _id
         title
         by
         coverPhotoUrl

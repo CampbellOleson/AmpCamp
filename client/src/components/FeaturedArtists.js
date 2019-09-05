@@ -22,7 +22,7 @@ class FeaturedArtists extends React.Component {
                     {albums.map(album => {
                         return (
                             <div className="featured-artists--item">
-                                <Link to={`/artist/${album.artist._id}`}><img src={album.coverPhotoUrl} /></Link>
+                                <Link to={`/album/${album._id}`}><img src={album.coverPhotoUrl} /></Link>
                                 <Link to={`/artist/${album.artist._id}`}><h4>{album.title}</h4></Link>
                                 <Link to={`/artist/${album.artist._id}`}><h4>by {album.by}</h4></Link>
                             </div>
