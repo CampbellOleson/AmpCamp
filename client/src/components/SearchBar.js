@@ -5,7 +5,6 @@ import './SearchBar.css'
 import { Link } from 'react-router-dom'
 const { FETCH_ALBUMS_AND_ARTISTS } = Queries
 
-
 class SearchBar extends React.Component {
     constructor(props) {
         super(props)
@@ -16,10 +15,6 @@ class SearchBar extends React.Component {
         this.renderSuggestions = this.renderSuggestions.bind(this)
         this.closeSuggestions = this.closeSuggestions.bind(this)
     }
-
-
-
-
     onTextChanged = (e, data) => { // add data 
         document.addEventListener('click', () => {
             this.setState({ suggestions: '' })
@@ -49,37 +44,27 @@ class SearchBar extends React.Component {
                     return regex.test(v.username)
                 }).sort()
             }
-
             this.setState({ suggestions: sugs })
         }
-
     }
 
     closeSuggestions() {
         this.setState({ suggestions: '' })
     }
 
-
-
     renderSuggestions() {
-
-
         if (!this.state.suggestions || this.state.suggestions.length === 0) {
             return null
         }
 
-        //MAY CHANGE DIV ON 61 BACK TO CLASS TO AVOID CSS CONFLICT!
-
-        return ( // can i map over this.state.suggestions
+        return ( 
             <ul className='search-completer'>
-
                 <div className="autofill-item-container">
                     {this.state.suggestions.map((item) => {
                         console.log(item)
                         if (item.title) {
                             return (
                                 <Link to={`/artist/${item.artist._id}`} onClick={this.closeSuggestions}>
-
                                     <div className="autofill-item">
                                         <img src={item.coverPhotoUrl} />
                                         <div className="autofill-artist-info">
@@ -93,9 +78,7 @@ class SearchBar extends React.Component {
 
                             return (
                                 <Link to={`/artist/${item._id}`} onClick={this.closeSuggestions}>
-
                                     <div className="autofill-item">
-                                        {/* <img src={item.coverPhotoUrl} /> */}
                                         <li id="artist-first-letter">{item.username[0].toUpperCase()}</li>
                                         <div className="autofill-artist-info">
                                             <li>{item.username}</li>
@@ -104,7 +87,6 @@ class SearchBar extends React.Component {
                                 </Link>
                             )
                         }
-
                     })
                     }
                 </div>
@@ -117,8 +99,6 @@ class SearchBar extends React.Component {
             <div>
                 <Query query={FETCH_ALBUMS_AND_ARTISTS}>
                     {({ loading, errors, data }) => {
-
-
                         if (data) {
                             return (
                                 <div>

@@ -1,24 +1,37 @@
 import React from 'react'
 import './HomePageFeature.css'
+import FeaturedArtists from './FeaturedArtists'
 
-const HomePageFeature = () => {
 
-    return (
-        
-        <div className="featured-master-container">
-            <div className="featured-container">
-                <div className="featured-photo">
-                    <img id="test" src="./metallica.jpg" />
+class HomePageFeature extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+
+
+    render() {
+        return (
+            <div>
+                
+                <div className="featured-master-container">
+                    <div className="featured-container">
+                        <div className="featured-photo">
+                            <img id="test" src="./metallica.jpg" />
+                        </div>
+                        <div className="featured-stack">
+                            <div><img id="test" src="./metallica.jpg" /></div>
+                            <div><img id="test" src="./metallica.jpg" /></div>
+                            <div><img id="test" src="./metallica.jpg" /></div>
+                        </div>
+                        
+                    </div>
                 </div>
-                <div className="featured-stack">
-                    <div><img id="test" src="./metallica.jpg" /></div>
-                    <div><img id="test" src="./metallica.jpg" /></div>
-                    <div><img id="test" src="./metallica.jpg" /></div>
-                </div>
+                <FeaturedArtists/>
             </div>
-        </div>
+        )
+    }
 
-    )
 }
 
 export default HomePageFeature

@@ -17,6 +17,7 @@ class Login extends Component {
     };
     this.submitForm = this.submitForm.bind(this)
     this.closeFormX = this.closeFormX.bind(this)
+
   }
 
   updateCache(client, { data }) {
@@ -31,10 +32,13 @@ class Login extends Component {
 
   closeFormX() {
     let logform = document.getElementById('login-form').classList = 'close'
+    this.hideUserTabsOnLoad()
+    debugger
   }
 
   submitForm() {
     document.getElementById('login-form').classList = 'close'
+    // this.hideUserTabsOnLoad()
   }
 
   componentDidMount() {
@@ -45,79 +49,84 @@ class Login extends Component {
     document.getElementById('login-form').classList = 'log-form'
   }
 
+
+
+
+ 
+
   render() {
 
     return (
       <div>
-   
-      
-      <Mutation
-        mutation={LOGIN_USER}
-        onError={err => {
-          this.setState({
-            errors: err.graphQLErrors[0].message,
-            username: '',
-            password: ''
-          })
-        }}
-        onCompleted={data => {
-          const { token, username, _id } = data.login;
-          localStorage.setItem("auth-token", token);
-          localStorage.setItem('username', username);
-          localStorage.setItem('currentUserId', _id);
-          this.props.history.push("/");
-        }}
-        update={(client, data) => this.updateCache(client, data)}
+
+
+        <Mutation
+          mutation={LOGIN_USER}
+          onError={err => {
+            this.setState({
+              errors: err.graphQLErrors[0].message,
+              username: '',
+              password: ''
+            })
+          }}
+          onCompleted={data => {
+            const { token, username, _id } = data.login;
+            localStorage.setItem("auth-token", token);
+            localStorage.setItem('username', username);
+            localStorage.setItem('currentUserId', _id);
+            this.props.history.push("/");
+          }}
+          update={(client, data) => this.updateCache(client, data)}
         >
-        {login => (
-          <div>
+          {login => (
+            <div>
 
-            <form id="login-form" className="log-form"
-              onSubmit={e => {
-                e.preventDefault();
-                login({
-                  variables: {
-                    username: this.state.username,
-                    password: this.state.password
-                  }
-                });
-              }}
-            >
-              <h1>Log in to your account</h1>
-              <div onClick={this.closeFormX} className="close-button-login">X</div>
+              <form id="login-form" className="log-form"
+                onSubmit={e => {
+                  e.preventDefault();
+                  login({
+                    variables: {
+                      username: this.state.username,
+                      password: this.state.password
+                    }
+                  });
+                }}
+              >
+                <h1>Log in to your account</h1>
+                <div onClick={this.closeFormX} className="close-button-login">X</div>
 
-              <div className="input-container">
-                <img src="./user.svg" className="fa fa-user icon"></img>
+                <div className="input-container">
+                  <img src="./user.svg" className="fa fa-user icon"></img>
 
-                <input
-                  value={this.state.username}
-                  name="username"
-                  onChange={this.update("username")}
-                  placeholder="Username"
+                  <input
+                    value={this.state.username}
+                    name="username"
+                    onChange={this.update("username")}
+                    placeholder="Username"
 
-                />
-              </div>
+                  />
+                </div>
 
-              <div className="input-container">
-                <img src="./lock.svg" className="fa fa-user icon"></img>
+                <div className="input-container">
+                  <img src="./lock.svg" className="fa fa-user icon"></img>
 
-                <input
-                  name="passWord"
-                  value={this.state.password}
-                  onChange={this.update("password")}
-                  type="password"
-                  placeholder="Password"
-                />
-              </div>
-              <button onClick={this.submitForm} type="submit">Log In</button>
-              <div className="login-errors">{this.state.errors}</div>
+                  <input
+                    name="passWord"
+                    value={this.state.password}
+                    onChange={this.update("password")}
+                    type="password"
+                    placeholder="Password"
+                  />
+                </div>
+                <button onClick={this.submitForm} type="submit">Log In</button>
+                <div className="login-errors">{this.state.errors}</div>
 
-            </form>
+              </form>
 
-          </div>
-        )}
-      </Mutation>
-    </div>
+            </div>
+          )}
+        </Mutation>
+      </div>
     )
   }
 }

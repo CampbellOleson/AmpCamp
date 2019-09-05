@@ -16,17 +16,21 @@ const Nav = props => {
   };
 
   document.addEventListener('DOMContentLoaded' , ()=> {
-hideUserTabsOnLoad()
+  hideUserTabsOnLoad()
   })
 
   const hideUserTabsOnLoad = () =>{
-    let logout = document.getElementById('logout-tab')
-    let profile = document.getElementById('profile-tab')
-    let upload = document.getElementById('upload-tab')
+  let logout, profile, upload
+    logout = document.getElementById('logout-tab')
+    profile = document.getElementById('profile-tab')
+    upload = document.getElementById('upload-tab')
+
+    if (logout && profile && upload){
     logout.classList.toggle('hide')
     profile.classList.toggle('hide')
     upload.classList.toggle('hide')
     console.log('loaded')
+    }
   }
 
   const hideRegister = () => {
@@ -192,3 +196,5 @@ export default Nav;
   }}
 >Logout</button> */
 }
+
+

@@ -59,9 +59,15 @@ export default {
         title
         by
         coverPhotoUrl
+          songs{
+            title 
+            audioUrl
+          }
         artist {
           _id
+        
         }
+        
       }
       users {
         _id
