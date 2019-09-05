@@ -114,7 +114,7 @@ class ArtistShow extends React.Component {
                 Song Title: {song.title}
                 Artist: {song.artist.username}
               </li>
-              <button onClick={e => this.pickSong(e, song)}>Play Song!!</button>
+              <button className='song-play-button'onClick={e => this.pickSong(e, song)}></button>
             </div>
           ));
           if (songsArr.length > 0 && this.song === null) {

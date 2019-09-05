@@ -16,6 +16,30 @@
     justify-content: center;
 }
 
+.song-play-button {
+    height: 30px;
+    width: 50px;    
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    position: relative;
+}
+
+.song-play-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.song-play-button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3.5px;
+    left: 17px;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 9.5px 0 9.5px 17px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+}
+
 .song-list-item-container {
     height: 100%;
     width: 100%;
