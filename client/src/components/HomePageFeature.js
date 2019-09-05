@@ -10,7 +10,16 @@ const { FETCH_ALBUMS_AND_ARTISTS } = Queries;
 class HomePageFeature extends React.Component {
     constructor(props) {
         super(props)
+        this.photo = null
+        this.album = null
     }
+    featuredPhoto(data) {
+        debugger
+        return (
+            this.featuredAlbum = data.albums[Math.floor(Math.random() * data.albums.length)]
+        )
+    }
+
     render() {
         return (
             <Query query={FETCH_ALBUMS_AND_ARTISTS}>
@@ -27,14 +36,15 @@ class HomePageFeature extends React.Component {
                             <div></div>
                         </div>
                     );
+
                     if (data) {
+                        this.featuredPhoto(data)
                         return (
                             <div>
-
                                 <div className="featured-master-container">
                                     <div className="featured-container">
                                         <div className="featured-photo">
-                                            <img id="test" src="./metallica.jpg" />
+                                            <Link to={`/album/${this.featuredAlbum._id}`}><img id="test" src={this.featuredAlbum.coverPhotoUrl} /></Link>
                                         </div>
                                         <div className="featured-stack">
                                             <div><img id="test" src="./metallica.jpg" /></div>
@@ -47,6 +57,8 @@ class HomePageFeature extends React.Component {
                                 <FeaturedArtists data={data} />
                             </div>
                         )
+                    } else {
+                        return null;
                     }
                 }}
             </Query>

@@ -116,7 +116,7 @@
   left: 50%;
   width: 64px;
   height: 64px;
-  background: white;
+  background: transparent;
 }
 .lds-roller div {
   animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;

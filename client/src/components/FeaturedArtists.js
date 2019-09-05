@@ -38,14 +38,12 @@ class FeaturedArtists extends React.Component {
     }
 
     playSong(event, song) {
-
         event.preventDefault()
         this.song = song.audioUrl
         this.setState({ update: !this.state.update })
     }
 
     render() {
-
         if (this.props.data) {
             return (
                 <div>
