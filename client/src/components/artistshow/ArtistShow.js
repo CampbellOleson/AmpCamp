@@ -4,6 +4,7 @@ import Queries from "../../graphql/queries";
 import Mutations from "../../graphql/mutations";
 import { Query, compose, graphql } from "react-apollo";
 import ReactAudioPlayer from "react-audio-player";
+import { Link } from 'react-router-dom';
 import "./ArtistShow.css";
 const FAPI = require("../../util/fapi");
 const { FETCH_ARTIST } = Queries;
@@ -93,12 +94,12 @@ class ArtistShow extends React.Component {
             album.songs.forEach(song => songsArr.push(song));
             return (
                 <div key={album._id} className="album-list-item-container">
-                  <img
+                  <Link to={`/album/${album._id}`}><img
                     className="album-cover-art"
                     width="160px"
                     height="160px"
                     src={album.coverPhotoUrl}
-                  />
+                  /></Link>
                   <br/>
                   <div className='artist-show-album-info'>
                     {album.title}
