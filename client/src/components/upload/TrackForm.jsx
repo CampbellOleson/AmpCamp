@@ -8,7 +8,6 @@ class TrackForm extends React.Component {
     this.audioDrop = this.audioDrop.bind(this);
     this.state = {
       _EDITING: true,
-      valid: false,
       title: "",
       file: null
     };
@@ -31,18 +30,29 @@ class TrackForm extends React.Component {
 
   update(field) {
     return e => {
-      this.setState({ [field]: e.target.value, valid: true });
+      this.setState({ [field]: e.target.value });
     };
   }
 
-  //   updateTitle() {
-  //   return e => {
-  //   if (e.target.value.length > 0 ){
-  //     this.setState({ title: e.target.value });
-  //   } else {
-  //     this.setState({ title: "Untitled" });
-  //   }}
-  // }
+  validTitle() {
+    return this.state.title.length > 0;
+  }
+
+  unclickable() {
+    if (!this.validTitle()) {
+      return "unclickable";
+    } else {
+      return "";
+    }
+  }
+
+  dropId() {
+    return this.state.file ? "file-preview" : "audio-drop";
+  }
+
+  dropText() {
+    return this.state.file ? this.state.file.name : "Attach Audio";
+  }
 
   render() {
     return (
@@ -60,13 +70,15 @@ class TrackForm extends React.Component {
               <section>
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  <p id="audio-drop">Attach audio</p>
+                  <p id={this.dropId()}>{this.dropText()}</p>
                 </div>
               </section>
             );
           }}
         </Dropzone>
-        <button type="submit">Add track ✓</button>
+        <button type="submit" id={this.unclickable()}>
+          Add track ✓
+        </button>
       </form>
     );
   }
