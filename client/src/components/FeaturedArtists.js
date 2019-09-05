@@ -12,7 +12,6 @@ class FeaturedArtists extends React.Component {
         this.renderFeaturedArtists = this.renderFeaturedArtists.bind(this)
     }
 
-
     renderFeaturedArtists(data) {
         const { albums } = data;
        

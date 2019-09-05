@@ -19,7 +19,7 @@ body{
   min-width: 250px;
   height: 100%;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 
@@ -29,11 +29,6 @@ body{
     animation-iteration-count: 1;
 }
 
-.featured-artists--item img {
-  transition: transform .5s ease;
-        overflow: hidden;
-         cursor: pointer;
-}
 
 @keyframes fade{
   from {opacity:0;}
