@@ -32,20 +32,33 @@ class Login extends Component {
 
   closeFormX() {
     let logform = document.getElementById('login-form').classList = 'close'
-    this.hideUserTabsOnLoad()
-    debugger
+    // this.hideUserTabsOnLoad()
   }
 
   submitForm() {
+   
     document.getElementById('login-form').classList = 'close'
-    // this.hideUserTabsOnLoad()
+    
+  
   }
 
   componentDidMount() {
     document.getElementById('login-form').classList = 'log-form'
   }
 
-  UNSAFE_componentWillUpdate() {
+ componentWillUnmount(){
+   let logout = document.getElementById('logout-tab')
+   let profile = document.getElementById('profile-tab')
+   let upload = document.getElementById('upload-tab')
+
+   if (logout && profile && upload) {
+     logout.classList = ('hide')
+     profile.classList = ('hide')
+     upload.classList = ('hide')
+   }
+  }
+
+ componentDidUpdate() {
     document.getElementById('login-form').classList = 'log-form'
   }
 

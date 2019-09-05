@@ -71,7 +71,7 @@ class ArtistShow extends React.Component {
       >
         {({ loading, err, data }) => {
           if (loading) return (
-                         <div class="lds-roller">
+                         <div className="lds-roller">
                            <div></div>
                            <div></div>
                            <div></div>

@@ -31,6 +31,8 @@ const RootQueryType = new GraphQLObjectType({
       type: new GraphQLList(AlbumType),
       resolve() {
         return Album.find({});
+          // return Album.findAll({ limit: 16, order: [ [ Sequelize.fn('RANDOM') ] ] });
+
       }
     },
     album: {

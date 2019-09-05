@@ -16,10 +16,12 @@ const Nav = props => {
   };
 
   document.addEventListener('DOMContentLoaded' , ()=> {
+ 
   hideUserTabsOnLoad()
   })
 
   const hideUserTabsOnLoad = () =>{
+  
   let logout, profile, upload
     logout = document.getElementById('logout-tab')
     profile = document.getElementById('profile-tab')
@@ -29,7 +31,7 @@ const Nav = props => {
     logout.classList.toggle('hide')
     profile.classList.toggle('hide')
     upload.classList.toggle('hide')
-    console.log('loaded')
+  
     }
   }
 
@@ -49,7 +51,7 @@ const Nav = props => {
 
 
   const closeUserTab = () => {
-    let el = document.getElementById('user-dropdown')
+  
     let dropButton = document.getElementById('user-dropdown')
     console.log(dropButton)
     

@@ -77,7 +77,18 @@ class Register extends Component {
     } else {
       photo.src = './fanaccount.svg'
     }
+  }
 
+  componentWillUnmount() {
+    let logout = document.getElementById('logout-tab')
+    let profile = document.getElementById('profile-tab')
+    let upload = document.getElementById('upload-tab')
+
+    if (logout && profile && upload) {
+      logout.classList = ('hide')
+      profile.classList = ('hide')
+      upload.classList = ('hide')
+    }
   }
 
   render() {

@@ -47,10 +47,7 @@
     background: #783;
 
 }
-.autofill-item-container > div:hover{
-    box-shadow:3px 3px 5px 6px #a6313b;
-    /* background: rgb(55, 36, 27); */
-}
+
 
 .autofill-item-container:hover{
      cursor: pointer;

@@ -15,7 +15,7 @@ class FeaturedArtists extends React.Component {
 
     renderFeaturedArtists(data) {
         const { albums } = data;
-        debugger
+       
         if (albums) {
             return (
                 <div className="featured-artists-container">
@@ -37,6 +37,18 @@ class FeaturedArtists extends React.Component {
         return (
             <Query query={FETCH_ALBUMS_AND_ARTISTS}>
                 {({ loading, errors, data }) => {
+                    if (loading) return (
+                        <div className="lds-roller">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    );
                     if (data) {
                         return (
                             <div>
