@@ -9,35 +9,16 @@ const baseStyleImage = {
   padding: "20px",
   borderWidth: 2,
   borderRadius: 2,
-  borderColor: "#eeeeee",
+  borderColor: "#404040",
   borderStyle: "dashed",
-  backgroundColor: "#fafafa",
-  color: "#bdbdbd",
+  backgroundColor: "#707070",
+  color: "#404040",
   outline: "none",
-  width: "70px",
-  height: "70px",
+  width: "100px",
+  height: "90px",
   transition: "border .24s ease-in-out",
   margin: "20px"
 };
-
-// const baseStyleTrack = {
-//   flex: 1,
-//   display: "flex",
-//   flexDirection: "column",
-//   alignItems: "center",
-//   padding: "20px",
-//   borderWidth: 2,
-//   borderRadius: 2,
-//   borderColor: "#eeeeee",
-//   borderStyle: "dashed",
-//   backgroundColor: "#fafafa",
-//   color: "#bdbdbd",
-//   outline: "none",
-//   width: "70px",
-//   height: "20px",
-//   transition: "border .24s ease-in-out",
-//   margin: "10px"
-// };
 
 const activeStyle = {
   borderColor: "#2196f3"
@@ -78,7 +59,7 @@ const StyledDropzone = props => {
     >
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <p>upload album artwork</p>
+        <p>drop album artwork here</p>
       </div>
     </div>
   );

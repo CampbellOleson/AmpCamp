@@ -33,6 +33,27 @@ class AlbumUpload extends React.Component {
     };
   }
 
+  updateTitle() {
+    return e => {
+      if (e.target.value.length > 0) {
+        this.setState({ title: e.target.value });
+      } else {
+        this.setState({ title: "Untitled Album" });
+      }
+    };
+  }
+
+  updateArtist() {
+    return e => {
+      if (e.target.value.length > 0) {
+        this.setState({ by: e.target.value });
+      } else {
+        const username = localStorage.getItem("username");
+        this.setState({ by: username });
+      }
+    };
+  }
+
   async submitPhoto() {
     const image = this.state.image;
     const formData = new FormData();
@@ -81,7 +102,6 @@ class AlbumUpload extends React.Component {
   };
 
   imageDrop(image) {
-
     this.setState({ image: image });
   }
 
@@ -104,23 +124,25 @@ class AlbumUpload extends React.Component {
 
   render() {
     return (
+      <div className="background">
       <div className="main-content-container">
         <div className="tracks-list-container">
           <div className="album-infobar">
             <div className="album-display-photo" />
             <div className="album-info">
-              <div id="album-display-title">
-                <div>{this.state.title}</div>
+              <div id="album-display-title" className="album-info-item">
+               {this.state.title}
               </div>
-              <div id="album-display-description">
-                <div>{this.state.description}</div>
+              <div id="album-display-description" className="album-info-item">
+                {this.state.description}
               </div>
-              <div id="album-display-artist">
-                <div>by: {this.state.by}</div>
+              <div id="album-display-artist" className="album-info-item">
+                by: {this.state.by}
               </div>
             </div>
           </div>
-          <p className="track-header">Tracks</p>
+          <p className="track-header">Add some tracks:</p>
+          <p className="track-header track-sub-header">Make sure you file is compatable</p>
           <NewTrack addTrack={this.addTrack} />
           <TracksList
             tracks={Object.values(this.state.tracks)}
@@ -132,10 +154,11 @@ class AlbumUpload extends React.Component {
             <div className="photo-drop-container">
               <StyledDropzone fileDrop={this.imageDrop} />
             </div>
+        <p id="album-info">Album information</p>
             <input
               // value={this.state.title}
               id="album-title-input"
-              onChange={this.update("title")}
+              onChange={this.updateTitle()}
               placeholder="album title"
             />
             <label className="album-form-label">About this album:</label>
@@ -143,20 +166,21 @@ class AlbumUpload extends React.Component {
               value={this.state.description}
               id="album-description-input"
               onChange={this.update("description")}
-              placeholder="(optional)"
+              placeholder="or maybe your music speaks for itself"
             />
             <label className="album-form-label">Artist:</label>
             <input
               // value={this.state.by}
-              onChange={this.update("by")}
+              onChange={this.updateArtist()}
               placeholder="this will default to your username"
             />
             <div className="tags-component">
               tags component (format to be determined)
             </div>
-            <button id="submit-album-button">Publish</button>
+            <button id="submit-album-button">Publish ✓</button>
           </form>
         </div>
+      </div>
       </div>
     );
   }

@@ -8,6 +8,7 @@ class TrackForm extends React.Component {
     this.audioDrop = this.audioDrop.bind(this);
     this.state = {
       _EDITING: true,
+      valid: false,
       title: "",
       file: null
     };
@@ -15,6 +16,7 @@ class TrackForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (this.state.title.length === 0) return;
     this.props.addTrack({ title: this.state.title, file: this.state.file });
     this.setState({
       _EDITING: false,
@@ -29,9 +31,18 @@ class TrackForm extends React.Component {
 
   update(field) {
     return e => {
-      this.setState({ [field]: e.target.value });
+      this.setState({ [field]: e.target.value, valid: true });
     };
   }
+
+  //   updateTitle() {
+  //   return e => {
+  //   if (e.target.value.length > 0 ){
+  //     this.setState({ title: e.target.value });
+  //   } else {
+  //     this.setState({ title: "Untitled" });
+  //   }}
+  // }
 
   render() {
     return (
@@ -55,7 +66,7 @@ class TrackForm extends React.Component {
             );
           }}
         </Dropzone>
-        <button type="submit">Add track</button>
+        <button type="submit">Add track ✓</button>
       </form>
     );
   }

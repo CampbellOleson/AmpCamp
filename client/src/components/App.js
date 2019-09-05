@@ -10,7 +10,7 @@ import AlbumUpload from "./upload/AlbumUpload";
 import HomePageFeature from "./HomePageFeature";
 import SongIndex from './SongIndex';
 import ArtistShow from './artistshow/ArtistShow';
-// import './cssreset.css';
+import './cssreset.css';
 
 const App = () => {
   return (
