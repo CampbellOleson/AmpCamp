@@ -30,6 +30,13 @@ class ArtistShow extends React.Component {
     this.imageDrop = this.imageDrop.bind(this);
   }
 
+  componentDidUpdate(prevProps, nextProps){
+    // debugger;
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.song = null;
+    }
+  }
+
   pickSong(e, song) {
     // let rSong = songs[Math.floor(Math.random() * songs.length)];
     // this.setState({song: rSong})
