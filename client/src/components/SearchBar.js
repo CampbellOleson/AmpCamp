@@ -11,7 +11,6 @@ class SearchBar extends React.Component {
         this.state = {
             suggestions: null
         }
-
         this.renderSuggestions = this.renderSuggestions.bind(this)
         this.closeSuggestions = this.closeSuggestions.bind(this)
     }
@@ -27,12 +26,10 @@ class SearchBar extends React.Component {
 
 
         if (albums) {
-
             if (value.length > 0) { // if we have letters in the search bar
                 sugs = albums.filter(v => {
                     return regex.test(v.title)
                 }).sort()
-
             }
             this.setState({ suggestions: sugs })
 
@@ -56,8 +53,7 @@ class SearchBar extends React.Component {
         if (!this.state.suggestions || this.state.suggestions.length === 0) {
             return null
         }
-
-        return ( 
+        return (
             <ul className='search-completer'>
                 <div className="autofill-item-container">
                     {this.state.suggestions.map((item) => {

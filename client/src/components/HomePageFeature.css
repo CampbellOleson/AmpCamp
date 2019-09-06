@@ -14,44 +14,61 @@ to {opacity: 0.8;}
 
 
 .featured-master-container{
-    width: 100%;
-    height: 500px;
+height: 500px;
     background: black;
+    margin: auto;
+    width: 1200px;
 }
 
 .featured-container{
-width: 58.5%;
-height: 100%;
-margin: auto;
-display: flex;
-text-align: center;
+      height: 100%;
 
+    display: flex;
+    align-items: right;
+    position: relative;
+    width: 500px;
+    width: 50%;
+    border: 1px solid red;
 }
 
-.featured-photo{
-width: 60%;
-height: 100%;
-
+.featured-photo img {
+    height: 100%;
+    width: 500px;
 }
 
 
-.featured-photo img{
+.featured-info{
+    position: absolute;
+    margin: auto;
+    width: 499px;
+    height: 50px;
+    background: azure;
+    top: 450px;
+}
+
+
+.featured-info h1{
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 140px;
     max-height: 100%;
-    min-width: 500px;
+    min-width: 584px;
+    border: 1px solid red;
+text-shadow: 2px 2px 130px 10px green;
 }
 
-
-
-.featured-stack img{
-    float: left; 
-    clear: left; 
-    max-height: 100%;
-    width: 100%;
-    max-height: 163px;
-    
+.featured-info h2{
+    margin: auto;
+    font-size: 20px;
+    color: black;
+    text-align: center;
 }
 
-
-/*////// FEATURED ARTISTS BOTTOM */
+.featured-blurb{
+    color: white;
+    border: 1px solid red;
+    min-width: 100%;
+}
 
 
