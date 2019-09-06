@@ -1,10 +1,9 @@
-.featured-artists-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 50px;
-  margin: auto;
-  margin-top: 100px;
-  max-width: 1200px;
+.featured-artists-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 50px;
+    margin: auto;
+    max-width: 1200px;
 }
 
 body {
@@ -18,17 +17,15 @@ body {
   height: 100%;
   text-align: center;
   border-radius: 2px;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
 }
 
 .featured-artists--item:hover {
   box-shadow: 24px, 2px #1b1b1b;
 }
 
-/* .featured-artists--item:hover{
-    animation-name: fade;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-} */
 
 /* .home-page-album-art {
   position: relative;
@@ -102,6 +99,3 @@ body {
   margin: auto;
 }
 
-/* .featured-artists--item img:hover{
-   
-} */
