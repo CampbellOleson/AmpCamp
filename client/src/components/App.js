@@ -12,6 +12,8 @@ import SongIndex from './SongIndex';
 import ArtistShow from './artistshow/ArtistShow';
 import AlbumShow from './albumshow/AlbumShow';
 import './cssreset.css';
+import RegisterArtistInfo from "./RegisterArtistInfo";
+
 
 const App = () => {
   return (
@@ -21,6 +23,7 @@ const App = () => {
 
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/info" component={RegisterArtistInfo}/>
         <AuthRoute exact path="/login" component={Login} routeType='auth' />
         <AuthRoute exact path="/register" component={Register} routeType='auth' />
         <AuthRoute exact path="/artist/:id" component={ArtistShow} />
