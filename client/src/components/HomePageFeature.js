@@ -25,7 +25,7 @@ class HomePageFeature extends React.Component {
     componentDidMount() {
         let photoReel = document.addEventListener('DOMContentLoaded', function () {
             let photoReel = document.getElementsByClassName('photo-reel-image')
-     
+
         })
         if (photoReel) photoReel.addEventListener('mouseover', function () {
             console.log('hovered over photo!')
@@ -36,49 +36,49 @@ class HomePageFeature extends React.Component {
     render() {
 
 
-            return(
-            <Query query = { FETCH_ALBUMS_AND_ARTISTS } >
-                    {({ loading, errors, data }) => {
-                        if (loading) return (
-                            <div className="lds-roller">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        );
-
-        if (data) {
-            this.featuredPhoto(data)
-            return (
-                <div>
-                    <h1 id="daily-picks-heading">Amp Camp Daily Picks</h1>
-                    <div id="daily-picks-container">
-                        <div className="photobanner">
-                            <Link to={`/album/${this.featuredAlbums[0]._id}`}><img className="photo-reel-image" className="first" src={this.featuredAlbums[0].coverPhotoUrl}></img></Link>
-                            <Link to={`/album/${this.featuredAlbums[1]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
-                            <Link to={`/album/${this.featuredAlbums[2]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[2].coverPhotoUrl} /></Link>
-                            <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
-                            <Link to={`/album/${this.featuredAlbums[4]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[0].coverPhotoUrl} /></Link>
-                            <Link to={`/album/${this.featuredAlbums[0]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
-                            <Link to={`/album/${this.featuredAlbums[1]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[2].coverPhotoUrl} /></Link>
-                            <Link to={`/album/${this.featuredAlbums[2]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
-                            <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
+        return (
+            <Query query={FETCH_ALBUMS_AND_ARTISTS} >
+                {({ loading, errors, data }) => {
+                    if (loading) return (
+                        <div className="lds-roller">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
                         </div>
-                    </div>
-                    {/* <h1>Featured Artists</h1> */}
-                    <FeaturedArtists data={data} />
-                </div>
-            )
-        } else {
-            return null;
-        }
-    }
-}
+                    );
+
+                    if (data) {
+                        this.featuredPhoto(data)
+                        return (
+                            <div>
+                                <h1 id="daily-picks-heading">Amp Camp Daily Picks</h1>
+                                <div id="daily-picks-container">
+                                    <div className="photobanner">
+                                        <Link to={`/album/${this.featuredAlbums[0]._id}`}><img className="photo-reel-image" className="first" src={this.featuredAlbums[0].coverPhotoUrl}></img></Link>
+                                        <Link to={`/album/${this.featuredAlbums[1]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
+                                        <Link to={`/album/${this.featuredAlbums[2]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[2].coverPhotoUrl} /></Link>
+                                        <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
+                                        <Link to={`/album/${this.featuredAlbums[4]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[0].coverPhotoUrl} /></Link>
+                                        <Link to={`/album/${this.featuredAlbums[0]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
+                                        <Link to={`/album/${this.featuredAlbums[1]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[2].coverPhotoUrl} /></Link>
+                                        <Link to={`/album/${this.featuredAlbums[2]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
+                                        <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
+                                    </div>
+                                </div>
+                                {/* <h1>Featured Artists</h1> */}
+                                <FeaturedArtists data={data} />
+                            </div>
+                        )
+                    } else {
+                        return null;
+                    }
+                }
+                }
             </Query >
         )
     }
