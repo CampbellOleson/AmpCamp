@@ -53,7 +53,7 @@ class HomePageFeature extends React.Component {
                 <h1 id="daily-picks-heading">Amp Camp Daily Picks</h1>
                 <div id="daily-picks-container">
                   <div className="photobanner">
-                    <Link to={`/album/${this.featuredAlbums[0]._id}`}>
+                    {/* <Link to={`/album/${this.featuredAlbums[0]._id}`}>
                       <img
                         className="photo-reel-image"
                         className="first"
@@ -107,7 +107,7 @@ class HomePageFeature extends React.Component {
                         className="photo-reel-image"
                         src={this.featuredAlbums[3].coverPhotoUrl}
                       />
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
                 {/* <h1>Featured Artists</h1> */}
