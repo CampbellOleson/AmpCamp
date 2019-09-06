@@ -26,7 +26,9 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
+    if (localStorage.username){
     this.closeUserTab()
+    }
 
   }
 
@@ -56,13 +58,22 @@ class Nav extends React.Component {
   };
 
   closeUserTab() {
+
+    if (localStorage.username){
     let dropButton = document.getElementById('user-dropdown')
     let logout = document.getElementById('logout-tab')
     let profile = document.getElementById('profile-tab')
     let upload = document.getElementById('upload-tab')
+
+    if (logout && profile && upload){
     logout.classList.toggle('hide')
     profile.classList.toggle('hide')
     upload.classList.toggle('hide')
+    }
+    
+    }else{
+      return null
+    }
   }
 
   render() {
