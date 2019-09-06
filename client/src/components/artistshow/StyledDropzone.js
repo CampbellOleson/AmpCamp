@@ -6,7 +6,7 @@ const baseStyleImage = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  padding: "20px",
+  // padding: "20px",
   borderWidth: 2,
   borderRadius: 2,
   borderColor: "#eeeeee",
@@ -14,30 +14,11 @@ const baseStyleImage = {
   backgroundColor: "#fafafa",
   color: "#bdbdbd",
   outline: "none",
-  width: "70px",
-  height: "70px",
+  width: "98%",
+  height: "140px",
   transition: "border .24s ease-in-out",
-  margin: "20px"
+  margin: "7px"
 };
-
-// const baseStyleTrack = {
-//   flex: 1,
-//   display: "flex",
-//   flexDirection: "column",
-//   alignItems: "center",
-//   padding: "20px",
-//   borderWidth: 2,
-//   borderRadius: 2,
-//   borderColor: "#eeeeee",
-//   borderStyle: "dashed",
-//   backgroundColor: "#fafafa",
-//   color: "#bdbdbd",
-//   outline: "none",
-//   width: "70px",
-//   height: "20px",
-//   transition: "border .24s ease-in-out",
-//   margin: "10px"
-// };
 
 const activeStyle = {
   borderColor: "#2196f3"
@@ -78,7 +59,7 @@ const StyledDropzone = props => {
     >
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <p>Select Banner Photo to Upload!!</p>
+        <p>Upload banner photo</p>
       </div>
     </div>
   );

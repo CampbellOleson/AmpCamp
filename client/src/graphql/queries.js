@@ -37,8 +37,8 @@ export default {
         by
         coverPhotoUrl
         songs {
-            title
-            audioUrl
+          title
+          audioUrl
         }
         artist {
           _id
@@ -54,15 +54,15 @@ export default {
         by
         coverPhotoUrl
         artist {
-            username
-            bannerPhoto
+          username
+          bannerPhoto
         }
         songs {
-            title
-            audioUrl
-            artist {
-                username
-            }
+          title
+          audioUrl
+          artist {
+            username
+          }
         }
       }
     }
@@ -75,16 +75,13 @@ export default {
         title
         by
         coverPhotoUrl
-          songs{
-            title 
-            audioUrl
-          }
+        songs {
+          title
+          audioUrl
+        }
         artist {
           _id
-          
-        
         }
-        
       }
       users {
         _id
@@ -112,6 +109,11 @@ export default {
             audioUrl
             artist {
               username
+            }
+            album {
+              _id
+              title
+              coverPhotoUrl
             }
           }
         }

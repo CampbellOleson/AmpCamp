@@ -1,0 +1,61 @@
+.song-play-button {
+  height: 35px;
+  width: 35px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 30px;
+  position: relative;
+  margin-top: 5px;
+  display: none;
+}
+
+.audio-player-element {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0px;
+  width: 76%;
+  background-color: #282828;
+  z-index: 10;
+  height: 90px;
+  -webkit-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.75);
+}
+
+.currently-playing-title {
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+.currently-playing-artist {
+  color: whitesmoke;
+  font-size: 15px;
+}
+
+.currently-playing-info-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 37%;
+}
+
+.mini-cover-photo {
+  width: 60px;
+  height: 60px;
+  padding: 15px;
+}
+
+.react-audio-player {
+  margin-top: 18px;
+}
+
+.currently-playing-artist-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.currently-playing-artist-title span {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+}

@@ -1,11 +1,17 @@
 import React from "react";
-import StyledDropZone from "./StyledDropzone";
 import Queries from "../../graphql/queries";
+import PlaybarNav from "./PlaybarNav";
+import BannerPhoto from "./BannerPhoto";
 import Mutations from "../../graphql/mutations";
+import { SongIndexItem, SongListHeader } from "./SongIndexItem";
+import AlbumIndexItem from "./AlbumIndexItem";
+import Spinner from "./Spinner";
 import { Query, compose, graphql } from "react-apollo";
-import ReactAudioPlayer from "react-audio-player";
-import { Link } from 'react-router-dom';
 import "./ArtistShow.css";
+import "./PlaybarNav.css";
+import "./BannerPhoto.css";
+import "./Spinner.css";
+import "./SongList.css";
 const FAPI = require("../../util/fapi");
 const { FETCH_ARTIST } = Queries;
 const { UPDATE_BANNER_PHOTO } = Mutations;
@@ -23,16 +29,6 @@ class ArtistShow extends React.Component {
     this.submitBannerPhoto = this.submitBannerPhoto.bind(this);
     this.imageDrop = this.imageDrop.bind(this);
   }
-
-  // componentDidMount() {
-  //   debugger;
-
-  // this.setState({song: 'data.user.albums[0].songs[0].audioUrl'})
-  // }
-  // componentDidUpdate() {
-  //   debugger;
-  //   // if (this.bannerImage)
-  // }
 
   pickSong(e, song) {
     // let rSong = songs[Math.floor(Math.random() * songs.length)];
@@ -54,14 +50,12 @@ class ArtistShow extends React.Component {
     formData.set("image", bImage);
     const res = await FAPI.uploadImage(formData);
     console.log(res.data.imageUrl);
-    // debugger;
     await this.props.updateBannerPhoto({
       variables: {
         id: this.props.match.params.id,
         bannerPhoto: res.data.imageUrl
       }
     });
-    // this.setState({update: (!this.state.update)})
   }
 
   render() {
@@ -71,87 +65,45 @@ class ArtistShow extends React.Component {
         variables={{ id: this.props.match.params.id }}
       >
         {({ loading, err, data }) => {
-          if (loading) return (
-                         <div className="lds-roller">
-                           <div></div>
-                           <div></div>
-                           <div></div>
-                           <div></div>
-                           <div></div>
-                           <div></div>
-                           <div></div>
-                           <div></div>
-                         </div>
-                       );
+          if (loading) return <Spinner />;
           if (err) return `Error! ${err.message}`;
           if (!data) return null;
-          // debugger;
           let albums;
           let displayedSongs;
           let songsArr = [];
-          let bPhoto;
           albums = data.user.albums.map(album => {
             album.songs.forEach(song => songsArr.push(song));
-            return (
-                <div key={album._id} className="album-list-item-container">
-                  <Link to={`/album/${album._id}`}><img
-                    className="album-cover-art"
-                    width="160px"
-                    height="160px"
-                    src={album.coverPhotoUrl}
-                  /></Link>
-                  <br/>
-                  <div className='artist-show-album-info'>
-                    {album.title}
-                    <br/>
-                    by: {album.by}
-                  </div>
-                </div>
-            );
+            return <AlbumIndexItem album={album} />;
           });
           displayedSongs = songsArr.map(song => (
-            <div className="song-list-item-container">
-              <li key={song._id}>
-                Song Title: {song.title}
-                Artist: {song.artist.username}
-              </li>
-              <button className='song-play-button'onClick={e => this.pickSong(e, song)}></button>
-            </div>
+            <SongIndexItem song={song} pickSong={this.pickSong} />
           ));
           if (songsArr.length > 0 && this.song === null) {
             this.song = songsArr[Math.floor(Math.random() * songsArr.length)];
           }
-
-          bPhoto =
-            data.user.bannerPhoto === null ? (
-              <div>
-                <StyledDropZone fileDrop={this.imageDrop} />
-                <button onClick={this.submitBannerPhoto}>
-                  Upload your banner photo!!
-                </button>
-              </div>
-            ) : (
-              <img
-                className="artist-show-banner-image"
-                src={data.user.bannerPhoto}
-              />
-            );
-
           return (
-            <div className="artist-show-page-container">
-              <div className="banner-photo-container">{bPhoto}</div>
-              <div className='main-page-container'>
-              <h2 className="artist-show-page-title">{data.user.username}</h2>
-              <div className="audio-player-element">
-                <span className='currently-playing'>Currently Playing: {this.song.title}</span>
-                <ReactAudioPlayer className='audio-player' src={this.song.audioUrl} autoPlay controls />
-              </div>
-              <div className="artist-show-albums-container">
-                {albums}
-              </div>
-              <div className="artist-show-songslist-container">
-                <ul>{displayedSongs}</ul>
-              </div>
+            <div className="artist-show-background">
+              <div className="artist-show-page-container">
+                <BannerPhoto
+                  bannerPhoto={data.user.bannerPhoto}
+                  imageDrop={this.imageDrop}
+                  submitBannerPhoto={this.submitBannerPhoto}
+                />
+                <div className="main-page-container">
+                  <div className="main-page-vertical-container">
+                    <div className="artist-show-albums-container">
+                      {albums}
+                    </div>
+                    <SongListHeader />
+                    <div className="artist-show-songslist-container">
+                      <ul>{displayedSongs}</ul>
+                    </div>
+                    <PlaybarNav song={this.song} />
+                  </div>
+                  <div className="artist-info-column">
+                    <p>{data.user.username}</p>
+                  </div>
+                </div>
               </div>
             </div>
           );
@@ -162,6 +114,5 @@ class ArtistShow extends React.Component {
 }
 
 export default compose(
-  // graphql(FETCH_ARTIST, {name: 'fetchArtist'}),
   graphql(UPDATE_BANNER_PHOTO, { name: "updateBannerPhoto" })
 )(ArtistShow);
