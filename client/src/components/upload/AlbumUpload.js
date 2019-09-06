@@ -6,6 +6,7 @@ import { compose, graphql } from "react-apollo";
 import Mutations from "../../graphql/mutations";
 import NewTrack from "./TrackForm";
 import TracksList from "./TracksList";
+import ReactLoading from "react-loading";
 const FAPI = require("../../util/fapi");
 const { NEW_ALBUM, NEW_SONG } = Mutations;
 
@@ -17,14 +18,14 @@ class AlbumUpload extends React.Component {
     this.submitPhoto = this.submitPhoto.bind(this);
     this.imageDrop = this.imageDrop.bind(this);
     this.state = {
-      title: "Untitled Album", // how to make this return?
+      title: "Untitled Album",
       description: "",
       by: localStorage.getItem("username"),
       coverPhotoUrl: "",
       tracks: {},
       image: null,
-      imagePreview: null
-      // validUpload: false
+      imagePreview: null,
+      loading: false
     };
   }
 
@@ -78,6 +79,7 @@ class AlbumUpload extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
     if (!this.validUpload()) return;
+    await this.setState({ loading: true });
     await this.submitPhoto();
     const { title, description, by, coverPhotoUrl } = this.state;
     const cUserId = localStorage.getItem("currentUserId");
@@ -110,25 +112,12 @@ class AlbumUpload extends React.Component {
       description: "",
       by: "",
       coverPhotoUrl: "",
-      tracks: {}
+      tracks: {},
+      loading: false
     });
-  };
 
-  // async imageDrop(image) {
-  //   // await this.setState({});
-  //   const reader = new FileReader();
-  //   const cb = async () => {
-  //     console.log(reader);
-  //     console.log(reader["result"]);
-  //     debugger;
-  //     await this.setState({ image: image, imagePreview: reader.result })
-  //   }
-  //   reader.onloadend = await cb();
-  //     await reader.readAsDataURL(image);
-  //     console.log(this.state.imagePreview);
-  //     console.log(this.state.image);
-  //   this.validUpload();
-  // }
+    this.props.history.push(`/artist/${cUserId}`);
+  };
 
   imageDrop(image) {
     const fileReader = new FileReader();
@@ -162,8 +151,17 @@ class AlbumUpload extends React.Component {
     return this.validUpload() ? "submit-album-button" : "unclickable-publish";
   }
 
+  publishButton() {
+    return !this.state.loading ? (
+      <button id={this.publishButtonId()}>Publish ✓</button>
+    ) : (
+      <div className="loading-balls">
+          <ReactLoading color={"#bfff00"} type={"cylon"}/>
+      </div>
+    );
+  }
+
   render() {
-    console.log(this.publishButtonId());
     const preview = this.state.imagePreview ? (
       <img className="image-preview" src={this.state.imagePreview} />
     ) : (
@@ -204,7 +202,6 @@ class AlbumUpload extends React.Component {
               </div>
               <p id="album-info">Album information</p>
               <input
-                // value={this.state.title}
                 id="album-title-input"
                 onChange={this.updateTitle()}
                 placeholder="album title"
@@ -218,14 +215,13 @@ class AlbumUpload extends React.Component {
               />
               <label className="album-form-label">Artist:</label>
               <input
-                // value={this.state.by}
                 onChange={this.updateArtist()}
                 placeholder="this will default to your username"
               />
               <div className="tags-component">
                 tags component (format to be determined)
               </div>
-              <button id={this.publishButtonId()}>Publish ✓</button>
+              {this.publishButton()}
             </form>
           </div>
         </div>

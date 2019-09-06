@@ -15,8 +15,8 @@ class TrackForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.title.length === 0) return;
-    this.props.addTrack({ title: this.state.title, file: this.state.file });
+    if (!this.validTrack()) return;
+      this.props.addTrack({ title: this.state.title, file: this.state.file });
     this.setState({
       _EDITING: false,
       title: "",
@@ -34,12 +34,12 @@ class TrackForm extends React.Component {
     };
   }
 
-  validTitle() {
-    return this.state.title.length > 0;
+  validTrack() {
+    return this.state.title.length > 0 && this.state.file;
   }
 
   unclickable() {
-    if (!this.validTitle()) {
+    if (!this.validTrack()) {
       return "unclickable";
     } else {
       return "";
