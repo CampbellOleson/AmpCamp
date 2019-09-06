@@ -5,26 +5,32 @@
   margin-bottom: 50px;
 }
 
+
 .register-artist-container{
 display: grid;
 grid-template-columns: auto auto auto;
-border: 1px solid red;
 grid-gap: 20px;
 margin: auto;
 max-width: 1200px;
 }
 
 .register-artist--item{
-border: 1px solid blue;
 widows: 86px;
 margin: auto;
 word-break: break-word;
 min-height: 500px;
 }
 
+.register-artist--item p{
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+    line-height: 20px;
+}
+
 .register-artist--item img{
  width:100%;
-
  display: block;
  margin-top: 20px;
  margin-bottom: 40px;
@@ -32,12 +38,16 @@ min-height: 500px;
 
 .register-artist--item h3{
 margin-bottom: 10px;
-font-size: 15px;
+font-size: 20px;
 color: white;
+font-weight: 900;
+    font-family: sans-serif;
+    line-height: 20px;
 }
 
 .register-artist--item p {
 margin-bottom: 10px;
-font-size: 15px;
+font-size: 18px;
 color: white;
+font-weight: 100;
 }
