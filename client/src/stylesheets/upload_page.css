@@ -1,7 +1,7 @@
 .background {
   width: 100%;
-  height: 100%;
-  background-color: #909090;
+  height: 110vh;
+  background-color: #000000;
 }
 
 .main-content-container {
@@ -18,7 +18,7 @@
   -webkit-box-shadow: -3px 1px 10px 0px rgba(0, 0, 0, 1);
   -moz-box-shadow: -3px 1px 10px 0px rgba(0, 0, 0, 1);
   box-shadow: -3px 1px 10px 0px rgba(0, 0, 0, 1);
-  height: 700px;
+  height: 100vh;
   width: 45%;
   background-color: #1b1b1b;
   z-index: 9;

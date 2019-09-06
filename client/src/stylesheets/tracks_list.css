@@ -1,7 +1,7 @@
 .tracks-list-container {
   height: 700px;
   width: 55%;
-  background-color: #909090;
+  background-color: #000000;
 }
 
 .tracks-list-wrapper {
@@ -42,10 +42,10 @@
   width: 16%;
   margin-top: 14px;
   margin-right: 18px;
+  box-shadow: 2px 2px 2px #101010;
   border-radius: 4px;
   background-color: #100c08;
   color: #bfff00;
-  box-shadow: 2px 2px 2px #101010;
   border: none;
 }
 
@@ -138,6 +138,7 @@
 #audio-drop:hover {
   cursor: pointer;
   color: blue;
+  text-shadow: 1px 1px 2px #004fff;
 }
 
 .track-header {
@@ -145,7 +146,7 @@
   margin-top: 20px;
   font-size: 25px;
   margin-left: 120px;
-  color: #1b1b1b;
+  color: whitesmoke;
   /* text-shadow: 1px 1px 2px #0098ff; */
 }
 
@@ -157,13 +158,20 @@
 
 #no-tracks {
   width: 400px;
-  height: 300px;
+  height: 25px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 50px;
   color: #ff0300;
+  padding: 20px;
+  border: 1px solid red;
   opacity: 0.65;
   font-weight: 550;
   font-size: 20px;
+  box-shadow: 1px 1px 3px #ff0101;
+}
+
+#no-tracks p {
+  text-shadow: 1px 1px 3px #ff0101;
 }
 
 #unclickable {
@@ -186,4 +194,10 @@
 #file-preview:hover {
   cursor: pointer;
   color: green;
+  text-shadow: 1px 1px 1px #bfff00;
+}
+
+.loading-balls {
+  margin-top: 14px;
+  margin-left: 150px;
 }
