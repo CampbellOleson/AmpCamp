@@ -38,6 +38,7 @@ class HomePageFeature extends React.Component {
                     );
 
                     if (data) {
+                    
                         this.featuredPhoto(data)
                         return (
                             <div>
@@ -46,12 +47,20 @@ class HomePageFeature extends React.Component {
                                         <div className="featured-photo">
                                             <Link to={`/album/${this.featuredAlbum._id}`}><img id="test" src={this.featuredAlbum.coverPhotoUrl} /></Link>
                                         </div>
-
                                         <div className="featured-info">
-                                            <h1>{this.featuredAlbum.title}</h1>
-                                            <hr></hr>
+                                            <h3>{this.featuredAlbum.title}</h3>
+                                            {/* <h1>{this.featuredAlbum.artist}</h1> */}
+                                            <h2>FEATURED ALBUM</h2>
                                         </div>
 
+                                            {/* <h3>by {this.featuredAlbum.artist}</h3> */}
+                                        <div className="featured-blurb">
+                                            <h3>{this.featuredAlbum.by}</h3>
+                                            <h2>{this.featuredAlbum.title}</h2>
+                                            <h3>has definetly been the greatest album I've hear all year
+                                                its got kick, punch and just the right amount of spice.
+                                            </h3>
+                                        </div>
 
                                     </div>
                                 </div>

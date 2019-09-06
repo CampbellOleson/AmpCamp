@@ -81,6 +81,7 @@ export default {
           }
         artist {
           _id
+          
         
         }
         
