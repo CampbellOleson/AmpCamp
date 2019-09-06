@@ -63,7 +63,10 @@ class HomePageFeature extends React.Component {
                             <Link to={`/album/${this.featuredAlbums[1]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
                             <Link to={`/album/${this.featuredAlbums[2]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[2].coverPhotoUrl} /></Link>
                             <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
+                            <Link to={`/album/${this.featuredAlbums[0]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[0].coverPhotoUrl} /></Link>
                             <Link to={`/album/${this.featuredAlbums[1]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
+                            <Link to={`/album/${this.featuredAlbums[2]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[2].coverPhotoUrl} /></Link>
+                            <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
 
                         </div>
                     </div>
