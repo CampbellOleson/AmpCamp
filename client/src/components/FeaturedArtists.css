@@ -12,8 +12,9 @@ body {
 
 .featured-artists--item {
   overflow: hidden;
-  max-width: 400px;
-  min-width: 250px;
+  /* max-width: 350px;
+  min-width: 250px; */
+  width: 250px;
   height: 100%;
   text-align: center;
   border-radius: 2px;
@@ -41,15 +42,47 @@ body {
 
 .album-image-container-home{
   position: relative;
+  opacity: 1;
+  transition: 0.4s;
 }
+
 .play-button {
   position: relative;
   width: 50px;
   height: 50px;
   border: 3px solid #fff;
-  top: -138px;
-  left: 40%;
+  top: -128px;
+  left: -1%;
   border-radius: 30px;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.pause {
+  position: relative;
+  top: -128px;
+  left: -1%;
+  width: 50px;
+  height: 50px;
+  border-style: solid;
+  border-width: 37px;
+  border-color: #fff;
+  border-style: double;
+  border-width: 0px 0px 0px 37px;
+  border-color: #fff;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.album-image-container-home:hover {
+  opacity: 0.4
+}
+
+.album-image-container-home:hover .play-button{
+  opacity: 1;
+}
+.album-image-container-home:hover .pause{
+  opacity: 1;
 }
 
 .album-image-container-home .play-button div {

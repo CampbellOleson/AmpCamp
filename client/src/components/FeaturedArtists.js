@@ -22,12 +22,17 @@ class FeaturedArtists extends React.Component {
     const { albums } = this.props.data;
     // const song = album.songs[0];
     if (albums) {
+        // debugger;
         return (
             <div className="featured-artists-container">
           {albums.map(album => {
               //   album.songs[Math.floor(Math.random() * album.songs.length)];
               // song = album.songs[Math.floor(Math.random() * album.songs.length)];
-              const song = album.songs[0]
+              let song = album.songs[0]
+              if (song === undefined) {
+                song = { _id: 'undefined'}
+              }
+            //   console.log(song)
             //   const song = album.songs[Math.floor(Math.random() * album.songs.length)];
             return (
               <div className="featured-artists--item">
@@ -35,11 +40,14 @@ class FeaturedArtists extends React.Component {
                   <img
                     className="home-page-album-art"
                     src={album.coverPhotoUrl}
-                    onClick={event => this.playSong(event, song)}
                   />
-                  <div className="play-button">
+                  <button
+                    onClick={event => this.playSong(event, song)}
+                    id={`${song._id}`}
+                    className="play-button"
+                  >
                     <div></div>
-                  </div>
+                  </button>
                 </div>
                 <Link to={`/artist/${album.artist._id}`}>
                   <h4>{album.title}</h4>
@@ -58,20 +66,30 @@ class FeaturedArtists extends React.Component {
   playSong(event, song) {
     event.preventDefault();
     let mountedSong = this.rap.audioEl.src.toString();
+    let id = song._id.toString();
+    let element = document.getElementById(id);
     // this.song = song;
     // debugger;
     if (mountedSong === song.audioUrl && this.playing === true) {
         this.rap.audioEl.pause();
         // this.setState({ playing: false })
+        element.classList.toggle("play-button");
+        element.classList.toggle("pause");
         this.playing = false;
     } else if (mountedSong === song.audioUrl && this.playing === false) {
-        this.rap.audioEl.play();
+        // debugger;
+        
+        this.rap.audioEl.play();    
+        element.classList.toggle("pause");
+        element.classList.toggle("play-button");
         // this.setState({ playing: true });
         this.playing = true;
     } else {
-      this.song = song.audioUrl;
-      this.playing = true;
-      this.setState({ update: (!this.state.update) });
+        this.song = song.audioUrl;
+        this.playing = true;
+        this.setState({ update: (!this.state.update) });
+        element.classList.toggle("pause");
+        element.classList.toggle("play-button");
     }
   }
 

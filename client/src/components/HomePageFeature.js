@@ -52,14 +52,15 @@ class HomePageFeature extends React.Component {
                         </div>
                     );
 
-                    if (data) {
+                    if (data.albums.length > 0) {
+                        console.log(data)
                         this.featuredPhoto(data)
                         return (
                             <div>
                                 <h1 id="daily-picks-heading">Amp Camp Daily Picks</h1>
                                 <div id="daily-picks-container">
                                     <div className="photobanner">
-                                        <Link to={`/album/${this.featuredAlbums[0]._id}`}><img className="photo-reel-image" className="first" src={this.featuredAlbums[0].coverPhotoUrl}></img></Link>
+                                        {/* <Link to={`/album/${this.featuredAlbums[0]._id}`}><img className="photo-reel-image" className="first" src={this.featuredAlbums[0].coverPhotoUrl}></img></Link>
                                         <Link to={`/album/${this.featuredAlbums[1]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
                                         <Link to={`/album/${this.featuredAlbums[2]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[2].coverPhotoUrl} /></Link>
                                         <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
@@ -67,7 +68,7 @@ class HomePageFeature extends React.Component {
                                         <Link to={`/album/${this.featuredAlbums[0]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[1].coverPhotoUrl} /></Link>
                                         <Link to={`/album/${this.featuredAlbums[1]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[2].coverPhotoUrl} /></Link>
                                         <Link to={`/album/${this.featuredAlbums[2]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
-                                        <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link>
+                                        <Link to={`/album/${this.featuredAlbums[3]._id}`}><img className="photo-reel-image" src={this.featuredAlbums[3].coverPhotoUrl} /></Link> */}
                                     </div>
                                 </div>
                                 {/* <h1>Featured Artists</h1> */}

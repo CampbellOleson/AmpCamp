@@ -76,6 +76,7 @@ export default {
         by
         coverPhotoUrl
         songs {
+          _id
           title
           audioUrl
         }
