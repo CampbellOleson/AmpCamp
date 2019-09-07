@@ -26,8 +26,7 @@ class AlbumUpload extends React.Component {
       tracks: {},
       image: null,
       imagePreview: null,
-      loading: false,
-      tempAudioUrl: null
+      loading: false
     };
   }
 
@@ -69,6 +68,39 @@ class AlbumUpload extends React.Component {
     };
   }
 
+  async submitTracks(newAlbum, cUserId) {
+    async function asyncForEach(array, callback) {
+      for (let index = 0; index < array.length; index++) {
+        await callback(array[index], index, array);
+      }
+    }
+
+    const uploadLoop = async () => {
+      await asyncForEach(Object.values(this.state.tracks), async track => {
+        const res = await this.uploadTrack(track);
+        console.log("audioUrl:");
+        console.log(res.data.audioUrl);
+        await this.props.newSong({
+          variables: {
+            title: track.title,
+            audioUrl: res.data.audioUrl,
+            album: newAlbum.data.newAlbum._id,
+            artist: cUserId
+          }
+        });
+      });
+      console.log("Tracks upload succesfully!");
+    };
+    await uploadLoop();
+  }
+
+  async uploadTrack(track) {
+    const formData = new FormData();
+    formData.set("audio", track.file);
+    const res = await FAPI.uploadAudio(formData);
+    return res;
+  }
+
   async submitPhoto() {
     const image = this.state.image;
     const formData = new FormData();
@@ -77,35 +109,6 @@ class AlbumUpload extends React.Component {
     console.log("imageUrl:");
     console.log(res.data.imageUrl);
     this.setState({ coverPhotoUrl: res.data.imageUrl });
-  }
-
-  // submitTracks(newAlbum, cUserId) {
-  //   Object.values(this.state.tracks).forEach(async track => {
-  //     const formData = new FormData();
-  //     formData.set("audio", track.file);
-  //     const res = await FAPI.uploadAudio(formData);
-  //     console.log("audioUrl:");
-  //     console.log(res.data.audioUrl);
-  //     const newSong = await this.props.newSong({
-  //       variables: {
-  //         title: track.title,
-  //         audioUrl: res.data.audioUrl,
-  //         album: newAlbum.data.newAlbum._id,
-  //         artist: cUserId
-  //       }
-  //     });
-  //     console.log(newSong);
-  //   });
-  // }
-
-  async uploadTrack(track) {
-    const formData = new FormData();
-    formData.set("audio", track.file);
-    const res = await FAPI.uploadAudio(formData);
-    console.log("audioUrl:");
-    console.log(res.data.audioUrl);
-    debugger;
-    this.setState({ tempAudioUrl: res.data.audioUrl });
   }
 
   handleSubmit = async e => {
@@ -126,30 +129,16 @@ class AlbumUpload extends React.Component {
       }
     });
 
-    // await this.submitTracks(newAlbum, cUserId);
+    await this.submitTracks(newAlbum, cUserId);
 
-    Object.values(this.state.tracks).forEach(async track => {
-      await this.uploadTrack(track);
-      const audioUrl = this.state.tempAudioUrl;
-      const newSong = this.props.newSong({
-          variables: {
-            title: track.title,
-            audioUrl: audioUrl,
-            album: newAlbum.data.newAlbum._id,
-            artist: cUserId
-          }
-        });
-      })
-      // console.log(newSong)
-
-    // this.setState({
-    //   title: "",
-    //   description: "",
-    //   by: "",
-    //   coverPhotoUrl: "",
-    //   tracks: {},
-    //   loading: false
-    // });
+    this.setState({
+      title: "",
+      description: "",
+      by: "",
+      coverPhotoUrl: "",
+      tracks: {},
+      loading: false
+    });
 
     this.props.history.push(`/artist/${cUserId}`);
   };
