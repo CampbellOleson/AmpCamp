@@ -14,16 +14,30 @@ import { HashRouter } from 'react-router-dom';
 import Mutations from './graphql/mutations'
 const {VERIFY_USER} = Mutations;
 
+let uri;
+if (process.env.NODE_ENV === "production") {
+  uri = `/graphql`;
+} else {
+  uri = "http://localhost:5000/graphql";
+}
+
+const httpLink = createHttpLink({
+  uri,
+  headers: {
+    authorization: localStorage.getItem("auth-token") || ""
+  }
+});
+
 const cache = new InMemoryCache({
     dataIdFromObject: object => object._id || null
 });
 
-const httpLink = createHttpLink({
-    uri: "http://localhost:5000/graphql",
-    headers: {
-        authorization: localStorage.getItem('auth-token')
-    }
-})
+// const httpLink = createHttpLink({
+//     uri: "http://localhost:5000/graphql",
+//     headers: {
+//         authorization: localStorage.getItem('auth-token')
+//     }
+// })
 
 const errorLink = onError(({ graphQLErrors}) => {
    
@@ -31,13 +45,22 @@ const errorLink = onError(({ graphQLErrors}) => {
     
 })
 
+// const client = new ApolloClient({
+//     link: ApolloLink.from([errorLink, httpLink]),
+//     cache,
+//     onError: ({ networkError, graphQLErrors}) => {
+//         console.log("graphQLErrors", graphQLErrors);
+//         console.log("networkError", networkError)
+//     }
+// });
+
 const client = new ApolloClient({
-    link: ApolloLink.from([errorLink, httpLink]),
-    cache,
-    onError: ({ networkError, graphQLErrors}) => {
-        console.log("graphQLErrors", graphQLErrors);
-        console.log("networkError", networkError)
-    }
+  link: ApolloLink.from([errorLink, httpLink]),
+  cache,
+  onError: ({ networkError, graphQLErrors }) => {
+    console.log("graphQLErrors", graphQLErrors);
+    console.log("networkError", networkError);
+  }
 });
 
 const token = localStorage.getItem('auth-token');
