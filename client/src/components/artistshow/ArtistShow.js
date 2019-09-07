@@ -30,7 +30,7 @@ class ArtistShow extends React.Component {
     this.imageDrop = this.imageDrop.bind(this);
   }
 
-  componentDidUpdate(prevProps, nextProps){
+  componentDidUpdate(prevProps, nextProps) {
     // debugger;
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.song = null;
@@ -78,9 +78,9 @@ class ArtistShow extends React.Component {
           let albums;
           let displayedSongs;
           let songsArr = [];
-          albums = data.user.albums.map(album => {
+          albums = data.user.albums.map((album, idx) => {
             album.songs.forEach(song => songsArr.push(song));
-            return <AlbumIndexItem album={album} />;
+            return <AlbumIndexItem album={album} key={idx} />;
           });
           displayedSongs = songsArr.map(song => (
             <SongIndexItem song={song} pickSong={this.pickSong} />
@@ -98,9 +98,7 @@ class ArtistShow extends React.Component {
                 />
                 <div className="main-page-container">
                   <div className="main-page-vertical-container">
-                    <div className="artist-show-albums-container">
-                      {albums}
-                    </div>
+                    <div className="artist-show-albums-container">{albums}</div>
                     <SongListHeader />
                     <div className="artist-show-songslist-container">
                       <ul>{displayedSongs}</ul>

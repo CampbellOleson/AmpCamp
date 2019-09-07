@@ -5,9 +5,5 @@ export const uploadImage = image => {
 };
 
 export const uploadAudio = audio => {
-  return axios({
-    method: "post",
-    url: "/api/upload-audio",
-    data: audio
-  });
+  return axios.post("/api/upload-audio", audio);
 };

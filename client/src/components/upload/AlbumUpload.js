@@ -17,6 +17,7 @@ class AlbumUpload extends React.Component {
     this.deleteTrack = this.deleteTrack.bind(this);
     this.submitPhoto = this.submitPhoto.bind(this);
     this.imageDrop = this.imageDrop.bind(this);
+    this.uploadTrack = this.uploadTrack.bind(this);
     this.state = {
       title: "Untitled Album",
       description: "",
@@ -25,7 +26,8 @@ class AlbumUpload extends React.Component {
       tracks: {},
       image: null,
       imagePreview: null,
-      loading: false
+      loading: false,
+      tempAudioUrl: null
     };
   }
 
@@ -72,14 +74,45 @@ class AlbumUpload extends React.Component {
     const formData = new FormData();
     formData.set("image", image);
     const res = await FAPI.uploadImage(formData);
+    console.log("imageUrl:");
     console.log(res.data.imageUrl);
     this.setState({ coverPhotoUrl: res.data.imageUrl });
+  }
+
+  // submitTracks(newAlbum, cUserId) {
+  //   Object.values(this.state.tracks).forEach(async track => {
+  //     const formData = new FormData();
+  //     formData.set("audio", track.file);
+  //     const res = await FAPI.uploadAudio(formData);
+  //     console.log("audioUrl:");
+  //     console.log(res.data.audioUrl);
+  //     const newSong = await this.props.newSong({
+  //       variables: {
+  //         title: track.title,
+  //         audioUrl: res.data.audioUrl,
+  //         album: newAlbum.data.newAlbum._id,
+  //         artist: cUserId
+  //       }
+  //     });
+  //     console.log(newSong);
+  //   });
+  // }
+
+  async uploadTrack(track) {
+    const formData = new FormData();
+    formData.set("audio", track.file);
+    const res = await FAPI.uploadAudio(formData);
+    console.log("audioUrl:");
+    console.log(res.data.audioUrl);
+    debugger;
+    this.setState({ tempAudioUrl: res.data.audioUrl });
   }
 
   handleSubmit = async e => {
     e.preventDefault();
     if (!this.validUpload()) return;
-    await this.setState({ loading: true });
+    this.setState({ loading: true });
+
     await this.submitPhoto();
     const { title, description, by, coverPhotoUrl } = this.state;
     const cUserId = localStorage.getItem("currentUserId");
@@ -93,28 +126,30 @@ class AlbumUpload extends React.Component {
       }
     });
 
-    Object.values(this.state.tracks).forEach(async track => {
-      const formData = new FormData();
-      formData.set("audio", track.file);
-      const res = await FAPI.uploadAudio(formData);
-      await this.props.newSong({
-        variables: {
-          title: track.title,
-          audioUrl: res.data.audioUrl,
-          album: newAlbum.data.newAlbum._id,
-          artist: cUserId
-        }
-      });
-    });
+    // await this.submitTracks(newAlbum, cUserId);
 
-    this.setState({
-      title: "",
-      description: "",
-      by: "",
-      coverPhotoUrl: "",
-      tracks: {},
-      loading: false
-    });
+    Object.values(this.state.tracks).forEach(async track => {
+      await this.uploadTrack(track);
+      const audioUrl = this.state.tempAudioUrl;
+      const newSong = this.props.newSong({
+          variables: {
+            title: track.title,
+            audioUrl: audioUrl,
+            album: newAlbum.data.newAlbum._id,
+            artist: cUserId
+          }
+        });
+      })
+      // console.log(newSong)
+
+    // this.setState({
+    //   title: "",
+    //   description: "",
+    //   by: "",
+    //   coverPhotoUrl: "",
+    //   tracks: {},
+    //   loading: false
+    // });
 
     this.props.history.push(`/artist/${cUserId}`);
   };
@@ -156,7 +191,7 @@ class AlbumUpload extends React.Component {
       <button id={this.publishButtonId()}>Publish ✓</button>
     ) : (
       <div className="loading-balls">
-          <ReactLoading color={"#bfff00"} type={"cylon"}/>
+        <ReactLoading color={"#bfff00"} type={"cylon"} />
       </div>
     );
   }
