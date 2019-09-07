@@ -1,17 +1,47 @@
 import React from 'react'
 import './RegisterArtistInfo.css'
 
-const RegisterArtistInfo = () => {
+const RegisterArtistInfo = (props) => {
+
     return (
         <div>
-            <div className="register-artist-banner"></div>
+            {/* <div className="register-artist-banner">
+
+            <div className='register-info-container'>
+<p>Bandcamp for Artists
+Fans have paid artists $412 million USD using Bandcamp, and $7.5 million in the last 30 days alone.
+
+Why, dear musician friend, are you not yet yourself twirling with arms spread beneath this gentle shower of silver and gold? Read on and be further convinced, or simply…
+                </p>
+            </div>
+     
+
+            <img className="register-banner-image" src="crowd1.jpg"/>
+            <button>Sign Up Now</button>
+
+        
+                <img id="blackground" src="black.jpg" />
+                <div className="register-button-container"></div>
+            </div> */}
+
+
+            <div className="info-banner">
+                <div className="info-banner__cta__container">
+                    <div className="info-banner__cta">
+                        <h1 className="info-banner__cta__heading">Bandcamp for Artists</h1>
+                        <p className="info-banner__cta__paragraph">Fans have paid artists $412 million USD using Bandcamp, and $7.5 million in the last 30 days alone.</p>
+                        <p className="info-banner__cta__paragraph">Why, dear musician friend, are you not yet yourself twirling with arms spread beneath this gentle shower of silver and gold? Read on and be further convinced, or simply…</p>
+                        <button onClick={e=> {e.preventDefault(); props.history.push('/register')}} className="info-banner__cta__button">Sign Up Now</button>
+                    </div>
+                </div>
+            </div>
 
 
             <div className="register-artist-container">
 
                 <div className="register-artist--item">
-
                     <img src="https://bandcamp.com/img/artists/feature-app-20171020.jpg" />
+
 
                     <h3>The Best Fan Experience</h3>
                     <p>

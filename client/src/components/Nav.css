@@ -4,22 +4,27 @@
 
 .nav ul{
 
-      margin-left: auto;
+    margin-left: auto;
     margin-right: 0;
-    position: initial;
 
 }
 
 .search-container{
    position: relative;
+   
+}
+
+.nav-search-container{
+    display: flex;
+    align-items: center;
+
 }
 
 #search-icon{
-  position: absolute;
-  width: 15px;
+
+  width: 244px;
   left:430px;
   top: 13px;
-  display: none;
 }
 
 .nav-search{
@@ -38,14 +43,18 @@ width: 200px;
 
 .nav ul li {
   
-  float: left;
+  /* float: left;
     width: 200px;
     height: 40px;
     line-height: 40px;
     text-align: center;
     font-size: 13px;
+    color: white; */
+
+    width: 200px;
+    font-size: 13px;
     color: white;
- 
+
 }
 
 .nav #user-dropdown li{
@@ -67,10 +76,7 @@ width: 200px;
 }
 
 .nav ul li{
-  float: left;
   width: 200px;
-  height: 40px;
-  line-height: 40px;
   text-align: center;
   font-size: 13px;
   color: white;
@@ -87,6 +93,8 @@ width: 200px;
     width: inherit;
     background:#222;
 
+      opacity: 1;
+    margin-top: 10px;
 }
 
 
@@ -106,16 +114,11 @@ width: 200px;
 }
 
 #logo{
-    margin-left: 0;
-    margin-right: 20px;
-    color: white;
+ color: white;
     font-weight: 200;
     font-size: 18px;
-    margin-left: 20px;
-    margin-bottom: px;
-    margin-top: 7px;
- 
-    
+    margin-right: 20px;
+
 }
 
  
@@ -199,5 +202,9 @@ width: 200px;
 
 #user-dropdown:hover{
   cursor: pointer;
+}
+
+.position-relative {
+  position: relative;
 }
 

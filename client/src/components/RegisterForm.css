@@ -1,29 +1,46 @@
 
 .registerForm{
-    width: 400px;
+     width: 400px;
     margin: 0 auto;
     position: absolute;
     left: 40%;
-    top: 20%;
+    top: 240px;
     background-color: #222;
     border-radius: 10px;
-    height: 450px;
+    height: 480px;
     border: 1px solid black;
     display: grid;
 }
 
 .register-content{
-    width: 80%;
     display: grid;
     margin: auto;
-    margin-top: -30px;
+    margin-top: -10px;
 }
+
+.register-photo{
+    background-image: url(https://i.pinimg.com/originals/4a/cb/69/4acb69c5f7c74fc097e96ac788e4e0c6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+    height: 800px;
+    z-index: 20;
+    animation: fadephoto;
+    animation-duration: 0s;
+}
+
+@keyframes fadephoto{
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+
 
 .registerForm h1{
   text-align: center;
     color: white;
     font-size: 20px;
-    /* margin-bottom: 20px; */
     margin: 0;
     margin-top: 35px;
 }
@@ -33,7 +50,6 @@
     margin: auto;
     margin: 20px;
     height: 30px;
-    margin-left: 30px;
 }
 
 .registerForm select{
@@ -67,7 +83,7 @@
 
 .close-button{
     color: white;
-    top: -20px;
+    top: -17px;
     position: relative;
     left: 320px;
     width: 20px;

@@ -3,7 +3,7 @@
     margin: 0 auto;
     position: absolute;
     left: 37%;
-    top: 170px;
+    top: 230px;
     background-color: #222;
     border-radius: 10px;
     height: 470px;
@@ -16,31 +16,31 @@
     display: none;
 }
 
-.showRegister li{ 
-    color: white;
-}
-
 .showRegister h1{
-    font-size: 20px;
+font-size: 20px;
     text-align: center;
     color: white;
     padding: 20;
+    margin-top: 10px;
 
 }
 
 .showRegister img{
- width: 120px;
+    width: 140px;
     float: left;
     margin-top: -10px;
     margin-right: 20px;
 }
 
-.register-info-container {
-    width: 80%;
+
+.register-info-container{
+height: 380px;
+  text-align:left;
+    position: relative;
+       width: 80%;
     display: grid;
     list-style-type: none;
     margin: auto;
-    padding: 20px;
     transition: 1s ease-in;
     padding: 10px;
      margin-top: 40px;
@@ -94,15 +94,19 @@
 
 #artist-description{
     margin-bottom: 45px;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 20px;
+    line-height: 18px;
+    display: flex;
 }
 
 
 #fan-description{
     margin-bottom: 45px;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 20px;
+    line-height: 18px;
+    display: flex;
 }
 
 .close{
@@ -110,13 +114,13 @@
 }
 
 .close-register-button{
-    color: white;
-    top: 35px;
+color: white;
+    top: 28px;
     position: relative;
     left: 430px;
     width: 20px;
     height: 20px;
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
 }
 

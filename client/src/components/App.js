@@ -16,14 +16,16 @@ import RegisterArtistInfo from "./RegisterArtistInfo";
 
 
 const App = () => {
+
   return (
     <div>
       <img id="form-fader" className="close" src='./black.jpg'></img>
       <Route path='/' component={Nav} />
 
       <Switch>
+       
         <Route exact path="/" component={Home} />
-        <Route exact path="/info" component={RegisterArtistInfo}/>
+        <Route exact path="/info" component={RegisterArtistInfo} />
         <AuthRoute exact path="/login" component={Login} routeType='auth' />
         <AuthRoute exact path="/register" component={Register} routeType='auth' />
         <AuthRoute exact path="/artist/:id" component={ArtistShow} />
@@ -31,6 +33,7 @@ const App = () => {
         <AuthRoute exact path="/songindex" component={SongIndex} />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
         <AuthRoute
+     
           exact
           path="/register"
           component={Register}
