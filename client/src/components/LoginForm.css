@@ -1,13 +1,13 @@
 
 .log-form{
-      width: 400px;
+width: 400px;
     margin: 0 auto;
     position: absolute;
     left: 40%;
     top: 240px;
     background-color: #222;
     border-radius: 10px;
-    height: 400px;
+    height: 380px;
     border: 1px solid black;
     display: grid;
 }
@@ -42,8 +42,7 @@
 }
 
 .log-form button{
-    margin: auto;
-    width: 77.5%;
+width: 77.5%;
     height: 50px;
     color: white;
     font-size: 20px;
@@ -60,10 +59,10 @@
 }
 
 .login-errors {
-    margin: auto;
-    padding-bottom: px;
+  margin: auto;
     color: red;
     margin-top: -13px;
+    margin-bottom: 20px;
 }
 
 .hide{
@@ -72,11 +71,12 @@
 
 
 .icon {
-  padding: 10px;
-  color: white;
-  min-width: 24px;
-  height: 24px;
-  text-align: center;
+padding: 10px;
+    color: white;
+    min-width: 24px;
+    height: 22px;
+    text-align: center;
+    border: 1px solid white;
 
 }
 .input-container {
@@ -85,6 +85,10 @@
   width: 100%;
   margin-left: 50px; 
   margin-bottom: 15px;
+}
+
+.hide{
+  display: none;
 }
 
 
@@ -114,9 +118,9 @@
 
 .close-button-login{
     color: white;
-    top: -54px;
+    top: -51px;
     position: relative;
-    left: 345px;
+    left: 343px;
     width: 20px;
     height: 20px;
     cursor: pointer;

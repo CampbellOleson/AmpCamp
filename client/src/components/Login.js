@@ -15,6 +15,7 @@ class Login extends Component {
       password: "",
       errors: []
     };
+
     this.submitForm = this.submitForm.bind(this)
     this.closeFormX = this.closeFormX.bind(this)
 
@@ -32,16 +33,32 @@ class Login extends Component {
 
   closeFormX() {
     let logform = document.getElementById('login-form').classList = 'close'
+      let err = document.getElementById('login-errors')
+      if (err) err.classList.toggle('hide')
   }
 
   submitForm() {
     let logform = document.getElementById('login-form').classList = 'close'
     document.getElementById('login-form').classList = 'log-form'
-  
+    debugger
+    if (!this.state.errors) { // if we dont have errors
+      let err = document.getElementById('login-errors') // find err tag 
+      if (err && !err.classList.contains('hide')) {
+        err.classList.toggle('hide')
+      } // if we find it and it itsnt hidden, hide it.
+    }
+    let err = document.getElementById('login-errors')
+    if (err && err.classList.contains('hide')) err.classList.toggle('hide')
+    // this.setState({ errors: '' })
+  }
+
+  componentDidUpdate() {
+    document.getElementById('login-form').classList = 'log-form'
   }
 
   componentDidMount() {
     document.getElementById('login-form').classList = 'log-form'
+    this.setState({ errors: '' })
   }
 
   componentWillUnmount() {
@@ -56,12 +73,6 @@ class Login extends Component {
     }
   }
 
-  componentDidUpdate() {
-    document.getElementById('login-form').classList = 'log-form'
-  //   let closeButton = document.getElementById('log-in-button')
-  //  closeButton.addEventListener('click', ()=>{
-  //  })
-  }
 
 
   render() {
@@ -77,6 +88,7 @@ class Login extends Component {
               username: '',
               password: ''
             })
+
           }}
           onCompleted={data => {
             const { token, username, _id } = data.login;
@@ -112,7 +124,6 @@ class Login extends Component {
                     name="username"
                     onChange={this.update("username")}
                     placeholder="Username"
-
                   />
                 </div>
 
@@ -128,7 +139,7 @@ class Login extends Component {
                   />
                 </div>
                 <button id="log-in-button" onClick={this.submitForm} type="submit">Log In</button>
-                <div className="login-errors">{this.state.errors}</div>
+                <div id="login-errors" className="login-errors">{this.state.errors}</div>
 
               </form>
 
