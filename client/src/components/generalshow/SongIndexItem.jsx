@@ -1,9 +1,10 @@
 import React from "react";
 
 export const SongIndexItem = props => {
+  const type = props.type;
   return (
     <li key={props.song._id}>
-      <div className="song-list-item-container">
+      <div className={`song-list-item-container`}>
         <div className="song-play-button-container">
           <button
             className="song-play-button"
@@ -17,7 +18,7 @@ export const SongIndexItem = props => {
           <p>{props.song.artist.username}</p>
         </div>
         <div className="song-info song-info-album">
-          <p>{props.song.album.title}</p>
+          <p>{props.album ? props.album.title : props.song.album.title}</p>
         </div>
       </div>
     </li>

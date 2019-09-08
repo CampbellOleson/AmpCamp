@@ -6,6 +6,7 @@
 
 .artist-show-page-container {
   display: inline-block;
+  min-height: 100vh;
   width: 76%;
   margin-left: 12%;
   background-color: #1b1b1b;
@@ -42,7 +43,8 @@
   font-weight: 500;
   font-size: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
   background-color: #1b1b1b;
   overflow-x: auto;
 }
@@ -63,4 +65,10 @@
   font-family: "Anton", sans-serif;
   font-size: 45px;
   padding: 12px;
+}
+
+.artist-profile-photo {
+  background-color: grey;
+  width: 100%;
+  padding-top: 100%;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { Query } from "react-apollo";
-import Queries from "../graphql/queries";
+import Queries from "../../graphql/queries";
 import ReactAudioPlayer from "react-audio-player";
 const { FETCH_SONGS } = Queries;
 class SongIndex extends React.Component {

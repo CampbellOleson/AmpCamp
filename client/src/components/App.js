@@ -14,15 +14,13 @@ import AlbumShow from './albumshow/AlbumShow';
 import './cssreset.css';
 import RegisterArtistInfo from "./RegisterArtistInfo";
 
-
 const App = () => {
 
 
   return (
     <div>
-      
-      <img id="form-fader" className="close" src='./black.jpg'></img>
-      <Route path='/' component={Nav} />
+      <img id="form-fader" className="close" src="./black.jpg"></img>
+      <Route path="/" component={Nav} />
 
       <Switch>
        
@@ -32,7 +30,7 @@ const App = () => {
         <AuthRoute exact path="/register" component={Register} routeType='auth' />
         <AuthRoute exact path="/artist/:id" component={ArtistShow} />
         <AuthRoute exact path="/album/:id" component={AlbumShow} />
-        <AuthRoute exact path="/songindex" component={SongIndex} />
+        {/* <AuthRoute exact path="/songindex" component={SongIndex} /> */}
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
         <AuthRoute
      
