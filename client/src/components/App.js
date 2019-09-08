@@ -8,7 +8,7 @@ import Nav from "./Nav";
 import Home from "./Home";
 import AlbumUpload from "./upload/AlbumUpload";
 import HomePageFeature from "./HomePageFeature";
-import SongIndex from './SongIndex';
+// import SongIndex from './SongIndex';
 import ArtistShow from './artistshow/ArtistShow';
 import AlbumShow from './albumshow/AlbumShow';
 import './cssreset.css';
@@ -46,3 +46,4 @@ const App = () => {
 };
 
 export default App;
+ 
