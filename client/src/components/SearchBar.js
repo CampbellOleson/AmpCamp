@@ -9,7 +9,8 @@ class SearchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            suggestions: null
+            suggestions: null,
+            toggle: null
         }
         this.renderSuggestions = this.renderSuggestions.bind(this)
         this.closeSuggestions = this.closeSuggestions.bind(this)
@@ -18,6 +19,19 @@ class SearchBar extends React.Component {
         document.addEventListener('click', () => {
             this.setState({ suggestions: '' })
         })
+
+
+        
+
+        // let dropDownCont = document.querySelector('.dropdown-container')
+
+        // if (dropDownCont && dropDownCont.classList.contains('hide')) {
+
+        //     document.addEventListener('click', () => {
+        //         dropDownCont.classList.toggle('hide')
+        //         this.setState({ toggle: !this.state.toggle })
+        //     })
+        // }
 
         const { albums, users } = data
         const value = e.target.value; // current value of search bar
@@ -41,8 +55,13 @@ class SearchBar extends React.Component {
                     return regex.test(v.username)
                 }).sort()
             }
-            this.setState({ suggestions: sugs })
+
         }
+        if (sugs.length > 8) {
+            sugs = sugs.slice(0, 8)
+        }
+
+        this.setState({ suggestions: sugs })
     }
 
     closeSuggestions() {

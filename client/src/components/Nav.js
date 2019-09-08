@@ -6,18 +6,20 @@ import Queries from "../graphql/queries";
 import "./Nav.css";
 import './RegisterPopup.css'
 import SearchBar from "./SearchBar";
+import { $, jQuery } from 'jquery';
 
 const { IS_LOGGED_IN } = Queries;
 class Nav extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      nav: ''
+      toggle: null
     }
     let userDropdown = document.getElementById('user-dropdown')
     this.closeForm = this.closeForm.bind(this)
     this.closeUserTab = this.closeUserTab.bind(this)
     this.hideRegister = this.hideRegister.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   showRegister() {
@@ -26,23 +28,20 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    if (localStorage.username) {
-      this.closeUserTab()
-    }
 
-  }
+    window.onclick = function (event) {
 
-  componentDidUpdate() {
-    let logout = document.getElementById('logout-tab')
-    let profile = document.getElementById('profile-tab')
-    let upload = document.getElementById('upload-tab')
-
-    if (logout && profile && upload) {
-      logout.classList = ('hide')
-      profile.classList = ('hide')
-      upload.classList = ('hide')
+      if (!event.target.matches('.nav-link')) {
+        let dropDownCont = document.querySelector('.dropdown-container')
+        if (dropDownCont && !dropDownCont.classList.contains('hide')) {
+          dropDownCont.classList.toggle('hide')
+        }
+      }
     }
   }
+
+
+
 
   hideRegister() {
     let regform = document.getElementById("reg-form");
@@ -57,24 +56,31 @@ class Nav extends React.Component {
     if (logform) logform.classList = "close";
   };
 
+  handleLogout = (client) => (e) => {
+    e.preventDefault();
+    this.closeUserTab(e)
+    localStorage.removeItem("auth-token");
+    client.writeData({
+      data: { isLoggedIn: false }
+    });
+  }
+
   closeUserTab() {
 
     if (localStorage.username) {
-      let dropButton = document.getElementById('user-dropdown')
-      let logout = document.getElementById('logout-tab')
-      let profile = document.getElementById('profile-tab')
-      let upload = document.getElementById('upload-tab')
+      let dropDownCont = document.querySelector('.dropdown-container')
 
-      if (logout && profile && upload) {
-        logout.classList.toggle('hide')
-        profile.classList.toggle('hide')
-        upload.classList.toggle('hide')
+      if (dropDownCont) {
+        dropDownCont.classList.toggle('hide')
+        this.setState({ toggle: 'hi' })
       }
 
     } else {
       return null
     }
+
   }
+
 
   render() {
     return (
@@ -90,42 +96,23 @@ class Nav extends React.Component {
                       <div className="nav">
                         <div className="nav-search-container">
 
-                          <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
+                           <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
                           <SearchBar />
                         </div>
-                        <ul id="user-dropdown">
-                          <li><a onClick={e => this.closeUserTab(e)}>{localStorage.getItem('username')}</a>
+
+
+                        {/************************************************************/}
+                        <div className="user-profile-container">
+                          <a id="nav-link" className="nav-link" onClick={e => this.closeUserTab(e)}>{localStorage.getItem('username')}</a>
+                          <div className="dropdown-container hide">
                             <ul>
-                              <div>
-                                <li>
-                                  <a onClick={e => this.closeUserTab(e)}></a><a className="drop-down-tabs" id="logout-tab"
-                                    onClick={e => {
-                                      e.preventDefault();
-                                      localStorage.removeItem("auth-token");
-                                      client.writeData({
-                                        data: { isLoggedIn: false }
-                                      });
-                                      this.props.history.push("/");
-                                    }}
-                                  >
-                                    Logout
-                              </a>
-                                </li>
-
-
-                                <li>
-                                  <Link onClick={(e) => this.closeUserTab(e)} to={`/upload`}><a id="upload-tab">Upload Album</a></Link>
-                                </li>
-
-                                <li>
-                                  <Link onClick={(e) => this.closeUserTab(e)} to={`/artist/${localStorage.currentUserId}`}><a id="profile-tab">View Profile</a></Link>
-                                </li>
-
-
-                              </div>
+                              <li><Link onClick={e => this.closeUserTab(e)} to={`/upload`}>Upload Album</Link></li>
+                              <li><Link onClick={e => this.closeUserTab(e)} to={`/artist/${localStorage.currentUserId}`}>Profile</Link></li>
+                              <li><Link onClick={this.handleLogout(client)}>Logout</Link></li>
                             </ul>
-                          </li>
-                        </ul>
+                          </div>
+                        </div>
+                        {/************************************************************/}
                       </div>
                     </div>
                   );
@@ -138,16 +125,15 @@ class Nav extends React.Component {
                           <SearchBar />
                         </div>
                         <div className="login-or-signup">
-                          <a><Link id="nav-signup" onClick={this.showRegister}>&nbsp;Sign Up</Link></a>
-
-                          <a><Link onClick={this.hideRegister} id="nav-login" to="/login"> Login &nbsp;&nbsp;|</Link></a>
+                          <a><Link onClick={this.hideRegister} id="nav-login" to="/login">Login &nbsp;&nbsp;&nbsp;|</Link></a>
+                          <a><Link id="nav-signup" onClick={this.showRegister}>Sign Up &nbsp;</Link></a>
 
                           <form id="reg-form" className="hideRegister">
                             <div
                               onClick={this.closeForm}
                               className="close-register-button"
                             >
-                              x
+                              ✕
                           </div>
 
                             <h1> Sign up for an Amp Camp account</h1>
@@ -155,7 +141,7 @@ class Nav extends React.Component {
                             <div className="register-info-container">
                               <div className="register-info-items">
                                 <a>
-                                  <Link 
+                                  <Link
                                     onClick={this.hideRegister}
                                     id="register-artist"
                                     to="/info">
@@ -199,12 +185,17 @@ class Nav extends React.Component {
                 }
               }}
             </Query>
-          )}
+          )
+          }
         </ApolloConsumer>
-      </div>
+      </div >
     )
   }
 }
 
 export default Nav;
+
+
+
+
 

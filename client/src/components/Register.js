@@ -16,7 +16,6 @@ class Register extends Component {
       errors: '',
       artist: false
     };
-    this.submitForm = this.submitForm.bind(this)
     this.closeFormX = this.closeFormX.bind(this)
     this.determineAccount = this.determineAccount.bind(this)
 
@@ -38,29 +37,37 @@ class Register extends Component {
 
   closeFormX() {
     let regform = document.getElementById('register-form').classList = 'close'
+
   }
 
-
-  submitForm() {
-  }
 
   componentDidMount() {
     let account = document.getElementById('account-selector')
     let photo = document.getElementById('account-type-photo')
+
+
 
     if (account.selectedIndex === 0) {
       photo.src = './rockstaraccount.svg'
     } else {
       photo.src = './fanaccount.svg'
     }
-
   }
 
   componentDidUpdate() {
     let regform = document.getElementById('register-form')
     regform.classList = 'registerForm'
 
+    let registerFan = document.getElementById('register-fan')
+
+    let that = this;
+    registerFan.addEventListener('click', function () {
+      that.setState({ errors: [] })
+    })
+
+
   }
+
 
   determineAccount() {
 
@@ -92,6 +99,7 @@ class Register extends Component {
         <Mutation
           mutation={REGISTER_USER}
           onError={err => {
+
             this.setState({
               errors: err.graphQLErrors[0].message,
 
@@ -108,85 +116,84 @@ class Register extends Component {
         >
           {registerUser => (
             <div>
-            <div className="register-photo"></div>
-            <form id="register-form" className="registerForm"
-              onSubmit={e => {
-                e.preventDefault();
-                registerUser({
-                  variables: {
-                    email: this.state.email,
-                    username: this.state.username,
-                    password: this.state.password,
-                    artist: this.state.artist
-                  }
-                });
-              }}
+              <div className="register-photo"></div>
+              <form id="register-form" className="registerForm"
+                onSubmit={e => {
+                  e.preventDefault();
+                  registerUser({
+                    variables: {
+                      email: this.state.email,
+                      username: this.state.username,
+                      password: this.state.password,
+                      artist: this.state.artist
+                    }
+                  });
+                }}
+
+              >
+                <div className="register-content">
+                  <h1> Sign up for an account</h1>
+                  <div onClick={this.closeFormX} className="close-button">✕</div>
+
+                  <div className="reg-item">
+                    <img className='register-icon' src="./email.svg"></img>
+
+                    <input
+                      className='register-input-field'
+                      type="email"
+                      value={this.state.email}
+                      placeholder="enter email"
+                      autocomplete="off"
+                      onChange={this.update("email")}
+                    />
+                  </div>
+                  <div className="reg-item">
+                    <img className='register-icon' src="./user.svg"></img>
+                    <input
+                      className='register-input-field'
+                      type="text"
+                      value={this.state.username}
+                      placeholder="enter username"
+                      autocomplete="off"
+                      onChange={this.update("username")}
+                    />
+                  </div>
 
 
-            >
-              <div className="register-content">
-                <h1> Sign up for a fan account</h1>
-                <div onClick={this.closeFormX} className="close-button">✕</div>
 
-                <div className="reg-item">
-                  <img className='register-icon' src="./email.svg"></img>
+                  <div className="reg-item">
+                    <img className='register-icon' src="./lock.svg"></img>
+                    <input
+                      className='register-input-field'
 
-                  <input
-                    className='register-input-field'
-                    type="email"
-                    value={this.state.email}
-                    placeholder="enter email"
-                    autocomplete="off"
-                    onChange={this.update("email")}
-                  />
-                </div>
-                <div className="reg-item">
-                  <img className='register-icon' src="./user.svg"></img>
-                  <input
-                    className='register-input-field'
-                    type="text"
-                    value={this.state.username}
-                    placeholder="enter username"
-                    autocomplete="off"
-                    onChange={this.update("username")}
-                  />
-                </div>
+                      type="password"
+                      value={this.state.password}
+                      placeholder="enter password"
+                      autocomplete="off"
+                      onChange={this.update("password")}
+                    />
+                  </div>
 
-
-
-                <div className="reg-item">
-                  <img className='register-icon' src="./lock.svg"></img>
-                  <input
-                    className='register-input-field'
-
-                    type="password"
-                    value={this.state.password}
-                    placeholder="enter password"
-                    autocomplete="off"
-                    onChange={this.update("password")}
-                  />
-                </div>
-
-                <div className='reg-item'>
-                  <img id='account-type-photo' className='register-icon'></img>
-                  <select onChange={this.determineAccount} id='account-selector' className='account-type' onChange={this.updateSelect("artist")}>
-                    <option
-                      value={Boolean(false)}
-                      selected
-                    >
-                      Listener
+                  <div className='reg-item'>
+                    <img id='account-type-photo' className='register-icon'></img>
+                    <select onChange={this.determineAccount} id='account-selector' className='account-type' onChange={this.updateSelect("artist")}>
+                      <option
+                        value={Boolean(false)}
+                        selected
+                      >
+                        Listener
               </option>
-                    <option value={Boolean(true)}>
-                      Artist
+                      <option value={Boolean(true)}>
+                        Artist
               </option>
-                  </select>
-                </div>
-                <button onClick={this.submitForm} type="submit">Register</button>
-                <div className="register-errors">{this.state.errors}</div>
+                    </select>
+                  </div>
+                  <button id="register" type="submit">Register</button>
+                  <div className="register-errors">{this.state.errors}</div>
 
-              </div>
-            </form>
-          </div>
+                </div>
+              </form>
+            </div>
           )}
         </Mutation>
       </div>

@@ -15,6 +15,7 @@ class Login extends Component {
       password: "",
       errors: []
     };
+
     this.submitForm = this.submitForm.bind(this)
     this.closeFormX = this.closeFormX.bind(this)
 
@@ -32,16 +33,27 @@ class Login extends Component {
 
   closeFormX() {
     let logform = document.getElementById('login-form').classList = 'close'
+    let err = document.getElementById('login-errors')
   }
 
   submitForm() {
     let logform = document.getElementById('login-form').classList = 'close'
     document.getElementById('login-form').classList = 'log-form'
-  
+
+  }
+
+  componentDidUpdate() {
+    let that = this
+    document.getElementById('login-form').classList = 'log-form'
+    let dropButton = document.getElementById('nav-login')
+    dropButton.addEventListener('click', function () {
+      that.setState({ errors: [] })
+    })
   }
 
   componentDidMount() {
     document.getElementById('login-form').classList = 'log-form'
+    this.setState({ errors: [] })
   }
 
   componentWillUnmount() {
@@ -56,15 +68,8 @@ class Login extends Component {
     }
   }
 
-  componentDidUpdate() {
-    document.getElementById('login-form').classList = 'log-form'
-  //   let closeButton = document.getElementById('log-in-button')
-  //  closeButton.addEventListener('click', ()=>{
-  //  })
-  }
-
-
   render() {
+
 
     return (
       <div>
@@ -72,11 +77,11 @@ class Login extends Component {
         <Mutation
           mutation={LOGIN_USER}
           onError={err => {
+
             this.setState({
-              errors: err.graphQLErrors[0].message,
-              username: '',
-              password: ''
+              errors: err.graphQLErrors[0].message
             })
+
           }}
           onCompleted={data => {
             const { token, username, _id } = data.login;
@@ -112,7 +117,6 @@ class Login extends Component {
                     name="username"
                     onChange={this.update("username")}
                     placeholder="Username"
-
                   />
                 </div>
 
@@ -128,7 +132,7 @@ class Login extends Component {
                   />
                 </div>
                 <button id="log-in-button" onClick={this.submitForm} type="submit">Log In</button>
-                <div className="login-errors">{this.state.errors}</div>
+                <div id="login-errors" className="login-errors">{this.state.errors ? this.state.errors : ''}</div>
 
               </form>
 
