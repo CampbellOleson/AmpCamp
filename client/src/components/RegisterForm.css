@@ -88,6 +88,7 @@ margin: auto;
     margin-right: 0;
     justify-content: flex-end;
     bottom: 18px;
+    cursor: pointer;
 }
 
 
