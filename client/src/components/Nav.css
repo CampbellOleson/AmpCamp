@@ -246,4 +246,5 @@ display: none;
     padding: 20px;
     display: inline-block;
     text-decoration: none;
+    cursor: pointer;
 }

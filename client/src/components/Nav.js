@@ -96,7 +96,7 @@ class Nav extends React.Component {
                       <div className="nav">
                         <div className="nav-search-container">
 
-                          <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
+                           <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
                           <SearchBar />
                         </div>
 
