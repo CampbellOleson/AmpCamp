@@ -16,7 +16,6 @@ class Register extends Component {
       errors: '',
       artist: false
     };
-    this.submitForm = this.submitForm.bind(this)
     this.closeFormX = this.closeFormX.bind(this)
     this.determineAccount = this.determineAccount.bind(this)
 
@@ -38,15 +37,15 @@ class Register extends Component {
 
   closeFormX() {
     let regform = document.getElementById('register-form').classList = 'close'
+
   }
 
-
-  submitForm() {
-  }
 
   componentDidMount() {
     let account = document.getElementById('account-selector')
     let photo = document.getElementById('account-type-photo')
+
+
 
     if (account.selectedIndex === 0) {
       photo.src = './rockstaraccount.svg'
@@ -55,23 +54,19 @@ class Register extends Component {
     }
   }
 
-  componentDidUpdate(_, prevState) {
+  componentDidUpdate() {
     let regform = document.getElementById('register-form')
     regform.classList = 'registerForm'
 
-    if (prevState.errors.length > 0) {
-      this.setState({ errors: '' })
-    }
+    let registerFan = document.getElementById('register-fan')
+
+    let that = this;
+    registerFan.addEventListener('click', function () {
+      that.setState({ errors: [] })
+    })
+
 
   }
-
-
-
-
-
-
-
-
 
 
   determineAccount() {
@@ -104,6 +99,7 @@ class Register extends Component {
         <Mutation
           mutation={REGISTER_USER}
           onError={err => {
+
             this.setState({
               errors: err.graphQLErrors[0].message,
 
@@ -192,7 +188,7 @@ class Register extends Component {
               </option>
                     </select>
                   </div>
-                  <button type="submit">Register</button>
+                  <button id="register" type="submit">Register</button>
                   <div className="register-errors">{this.state.errors}</div>
 
                 </div>

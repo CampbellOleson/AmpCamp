@@ -70,10 +70,10 @@
 }
 
 .register-errors {
-    margin: auto;
+margin: auto;
     padding-bottom: 0px;
     color: red;
-    margin-top: -23px;
+    margin-top: -13px;
 }
 
 
@@ -83,12 +83,11 @@
 
 .close-button{
     color: white;
-    top: -17px;
     position: relative;
-    left: 320px;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+    display: flex;
+    margin-right: 0;
+    justify-content: flex-end;
+    bottom: 18px;
 }
 
 

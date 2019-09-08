@@ -62,13 +62,7 @@ width: 77.5%;
   margin: auto;
     color: red;
     margin-top: -13px;
-    margin-bottom: 20px;
 }
-
-.hide{
-    display: none;
-}
-
 
 .icon {
 padding: 10px;
@@ -88,7 +82,7 @@ padding: 10px;
 }
 
 .hide{
-  display: none;
+ opacity: 0.2;
 }
 
 

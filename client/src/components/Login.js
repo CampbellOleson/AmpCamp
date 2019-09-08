@@ -33,32 +33,27 @@ class Login extends Component {
 
   closeFormX() {
     let logform = document.getElementById('login-form').classList = 'close'
-      let err = document.getElementById('login-errors')
-      if (err) err.classList.toggle('hide')
+    let err = document.getElementById('login-errors')
   }
 
   submitForm() {
     let logform = document.getElementById('login-form').classList = 'close'
     document.getElementById('login-form').classList = 'log-form'
-    debugger
-    if (!this.state.errors) { // if we dont have errors
-      let err = document.getElementById('login-errors') // find err tag 
-      if (err && !err.classList.contains('hide')) {
-        err.classList.toggle('hide')
-      } // if we find it and it itsnt hidden, hide it.
-    }
-    let err = document.getElementById('login-errors')
-    if (err && err.classList.contains('hide')) err.classList.toggle('hide')
-    // this.setState({ errors: '' })
+
   }
 
   componentDidUpdate() {
+    let that = this
     document.getElementById('login-form').classList = 'log-form'
+    let dropButton = document.getElementById('nav-login')
+    dropButton.addEventListener('click', function () {
+      that.setState({ errors: [] })
+    })
   }
 
   componentDidMount() {
     document.getElementById('login-form').classList = 'log-form'
-    this.setState({ errors: '' })
+    this.setState({ errors: [] })
   }
 
   componentWillUnmount() {
@@ -73,9 +68,8 @@ class Login extends Component {
     }
   }
 
-
-
   render() {
+
 
     return (
       <div>
@@ -83,10 +77,9 @@ class Login extends Component {
         <Mutation
           mutation={LOGIN_USER}
           onError={err => {
+
             this.setState({
-              errors: err.graphQLErrors[0].message,
-              username: '',
-              password: ''
+              errors: err.graphQLErrors[0].message
             })
 
           }}
@@ -139,7 +132,7 @@ class Login extends Component {
                   />
                 </div>
                 <button id="log-in-button" onClick={this.submitForm} type="submit">Log In</button>
-                <div id="login-errors" className="login-errors">{this.state.errors}</div>
+                <div id="login-errors" className="login-errors">{this.state.errors ? this.state.errors : ''}</div>
 
               </form>
 

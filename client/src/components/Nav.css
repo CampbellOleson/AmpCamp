@@ -121,7 +121,7 @@ width: 200px;
   color: white;
   display: block;
   list-style-type: none;
-display: inline;
+  display: inline;
     float: right;
     font-size: 14px;
     padding-left: 3px;
@@ -189,7 +189,8 @@ display: inline;
 
 
 .hide{
-  display: none;
+display: none;
+
 }
 
 .nav ul li:hover ul li {
