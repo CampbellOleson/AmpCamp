@@ -26,8 +26,8 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    if (localStorage.username){
-    this.closeUserTab()
+    if (localStorage.username) {
+      this.closeUserTab()
     }
 
   }
@@ -59,19 +59,19 @@ class Nav extends React.Component {
 
   closeUserTab() {
 
-    if (localStorage.username){
-    let dropButton = document.getElementById('user-dropdown')
-    let logout = document.getElementById('logout-tab')
-    let profile = document.getElementById('profile-tab')
-    let upload = document.getElementById('upload-tab')
+    if (localStorage.username) {
+      let dropButton = document.getElementById('user-dropdown')
+      let logout = document.getElementById('logout-tab')
+      let profile = document.getElementById('profile-tab')
+      let upload = document.getElementById('upload-tab')
 
-    if (logout && profile && upload){
-    logout.classList.toggle('hide')
-    profile.classList.toggle('hide')
-    upload.classList.toggle('hide')
-    }
-    
-    }else{
+      if (logout && profile && upload) {
+        logout.classList.toggle('hide')
+        profile.classList.toggle('hide')
+        upload.classList.toggle('hide')
+      }
+
+    } else {
       return null
     }
   }
@@ -88,9 +88,11 @@ class Nav extends React.Component {
                   return (
                     <div className="outer-nav-container">
                       <div className="nav">
-                        <img id="search-icon" src="./search.svg" />
-                        <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
-                        <SearchBar />
+                        <div className="nav-search-container">
+
+                          <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
+                          <SearchBar />
+                        </div>
                         <ul id="user-dropdown">
                           <li><a onClick={e => this.closeUserTab(e)}>{localStorage.getItem('username')}</a>
                             <ul>
@@ -131,8 +133,10 @@ class Nav extends React.Component {
                   return (
                     <div className="outer-nav-container">
                       <div className="nav">
-                        <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
-                        <SearchBar />
+                        <div className="nav-search-container">
+                          <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
+                          <SearchBar />
+                        </div>
                         <div className="login-or-signup">
                           <a><Link id="nav-signup" onClick={this.showRegister}>&nbsp;Sign Up</Link></a>
 
@@ -143,7 +147,7 @@ class Nav extends React.Component {
                               onClick={this.closeForm}
                               className="close-register-button"
                             >
-                              X
+                              x
                           </div>
 
                             <h1> Sign up for an Amp Camp account</h1>
@@ -151,13 +155,16 @@ class Nav extends React.Component {
                             <div className="register-info-container">
                               <div className="register-info-items">
                                 <a>
-                                  <Link id="register-artist" to="/register">
+                                  <Link 
+                                    onClick={this.hideRegister}
+                                    id="register-artist"
+                                    to="/info">
                                     Sign up as an artist
                                 </Link>
                                 </a>
                                 <img src="guitar.svg" />
                                 <li id="artist-description">
-                                  Sign up as an artist Sell directly to your fans
+                                  Sell directly to your fans
                                   with total control over your music and pricing.
                                   Easy access to your customers’ data, real-time
                                   stats, music chart reporting, and more.
@@ -176,7 +183,7 @@ class Nav extends React.Component {
                                 </a>
 
                                 <li id="fan-description">
-                                  Sign up as a fan Follow your favorite artists,
+                                  Follow your favorite artists,
                                   keep a wishlist, get instant streaming of your
                                   purchases, showcase your collection, and explore
                                   the music of like-minded fans

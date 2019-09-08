@@ -38,16 +38,13 @@ class Register extends Component {
 
   closeFormX() {
     let regform = document.getElementById('register-form').classList = 'close'
-    let fade = document.getElementById('form-fader').classList = 'close'
   }
 
 
   submitForm() {
-    let fade = document.getElementById('form-fader').classList = 'close'
   }
 
   componentDidMount() {
-    let fade = document.getElementById('form-fader').classList = 'form-fader'
     let account = document.getElementById('account-selector')
     let photo = document.getElementById('account-type-photo')
 
@@ -61,14 +58,12 @@ class Register extends Component {
 
   componentDidUpdate() {
     let regform = document.getElementById('register-form')
-    let fade = document.getElementById('form-fader').classList = 'form-fader'
     regform.classList = 'registerForm'
 
   }
 
   determineAccount() {
 
-    let fade = document.getElementById('form-fader').classList = 'form-fader'
     let account = document.getElementById('account-selector')
     let photo = document.getElementById('account-type-photo')
 
@@ -112,6 +107,8 @@ class Register extends Component {
           update={(client, data) => this.updateCache(client, data)}
         >
           {registerUser => (
+            <div>
+            <div className="register-photo"></div>
             <form id="register-form" className="registerForm"
               onSubmit={e => {
                 e.preventDefault();
@@ -125,10 +122,11 @@ class Register extends Component {
                 });
               }}
 
+
             >
               <div className="register-content">
                 <h1> Sign up for a fan account</h1>
-                <div onClick={this.closeFormX} className="close-button">X</div>
+                <div onClick={this.closeFormX} className="close-button">✕</div>
 
                 <div className="reg-item">
                   <img className='register-icon' src="./email.svg"></img>
@@ -188,6 +186,7 @@ class Register extends Component {
 
               </div>
             </form>
+          </div>
           )}
         </Mutation>
       </div>

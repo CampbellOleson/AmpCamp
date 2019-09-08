@@ -1,4 +1,12 @@
+body {
+  font-family: Helvetica, Arial, sans-serif !important;
+     width: 100%;
+     height: auto;
+     border: 1px solid red;
+}
+
 .App {
+     background-image: url('https://i.pinimg.com/originals/4a/cb/69/4acb69c5f7c74fc097e96ac788e4e0c6.jpg');
 
 }
 

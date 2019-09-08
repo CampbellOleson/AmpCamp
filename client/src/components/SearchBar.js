@@ -98,7 +98,7 @@ class SearchBar extends React.Component {
                     {({ loading, errors, data }) => {
                         if (data) {
                             return (
-                                <div>
+                                <div className="position-relative">
                                     <div className="search-container">
                                         <input
                                             onChange={(e) => { this.onTextChanged(e, data) }} // how to take in e and data 

@@ -32,13 +32,11 @@ class Login extends Component {
 
   closeFormX() {
     let logform = document.getElementById('login-form').classList = 'close'
-    // this.hideUserTabsOnLoad()
   }
 
   submitForm() {
-   
-    document.getElementById('login-form').classList = 'close'
-    
+    let logform = document.getElementById('login-form').classList = 'close'
+    document.getElementById('login-form').classList = 'log-form'
   
   }
 
@@ -46,33 +44,31 @@ class Login extends Component {
     document.getElementById('login-form').classList = 'log-form'
   }
 
- componentWillUnmount(){
-   let logout = document.getElementById('logout-tab')
-   let profile = document.getElementById('profile-tab')
-   let upload = document.getElementById('upload-tab')
+  componentWillUnmount() {
+    let logout = document.getElementById('logout-tab')
+    let profile = document.getElementById('profile-tab')
+    let upload = document.getElementById('upload-tab')
 
-   if (logout && profile && upload) {
-     logout.classList = ('hide')
-     profile.classList = ('hide')
-     upload.classList = ('hide')
-   }
+    if (logout && profile && upload) {
+      logout.classList = ('hide')
+      profile.classList = ('hide')
+      upload.classList = ('hide')
+    }
   }
 
- componentDidUpdate() {
+  componentDidUpdate() {
     document.getElementById('login-form').classList = 'log-form'
+  //   let closeButton = document.getElementById('log-in-button')
+  //  closeButton.addEventListener('click', ()=>{
+  //  })
   }
 
-
-
-
- 
 
   render() {
 
     return (
       <div>
-
-
+        <div className="login-photo"></div>
         <Mutation
           mutation={LOGIN_USER}
           onError={err => {
@@ -106,7 +102,7 @@ class Login extends Component {
                 }}
               >
                 <h1>Log in to your account</h1>
-                <div onClick={this.closeFormX} className="close-button-login">X</div>
+                <div onClick={this.closeFormX} className="close-button-login">✕</div>
 
                 <div className="input-container">
                   <img src="./user.svg" className="fa fa-user icon"></img>
@@ -131,7 +127,7 @@ class Login extends Component {
                     placeholder="Password"
                   />
                 </div>
-                <button onClick={this.submitForm} type="submit">Log In</button>
+                <button id="log-in-button" onClick={this.submitForm} type="submit">Log In</button>
                 <div className="login-errors">{this.state.errors}</div>
 
               </form>
