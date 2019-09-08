@@ -53,7 +53,9 @@ export default {
         title
         by
         coverPhotoUrl
+        description
         artist {
+          _id
           username
           bannerPhoto
         }

@@ -9,7 +9,14 @@ const playerStyle = {
 const PlaybarNav = props => (
   <div className="audio-player-element">
     <div className="currently-playing-info-container">
-      <img src={props.song.album.coverPhotoUrl} className="mini-cover-photo" />
+      <img
+        src={
+          props.album
+            ? props.album.coverPhotoUrl
+            : props.song.album.coverPhotoUrl
+        }
+        className="mini-cover-photo"
+      />
       <div className="currently-playing-artist-title">
         <span className="currently-playing-title">{props.song.title}</span>
         <span className="currently-playing-artist">

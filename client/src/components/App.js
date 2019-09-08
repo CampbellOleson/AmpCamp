@@ -8,24 +8,29 @@ import Nav from "./Nav";
 import Home from "./Home";
 import AlbumUpload from "./upload/AlbumUpload";
 import HomePageFeature from "./HomePageFeature";
-import SongIndex from './SongIndex';
-import ArtistShow from './artistshow/ArtistShow';
-import AlbumShow from './albumshow/AlbumShow';
-import './cssreset.css';
+// import SongIndex from './SongIndex';
+import ArtistShow from "./artistshow/ArtistShow";
+import AlbumShow from "./albumshow/AlbumShow";
+import "./cssreset.css";
 
 const App = () => {
   return (
     <div>
-      <img id="form-fader" className="close" src='./black.jpg'></img>
-      <Route path='/' component={Nav} />
+      <img id="form-fader" className="close" src="./black.jpg"></img>
+      <Route path="/" component={Nav} />
 
       <Switch>
         <Route exact path="/" component={Home} />
-        <AuthRoute exact path="/login" component={Login} routeType='auth' />
-        <AuthRoute exact path="/register" component={Register} routeType='auth' />
+        <AuthRoute exact path="/login" component={Login} routeType="auth" />
+        <AuthRoute
+          exact
+          path="/register"
+          component={Register}
+          routeType="auth"
+        />
         <AuthRoute exact path="/artist/:id" component={ArtistShow} />
         <AuthRoute exact path="/album/:id" component={AlbumShow} />
-        <AuthRoute exact path="/songindex" component={SongIndex} />
+        {/* <AuthRoute exact path="/songindex" component={SongIndex} /> */}
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
         <AuthRoute
           exact

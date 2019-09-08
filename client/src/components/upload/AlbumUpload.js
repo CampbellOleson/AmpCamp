@@ -1,6 +1,6 @@
 import "../../stylesheets/upload_page.css";
 import "../../stylesheets/tracks_list.css";
-import StyledDropzone from "./StyledDropzone";
+import StyledDropzone from "../generalshow/StyledDropzone";
 import React from "react";
 import { compose, graphql } from "react-apollo";
 import Mutations from "../../graphql/mutations";

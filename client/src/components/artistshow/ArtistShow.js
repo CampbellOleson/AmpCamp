@@ -1,17 +1,13 @@
 import React from "react";
 import Queries from "../../graphql/queries";
-import PlaybarNav from "./PlaybarNav";
-import BannerPhoto from "./BannerPhoto";
+import PlaybarNav from "../generalshow/PlaybarNav";
+import BannerPhoto from "../generalshow/BannerPhoto";
 import Mutations from "../../graphql/mutations";
-import { SongIndexItem, SongListHeader } from "./SongIndexItem";
+import { SongIndexItem, SongListHeader } from "../generalshow/SongIndexItem";
 import AlbumIndexItem from "./AlbumIndexItem";
-import Spinner from "./Spinner";
+import Spinner from "../Spinner";
 import { Query, compose, graphql } from "react-apollo";
-import "./ArtistShow.css";
-import "./PlaybarNav.css";
-import "./BannerPhoto.css";
-import "./Spinner.css";
-import "./SongList.css";
+import "../loader.scss";
 const FAPI = require("../../util/fapi");
 const { FETCH_ARTIST } = Queries;
 const { UPDATE_BANNER_PHOTO } = Mutations;
@@ -83,7 +79,7 @@ class ArtistShow extends React.Component {
             return <AlbumIndexItem album={album} key={idx} />;
           });
           displayedSongs = songsArr.map(song => (
-            <SongIndexItem song={song} pickSong={this.pickSong} />
+            <SongIndexItem song={song} pickSong={this.pickSong} type="artist" />
           ));
           if (songsArr.length > 0 && this.song === null) {
             this.song = songsArr[Math.floor(Math.random() * songsArr.length)];
