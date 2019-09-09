@@ -15,7 +15,7 @@ export const SongIndexItem = props => {
           <p>{props.song.title}</p>
         </div>
         <div className="song-info song-info-artist">
-          <p>{props.song.artist.username}</p>
+          <p>{props.album ? props.album.by : props.song.album.by}</p>
         </div>
         <div className="song-info song-info-album">
           <p>{props.album ? props.album.title : props.song.album.title}</p>

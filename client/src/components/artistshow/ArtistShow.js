@@ -5,9 +5,12 @@ import BannerPhoto from "../generalshow/BannerPhoto";
 import Mutations from "../../graphql/mutations";
 import { SongIndexItem, SongListHeader } from "../generalshow/SongIndexItem";
 import AlbumIndexItem from "./AlbumIndexItem";
+import "../generalshow/BannerPhoto.css";
+import "../generalshow/PlaybarNav.css";
+import "../generalshow/SongList.css";
+import "./ArtistShow.css";
 import Spinner from "../Spinner";
 import { Query, compose, graphql } from "react-apollo";
-import "../loader.scss";
 const FAPI = require("../../util/fapi");
 const { FETCH_ARTIST } = Queries;
 const { UPDATE_BANNER_PHOTO } = Mutations;
@@ -103,6 +106,8 @@ class ArtistShow extends React.Component {
                   </div>
                   <div className="artist-info-column">
                     <p>{data.user.username}</p>
+                    <div className="artist-profile-photo" />
+                    <p>Artist bio</p>
                   </div>
                 </div>
               </div>
