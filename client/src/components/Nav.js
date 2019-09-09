@@ -4,22 +4,22 @@ import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
 import "./Nav.css";
-import './RegisterPopup.css'
+import "./RegisterPopup.css";
 import SearchBar from "./SearchBar";
-import { $, jQuery } from 'jquery';
+import { $, jQuery } from "jquery";
 
 const { IS_LOGGED_IN } = Queries;
 class Nav extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       toggle: null
-    }
-    let userDropdown = document.getElementById('user-dropdown')
-    this.closeForm = this.closeForm.bind(this)
-    this.closeUserTab = this.closeUserTab.bind(this)
-    this.hideRegister = this.hideRegister.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
+    };
+    let userDropdown = document.getElementById("user-dropdown");
+    this.closeForm = this.closeForm.bind(this);
+    this.closeUserTab = this.closeUserTab.bind(this);
+    this.hideRegister = this.hideRegister.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   showRegister() {
@@ -28,20 +28,15 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-
-    window.onclick = function (event) {
-
-      if (!event.target.matches('.nav-link')) {
-        let dropDownCont = document.querySelector('.dropdown-container')
-        if (dropDownCont && !dropDownCont.classList.contains('hide')) {
-          dropDownCont.classList.toggle('hide')
+    window.onclick = function(event) {
+      if (!event.target.matches(".nav-link")) {
+        let dropDownCont = document.querySelector(".dropdown-container");
+        if (dropDownCont && !dropDownCont.classList.contains("hide")) {
+          dropDownCont.classList.toggle("hide");
         }
       }
-    }
+    };
   }
-
-
-
 
   hideRegister() {
     let regform = document.getElementById("reg-form");
@@ -54,33 +49,29 @@ class Nav extends React.Component {
     if (realform) realform.classList = "close";
     let logform = document.getElementById("login-form");
     if (logform) logform.classList = "close";
-  };
+  }
 
-  handleLogout = (client) => (e) => {
+  handleLogout = client => e => {
     e.preventDefault();
-    this.closeUserTab(e)
+    this.closeUserTab(e);
     localStorage.removeItem("auth-token");
     client.writeData({
       data: { isLoggedIn: false }
     });
-  }
+  };
 
   closeUserTab() {
-
     if (localStorage.username) {
-      let dropDownCont = document.querySelector('.dropdown-container')
+      let dropDownCont = document.querySelector(".dropdown-container");
 
       if (dropDownCont) {
-        dropDownCont.classList.toggle('hide')
-        this.setState({ toggle: 'hi' })
+        dropDownCont.classList.toggle("hide");
+        this.setState({ toggle: "hi" });
       }
-
     } else {
-      return null
+      return null;
     }
-
   }
-
 
   render() {
     return (
@@ -89,26 +80,55 @@ class Nav extends React.Component {
           {client => (
             <Query query={IS_LOGGED_IN}>
               {({ data }) => {
-
                 if (data.isLoggedIn) {
                   return (
                     <div className="outer-nav-container">
                       <div className="nav">
                         <div className="nav-search-container">
+                          <Link to="/">
+                            <div className="logo" className="logo">
+                            <img
+                              id="amp-camp-logo"
+                              src={require("../ampcampinverted.png")}
+                            />
+                            </div>
+                          </Link>
 
-                           <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
                           <SearchBar />
                         </div>
 
-
                         {/************************************************************/}
                         <div className="user-profile-container">
-                          <a id="nav-link" className="nav-link" onClick={e => this.closeUserTab(e)}>{localStorage.getItem('username')}</a>
+                          <a
+                            id="nav-link"
+                            className="nav-link"
+                            onClick={e => this.closeUserTab(e)}
+                          >
+                            {localStorage.getItem("username")}
+                          </a>
                           <div className="dropdown-container hide">
                             <ul>
-                              <li><Link onClick={e => this.closeUserTab(e)} to={`/upload`}>Upload Album</Link></li>
-                              <li><Link onClick={e => this.closeUserTab(e)} to={`/artist/${localStorage.currentUserId}`}>Profile</Link></li>
-                              <li><Link onClick={this.handleLogout(client)}>Logout</Link></li>
+                              <li>
+                                <Link
+                                  onClick={e => this.closeUserTab(e)}
+                                  to={`/upload`}
+                                >
+                                  Upload Album
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  onClick={e => this.closeUserTab(e)}
+                                  to={`/artist/${localStorage.currentUserId}`}
+                                >
+                                  Profile
+                                </Link>
+                              </li>
+                              <li>
+                                <Link onClick={this.handleLogout(client)}>
+                                  Logout
+                                </Link>
+                              </li>
                             </ul>
                           </div>
                         </div>
@@ -121,12 +141,28 @@ class Nav extends React.Component {
                     <div className="outer-nav-container">
                       <div className="nav">
                         <div className="nav-search-container">
-                          <Link to="/"><h1 id="logo" className="logo">AmpCamp</h1></Link>
+                          <Link to="/">
+                            <h1 id="logo" className="logo">
+                              AmpCamp
+                            </h1>
+                          </Link>
                           <SearchBar />
                         </div>
                         <div className="login-or-signup">
-                          <a><Link onClick={this.hideRegister} id="nav-login" to="/login">Login &nbsp;&nbsp;&nbsp;|</Link></a>
-                          <a><Link id="nav-signup" onClick={this.showRegister}>Sign Up &nbsp;</Link></a>
+                          <a>
+                            <Link
+                              onClick={this.hideRegister}
+                              id="nav-login"
+                              to="/login"
+                            >
+                              Login &nbsp;&nbsp;&nbsp;|
+                            </Link>
+                          </a>
+                          <a>
+                            <Link id="nav-signup" onClick={this.showRegister}>
+                              Sign Up &nbsp;
+                            </Link>
+                          </a>
 
                           <form id="reg-form" className="hideRegister">
                             <div
@@ -134,7 +170,7 @@ class Nav extends React.Component {
                               className="close-register-button"
                             >
                               ✕
-                          </div>
+                            </div>
 
                             <h1> Sign up for an Amp Camp account</h1>
 
@@ -144,17 +180,18 @@ class Nav extends React.Component {
                                   <Link
                                     onClick={this.hideRegister}
                                     id="register-artist"
-                                    to="/info">
+                                    to="/info"
+                                  >
                                     Sign up as an artist
-                                </Link>
+                                  </Link>
                                 </a>
                                 <img src="guitar.svg" />
                                 <li id="artist-description">
-                                  Sell directly to your fans
-                                  with total control over your music and pricing.
-                                  Easy access to your customers’ data, real-time
-                                  stats, music chart reporting, and more.
-                              </li>
+                                  Sell directly to your fans with total control
+                                  over your music and pricing. Easy access to
+                                  your customers’ data, real-time stats, music
+                                  chart reporting, and more.
+                                </li>
                               </div>
                               <div className="register-info-items">
                                 <img src="fan.svg" />
@@ -165,37 +202,30 @@ class Nav extends React.Component {
                                     to="/register"
                                   >
                                     Sign up as a fan
-                                </Link>
+                                  </Link>
                                 </a>
 
                                 <li id="fan-description">
-                                  Follow your favorite artists,
-                                  keep a wishlist, get instant streaming of your
-                                  purchases, showcase your collection, and explore
-                                  the music of like-minded fans
-                              </li>
+                                  Follow your favorite artists, keep a wishlist,
+                                  get instant streaming of your purchases,
+                                  showcase your collection, and explore the
+                                  music of like-minded fans
+                                </li>
                               </div>
                             </div>
                           </form>
                         </div>
                       </div>
                     </div>
-
                   );
                 }
               }}
             </Query>
-          )
-          }
+          )}
         </ApolloConsumer>
-      </div >
-    )
+      </div>
+    );
   }
 }
 
 export default Nav;
-
-
-
-
-
