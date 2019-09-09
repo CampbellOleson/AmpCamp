@@ -20,7 +20,7 @@ const PlaybarNav = props => (
       <div className="currently-playing-artist-title">
         <span className="currently-playing-title">{props.song.title}</span>
         <span className="currently-playing-artist">
-          {props.song.artist.username}
+          {props.album ? props.album.by : props.song.album.by}
         </span>
       </div>
     </div>

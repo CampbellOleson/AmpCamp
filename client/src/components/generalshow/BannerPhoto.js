@@ -1,5 +1,5 @@
 import React from "react";
-import StyledDropZone from "./StyledDropzone";
+import StyledDropZone from "../StyledDropzone";
 
 const BannerPhoto = props => (
   <div className="banner-photo-container">
@@ -7,7 +7,7 @@ const BannerPhoto = props => (
       <div>
         <StyledDropZone fileDrop={props.imageDrop} />
         <button onClick={props.submitBannerPhoto}>
-          Upload your banner photo!!
+          <p>Upload your banner photo</p>
         </button>
       </div>
     ) : (

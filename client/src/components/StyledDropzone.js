@@ -1,18 +1,18 @@
 import React, { useMemo } from "react";
 import { useDropzone } from "react-dropzone";
+import Dropzone from "react-dropzone";
 
 const baseStyleImage = {
   flex: 1,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  // padding: "20px",
   borderWidth: 2,
   borderRadius: 2,
-  borderColor: "#eeeeee",
+  borderColor: "#004fff",
   borderStyle: "dashed",
-  backgroundColor: "#fafafa",
-  color: "#bdbdbd",
+  backgroundColor: "#DCDCDC",
+  color: "#888888",
   outline: "none",
   width: "98%",
   height: "140px",
@@ -53,15 +53,18 @@ const StyledDropzone = props => {
   );
 
   return (
-    <div
-      className="dropzone"
-      onDrop={image => props.fileDrop(image.dataTransfer.files[0])}
-    >
-      <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        <p>Upload banner photo</p>
-      </div>
-    </div>
+    <Dropzone onDrop={image => props.fileDrop(image[0])}>
+      {({ getRootProps, getInputProps }) => {
+        return (
+          <section className="dropzone">
+            <div {...getRootProps({ style })}>
+              <input {...getInputProps()} />
+              <p>Upload banner photo</p>
+            </div>
+          </section>
+        );
+      }}
+    </Dropzone>
   );
 };
 

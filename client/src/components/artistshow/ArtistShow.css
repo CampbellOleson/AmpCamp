@@ -72,3 +72,18 @@
   width: 100%;
   padding-top: 100%;
 }
+
+.artist-info-sub {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 5%;
+}
+
+.artist-info-sub:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.artist-info-column p {
+  margin-left: 3%;
+}
