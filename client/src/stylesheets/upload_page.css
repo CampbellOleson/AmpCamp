@@ -146,7 +146,8 @@
   height: 30px;
   display: flex;
   overflow-y: hidden;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
+  overflow-x: hidden;
   white-space: nowrap;
 }
 

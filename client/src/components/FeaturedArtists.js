@@ -99,7 +99,7 @@ class FeaturedArtists extends React.Component {
         <div>
           <div>
             {this.renderFeaturedArtists(this.props.data)}
-            <ReactAudioPlayer
+            <ReactAudioPlayer className='home-page-audio-player'
               ref={element => {
                 this.rap = element;
               }}

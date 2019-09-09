@@ -133,3 +133,6 @@ body {
   object-fit: cover;
 }
 
+.home-page-audio-player {
+  display: none;
+}
