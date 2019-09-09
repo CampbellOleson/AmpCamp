@@ -1,10 +1,13 @@
 import React from "react";
 import Queries from "../../graphql/queries";
-import "../loader.scss";
+import "../generalshow/BannerPhoto.css";
+import "../generalshow/PlaybarNav.css";
+import "../generalshow/SongList.css";
+import "./AlbumShow.css";
+import { SongIndexItem, SongListHeader } from "../generalshow/SongIndexItem";
 import Spinner from "../Spinner";
 import BannerPhoto from "../generalshow/BannerPhoto";
 import PlaybarNav from "../generalshow/PlaybarNav";
-import { SongIndexItem, SongListHeader } from "../generalshow/SongIndexItem";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 const { FETCH_ALBUM } = Queries;
@@ -90,7 +93,7 @@ class AlbumShow extends React.Component {
                 </div>
                 <div className="artist-info-column">
                   <p>{data.album.artist.username}</p>
-                  <div className="artist-profile-photo"/>
+                  <div className="artist-profile-photo" />
                   <p>Artist bio</p>
                 </div>
               </div>

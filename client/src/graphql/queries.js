@@ -115,6 +115,7 @@ export default {
             }
             album {
               _id
+              by
               title
               coverPhotoUrl
             }
