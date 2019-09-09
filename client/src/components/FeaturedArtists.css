@@ -92,8 +92,8 @@ body {
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
   border-left: 20px solid #fff;
-  top: 13px;
-  left: 18px;
+  top: 10px;
+  left: 14px;
 }
 
 @keyframes fade {
