@@ -106,8 +106,10 @@ class ArtistShow extends React.Component {
                   </div>
                   <div className="artist-info-column">
                     <p>{data.user.username}</p>
-                    <div className="artist-profile-photo" />
-                    <p>Artist bio</p>
+                    {/* <div className="artist-profile-photo" /> */}
+                    <div className="artist-info-sub">Artist bio</div>
+                    <div className="artist-info-sub">{`Contact ${data.user.username}`}</div>
+                    <div className="artist-info-sub">Other info</div>
                   </div>
                 </div>
               </div>
