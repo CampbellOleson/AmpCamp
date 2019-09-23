@@ -22,16 +22,16 @@ class FeaturedArtists extends React.Component {
     const { albums } = this.props.data;
     // const song = album.songs[0];
     if (albums) {
-        // debugger;
-        return (
-            <div className="featured-artists-container">
+      // debugger;
+      return (
+        <div className="featured-artists-container">
           {albums.map(album => {
-              //   album.songs[Math.floor(Math.random() * album.songs.length)];
-              // song = album.songs[Math.floor(Math.random() * album.songs.length)];
-              let song = album.songs[0]
-              if (song === undefined) {
-                song = { _id: 'undefined'}
-              }
+            //   album.songs[Math.floor(Math.random() * album.songs.length)];
+            // song = album.songs[Math.floor(Math.random() * album.songs.length)];
+            let song = album.songs[0]
+            if (song === undefined) {
+              song = { _id: 'undefined' }
+            }
             //   console.log(song)
             //   const song = album.songs[Math.floor(Math.random() * album.songs.length)];
             return (
@@ -64,32 +64,51 @@ class FeaturedArtists extends React.Component {
   }
 
   playSong(event, song) {
+
+
     event.preventDefault();
     let mountedSong = this.rap.audioEl.src.toString();
     let id = song._id.toString();
     let element = document.getElementById(id);
-    // this.song = song;
-    // debugger;
-    if (mountedSong === song.audioUrl && this.playing === true) {
-        this.rap.audioEl.pause();
-        // this.setState({ playing: false })
-        element.classList.toggle("play-button");
-        element.classList.toggle("pause");
-        this.playing = false;
+
+    let pausedArray = document.getElementsByClassName('pause');
+ 
+
+
+    if (pausedArray.length > 0) { 
+      for (let i = 0; i < pausedArray.length; i++) {
+   
+        let el = pausedArray[i];
+        if (el !== event.target) {
+
+          el.classList.toggle('pause');
+          el.classList.toggle('play-button');
+        }
+      }
+    }
+    if (mountedSong === song.audioUrl && this.playing === true) { 
+
+      this.rap.audioEl.pause();
+
+      element.classList.toggle("play-button");
+      element.classList.toggle("pause");
+
+
+      this.playing = false;
     } else if (mountedSong === song.audioUrl && this.playing === false) {
-        // debugger;
-        
-        this.rap.audioEl.play();    
-        element.classList.toggle("pause");
-        element.classList.toggle("play-button");
-        // this.setState({ playing: true });
-        this.playing = true;
+      // debugger;
+
+      this.rap.audioEl.play();
+      element.classList.toggle("pause");
+      element.classList.toggle("play-button");
+
+      this.playing = true;
     } else {
-        this.song = song.audioUrl;
-        this.playing = true;
-        this.setState({ update: (!this.state.update) });
-        element.classList.toggle("pause");
-        element.classList.toggle("play-button");
+      this.song = song.audioUrl;
+      this.playing = true;
+      this.setState({ update: (!this.state.update) });
+      element.classList.toggle("pause");
+      element.classList.toggle("play-button");
     }
   }
 
