@@ -1,129 +1,127 @@
-.showRegister{
-    width: 500px;
-    margin: 0 auto;
-    position: absolute;
-    left: 37%;
-    top: 230px;
-    background-color: #222;
-    border-radius: 10px;
-    height: 470px;
-    z-index: 12;
-    box-shadow: 5px 10px 18px red;
-    border-radius: 20px;
+.showRegister {
+  width: 500px;
+  margin: 0 auto;
+  position: absolute;
+  left: 37%;
+  top: 230px;
+  background-color: #222;
+  border-radius: 10px;
+  height: 470px;
+  z-index: 12;
+  box-shadow: 5px 10px 18px red;
+  border-radius: 20px;
 }
 
-.hideRegister{
-    display: none;
+.hideRegister {
+  display: none;
 }
 
-.showRegister h1{
-font-size: 20px;
-    text-align: center;
-    color: white;
-    padding: 20;
-    margin-top: 10px;
-
+.showRegister h1 {
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  padding: 20;
+  margin-top: 10px;
 }
 
-.showRegister img{
-    width: 140px;
-    float: left;
-    margin-top: -10px;
-    margin-right: 20px;
+.showRegister img {
+  width: 140px;
+  float: left;
+  margin-top: -10px;
+  margin-right: 20px;
 }
 
-
-.register-info-container{
-height: 380px;
-  text-align:left;
-    position: relative;
-       width: 80%;
-    display: grid;
-    list-style-type: none;
-    margin: auto;
-    transition: 1s ease-in;
-    padding: 10px;
-     margin-top: 40px;
+.register-info-container {
+  height: 380px;
+  text-align: left;
+  position: relative;
+  width: 80%;
+  display: grid;
+  list-style-type: none;
+  margin: auto;
+  transition: 1s ease-in;
+  padding: 10px;
+  margin-top: 40px;
 }
 
-
-
-.register-info-items{
-    margin-top: 10px;
-    margin: auto;
+.register-info-items {
+  margin-top: 10px;
+  margin: auto;
 }
 
-#register-artist{
-    color: white;
-    font-size: large;
-    font-weight: 800;
-     text-decoration: none;
-     border: 1px solid white;
-     padding: 5px;
-     cursor: pointer;
-     background: #442;
-     border-radius: 4px;
-
+#register-artist {
+  color: white;
+  font-size: large;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 5px;
+  cursor: pointer;
+  background: #442;
+  border-radius: 4px;
 }
 
-
-#register-fan{
-   color: white;
-    font-size: large;
-    font-weight: 800;
-     text-decoration: none;
-     border: 1px solid white;
-     padding: 5px;
-     cursor: pointer;
-     background: #442;
-     border-radius: 4px;
-     margin-right: 20px;
+#register {
+  cursor: pointer;
+  outline: none;
 }
 
-#register-artist:hover{
-    font-size: large;
-    text-decoration: none;
-    background: rgba(136, 160, 38, 0.4)
+#register-fan {
+  color: white;
+  font-size: large;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 5px;
+  cursor: pointer;
+  background: #442;
+  border-radius: 4px;
+  margin-right: 20px;
 }
 
-#register-fan:hover{
-     font-size: large;
-    text-decoration: none;
-    background: rgba(136, 160, 38, 0.4)
+#register-artist:hover {
+  font-size: large;
+  text-decoration: none;
+  background: rgba(136, 160, 38, 0.4);
 }
 
-#artist-description{
-    margin-bottom: 45px;
-    font-size: 16px;
-    margin-top: 20px;
-    line-height: 18px;
-    display: flex;
+#register-fan:hover {
+  font-size: large;
+  text-decoration: none;
+  background: rgba(136, 160, 38, 0.4);
 }
 
-
-#fan-description{
-    margin-bottom: 45px;
-    font-size: 16px;
-    margin-top: 20px;
-    line-height: 18px;
-    display: flex;
+#artist-description {
+  margin-bottom: 45px;
+  font-size: 16px;
+  margin-top: 20px;
+  line-height: 18px;
+  display: flex;
 }
 
-.close{
-    display: none;
+#fan-description {
+  margin-bottom: 45px;
+  font-size: 16px;
+  margin-top: 20px;
+  line-height: 18px;
+  display: flex;
 }
 
-.close-register-button{
-    color: white;
-    top: 30px;
-    position: relative;
-    left: 430px;
-    width: 20px;
-    height: 20px;
-    font-size: 22px;
-    cursor: pointer;
+.close {
+  display: none;
 }
 
-.close-register-button:hover{
+.close-register-button {
+  color: white;
+  top: 30px;
+  position: relative;
+  left: 430px;
+  width: 20px;
+  height: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.close-register-button:hover {
   color: red;
 }
