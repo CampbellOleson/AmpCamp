@@ -110,7 +110,7 @@ class Login extends Component {
                 <div onClick={this.closeFormX} className="close-button-login">✕</div>
 
                 <div className="input-container">
-                  <img src="./user.svg" className="fa fa-user icon"></img>
+                  <img src="./usericon.svg" className="fa fa-user icon"></img>
 
                   <input
                     value={this.state.username}

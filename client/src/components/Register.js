@@ -148,7 +148,7 @@ class Register extends Component {
                     />
                   </div>
                   <div className="reg-item">
-                    <img className='register-icon' src="./user.svg"></img>
+                    <img className='register-icon' src="./usericon.svg"></img>
                     <input
                       className='register-input-field'
                       type="text"
