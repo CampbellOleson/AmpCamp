@@ -107,6 +107,19 @@ const mutation = new GraphQLObjectType({
         const user = await User.findOneAndUpdate({"_id": _id}, {"$set": {bannerPhoto: bannerPhoto}});
         return user
       }
+    },
+    deleteAlbum: {
+      type: AlbumType,
+      args: {
+        _id: {type: GraphQLID}
+      },
+      async resolve(_, {_id}) {
+        // const Album = mongoose.model("albums");
+        // console.log(_id);
+        await Album.removeAlbum(_id);
+        Album.findOneAndDelete(_id);
+  
+      }
     }
     // signS3: {
     //   type: s3PayloadType,
