@@ -5,6 +5,7 @@
 }
 
 .main-content-container {
+  /* position: relative; */
   font-family: Arial, Helvetica, sans-serif;
   width: 975px;
   height: 800px;
@@ -32,7 +33,7 @@
 .album-form input {
   background-color: #dcdcdc;
   height: 30px;
-  border: 1px solid #141414;
+  border: 1px solid #1d1b1b;
   color: #1b1b1b;
   font-weight: 500;
   margin-top: 10px;
@@ -188,4 +189,15 @@
   background-color: #100c08;
   color: grey;
   border: none;
+}
+
+.upload-error {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: red;
+  font-size: 22px;
+  padding: 10px;
+  z-index: 15;
+  width: 100%;
 }

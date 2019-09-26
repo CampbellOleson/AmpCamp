@@ -103,19 +103,19 @@ export default {
     }
   `,
   UPDATE_BANNER_PHOTO: gql`
-    mutation updateBannerPhoto(
-      $id: ID!
-      $bannerPhoto: String! 
-    ) {
-      updateBannerPhoto(
-        _id: $id
-        bannerPhoto: $bannerPhoto
-      ) {
+    mutation updateBannerPhoto($id: ID!, $bannerPhoto: String!) {
+      updateBannerPhoto(_id: $id, bannerPhoto: $bannerPhoto) {
         _id
         username
         bannerPhoto
       }
     }
+  `,
+  DELETE_ALBUM: gql`
+    mutation deleteAlbum($id: ID!) {
+      deleteAlbum(_id: $id) {
+        _id
+      }
+    }
   `
 };
-
