@@ -23,3 +23,10 @@ AmpCamp is built with ExpressJS, MongoDB, and Apollo GraphQL/React on the fronte
 - Search suggestions are displayed in a dynamic drop-down consisting of links to respective artist and albums. 
 
 ![Search](./screenshots/search.png)
+
+   **Audio Player**
+   
+- AmpCamp features an audio player component in a fixed bottom nav so users can listen to music from anywhere in the app.
+- Audio player moves as you scroll so it's easy to play/pause songs
+
+![Album show](./screenshots/album.png)
