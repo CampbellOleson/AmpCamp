@@ -16,3 +16,10 @@ AmpCamp is built with ExpressJS, MongoDB, and Apollo GraphQL/React on the fronte
 - Upon uploading the album, AmpCamp awaits the AWS file uploads (displaying a loading bar in the mean time), and then redirects to the current user's artist-show page so that they can view their newly-uploaded album. All of this makes for a seamless and intuitive UX/UI.
 
 ![Album upload](./screenshots/upload.png)
+
+   **Search**
+
+- AmpCamp uses a backend regex search to allow users to search for albums and artists. 
+- Search suggestions are displayed in a dynamic drop-down consisting of links to respective artist and albums. 
+
+![Search](./screenshots/search.png)
