@@ -40,22 +40,24 @@ AlbumSchema.statics.removeAlbum = async albumId => {
   const Album = mongoose.model("albums");
   const User = mongoose.model("users");
   const Song = mongoose.model("songs");
-  await Album.findById(albumId).then(album => {
+  await Album.findById(albumId).then(async album => {
     let newAlbumArray = [];
-    User.findById(album.artist).then(user => {
+    console.log('1', album.songs);
+    await User.findById(album.artist).then(async user => {
+      console.log('2', user.albums)
       for (let i = 0; i < user.albums.length; i++) {
-        if (album._id.toString() !== user.albums[i].toString()) {
+        if (!album._id.equals(user.albums[i])) {
           console.log(`album to push: ${user.albums[i]}`);
           newAlbumArray.push(user.albums[i]);
         }
       }
       console.log(`album array: ${newAlbumArray}`);
       user.albums = newAlbumArray;
-      user.save();
+      await user.save();
     });
     for (let i = 0; i < album.songs.length; i++) {
       console.log(`song: ${album.songs[i]}`);
-      Song.findOneAndDelete(album.songs[i])
+      await Song.findOneAndDelete({_id: album.songs[i]})
     }
     album.save();
   });

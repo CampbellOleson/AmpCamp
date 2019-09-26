@@ -117,7 +117,7 @@ const mutation = new GraphQLObjectType({
         // const Album = mongoose.model("albums");
         // console.log(_id);
         await Album.removeAlbum(_id);
-        Album.findOneAndDelete(_id);
+        Album.findOneAndDelete({_id: _id}).then(a => console.log(a))
   
       }
     }
