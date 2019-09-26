@@ -29,7 +29,6 @@ const PlaybarNav = props => (
         className="audio-player"
         src={props.song.audioUrl}
         style={playerStyle}
-        autoPlay
         controls
       />
     </div>

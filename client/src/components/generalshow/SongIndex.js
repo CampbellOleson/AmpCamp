@@ -21,7 +21,6 @@ class SongIndex extends React.Component {
             <div className="song-index">
               <ReactAudioPlayer
                 src="https://ampcamp3910.s3.us-east-2.amazonaws.com/1567542526064"
-                autoPlay
                 controls
               />
               <ul>
