@@ -113,34 +113,39 @@ class AlbumUpload extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    if (!this.validUpload()) return;
-    this.setState({ loading: true });
+    try {
+      if (!this.validUpload()) return;
+      this.setState({ loading: true });
 
-    await this.submitPhoto();
-    const { title, description, by, coverPhotoUrl } = this.state;
-    const cUserId = localStorage.getItem("currentUserId");
-    const newAlbum = await this.props.newAlbum({
-      variables: {
-        title,
-        description,
-        by,
-        coverPhotoUrl,
-        artist: cUserId
-      }
-    });
+      await this.submitPhoto();
+      const { title, description, by, coverPhotoUrl } = this.state;
+      const cUserId = localStorage.getItem("currentUserId");
+      const newAlbum = await this.props.newAlbum({
+        variables: {
+          title,
+          description,
+          by,
+          coverPhotoUrl,
+          artist: cUserId
+        }
+      });
 
-    await this.submitTracks(newAlbum, cUserId);
+      await this.submitTracks(newAlbum, cUserId);
 
-    this.setState({
-      title: "",
-      description: "",
-      by: "",
-      coverPhotoUrl: "",
-      tracks: {},
-      loading: false
-    });
+      this.setState({
+        title: "",
+        description: "",
+        by: "",
+        coverPhotoUrl: "",
+        tracks: {},
+        loading: false
+      });
 
-    this.props.history.push(`/artist/${cUserId}`);
+      this.props.history.push(`/artist/${cUserId}`);
+    } catch (err) {
+      console.log(err);
+      // renders error component (modal maybe)
+    }
   };
 
   imageDrop(image) {
