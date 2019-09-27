@@ -20,7 +20,41 @@ AmpCamp is built with **ExpressJS, MongoDB, and Apollo GraphQL/React on the fron
    **Search**
 
 - AmpCamp uses a backend regex search to allow users to search for albums and artists. 
-- Search suggestions are displayed in a dynamic drop-down consisting of links to respective artist and albums. 
+- Search suggestions are displayed in a dynamic drop-down consisting of links to respective artist and albums.
+
+**Search Code**
+
+The following code illustrates the use of RegExp to auto fill a search bar with search suggestions for albums or artists based on each key entered into the search bar, with a limit of 8 search results shown at a given time.
+     const { albums, users } = data
+     
+        const value = e.target.value; 
+        let sugs = [];
+        const regex = new RegExp(`${value}`, 'i'); 
+
+
+        if (albums) {
+            if (value.length > 0) { 
+                sugs = albums.filter(v => {
+                    return regex.test(v.title)
+                }).sort()
+            }
+            this.setState({ suggestions: sugs })
+
+        }
+        if (sugs.length === 0 && users) {
+            if (value.length > 0) { 
+                sugs = users.filter(v => {
+                    return regex.test(v.username)
+                }).sort()
+            }
+
+        }
+        if (sugs.length > 8) {
+            sugs = sugs.slice(0, 8)
+        }
+
+        this.setState({ suggestions: sugs })
+    }
 
 ![Search](./screenshots/search.png)
 
