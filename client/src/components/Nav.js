@@ -6,7 +6,6 @@ import Queries from "../graphql/queries";
 import "./Nav.css";
 import "./RegisterPopup.css";
 import SearchBar from "./SearchBar";
-import { $, jQuery } from "jquery";
 
 const { IS_LOGGED_IN } = Queries;
 class Nav extends React.Component {
@@ -15,7 +14,7 @@ class Nav extends React.Component {
     this.state = {
       toggle: null
     };
-    let userDropdown = document.getElementById("user-dropdown");
+
     this.closeForm = this.closeForm.bind(this);
     this.closeUserTab = this.closeUserTab.bind(this);
     this.hideRegister = this.hideRegister.bind(this);
@@ -28,7 +27,7 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if (!event.target.matches(".nav-link")) {
         let dropDownCont = document.querySelector(".dropdown-container");
         if (dropDownCont && !dropDownCont.classList.contains("hide")) {
@@ -44,7 +43,7 @@ class Nav extends React.Component {
   }
 
   closeForm() {
-    let regform = (document.getElementById("reg-form").classList = "close");
+    document.getElementById("reg-form").classList = "close"
     let realform = document.getElementById("register-form");
     if (realform) realform.classList = "close";
     let logform = document.getElementById("login-form");
@@ -79,15 +78,16 @@ class Nav extends React.Component {
         <ApolloConsumer>
           {client => (
             <Query query={IS_LOGGED_IN}>
-              {({ data }) => {
+              {({ data, err }) => {
+                if (err) return `Error: !${err}`
                 if (data.isLoggedIn) {
                   return (
                     <div className="outer-nav-container">
                       <div className="nav">
                         <div className="nav-search-container">
                           <Link to="/">
-                            <div className="logo" className="logo">
-                              <img
+                            <div className="logo">
+                              <img alt="wutang"
                                 id="amp-camp-logo"
                                 src={require("../ampcampinverted.png")}
                               />
@@ -99,13 +99,13 @@ class Nav extends React.Component {
 
                         {/************************************************************/}
                         <div className="user-profile-container">
-                          <a
+                          <button
                             id="nav-link"
                             className="nav-link"
                             onClick={e => this.closeUserTab(e)}
                           >
                             {localStorage.getItem("username")}
-                          </a>
+                          </button>
                           <div className="dropdown-container hide">
                             <ul>
                               <li>
@@ -125,7 +125,7 @@ class Nav extends React.Component {
                                 </Link>
                               </li>
                               <li>
-                                <Link onClick={this.handleLogout(client)}>
+                                <Link to={'/'} onClick={this.handleLogout(client)}>
                                   Logout
                                 </Link>
                               </li>
@@ -142,8 +142,8 @@ class Nav extends React.Component {
                       <div className="nav">
                         <div className="nav-search-container">
                           <Link to="/">
-                            <div className="logo" className="logo">
-                              <img
+                            <div className="logo">
+                              <img alt="wutang"
                                 id="amp-camp-logo"
                                 src={require("../ampcampinverted.png")}
                               />
@@ -152,20 +152,20 @@ class Nav extends React.Component {
                           <SearchBar />
                         </div>
                         <div className="login-or-signup">
-                          <a>
-                            <Link
-                              onClick={this.hideRegister}
-                              id="nav-login"
-                              to="/login"
-                            >
-                              Login &nbsp;&nbsp;&nbsp;|
+
+                          <Link
+                            onClick={this.hideRegister}
+                            id="nav-login"
+                            to="/login"
+                          >
+                            Login &nbsp;&nbsp;&nbsp;|
                             </Link>
-                          </a>
-                          <a>
-                            <Link id="nav-signup" onClick={this.showRegister}>
-                              Sign Up &nbsp;
+
+
+                          <Link to={'/register'} id="nav-signup" onClick={this.showRegister}>
+                            Sign Up &nbsp;
                             </Link>
-                          </a>
+
 
                           <form id="reg-form" className="hideRegister">
                             <div
@@ -179,16 +179,16 @@ class Nav extends React.Component {
 
                             <div className="register-info-container">
                               <div className="register-info-items">
-                                <a>
-                                  <Link
-                                    onClick={this.hideRegister}
-                                    id="register-artist"
-                                    to="/info"
-                                  >
-                                    Sign up as an artist
+
+                                <Link
+                                  onClick={this.hideRegister}
+                                  id="register-artist"
+                                  to="/info"
+                                >
+                                  Sign up as an artist
                                   </Link>
-                                </a>
-                                <img src="guitar.svg" />
+
+                                <img alt="wutang" src="guitar.svg" />
                                 <li id="artist-description">
                                   Sell directly to your fans with total control
                                   over your music and pricing. Easy access to
@@ -197,16 +197,16 @@ class Nav extends React.Component {
                                 </li>
                               </div>
                               <div className="register-info-items">
-                                <img src="fan.svg" />
-                                <a>
-                                  <Link
-                                    onClick={this.hideRegister}
-                                    id="register-fan"
-                                    to="/register"
-                                  >
-                                    Sign up as a fan
+                                <img alt="wutang" src="fan.svg" />
+
+                                <Link
+                                  onClick={this.hideRegister}
+                                  id="register-fan"
+                                  to="/register"
+                                >
+                                  Sign up as a fan
                                   </Link>
-                                </a>
+
 
                                 <li id="fan-description">
                                   Follow your favorite artists, keep a wishlist,

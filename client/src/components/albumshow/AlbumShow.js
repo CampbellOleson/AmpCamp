@@ -5,7 +5,7 @@ import "../generalshow/BannerPhoto.css";
 import "../generalshow/PlaybarNav.css";
 import "../generalshow/SongList.css";
 import "./AlbumShow.css";
-import { SongIndexItem, SongListHeader } from "../generalshow/SongIndexItem";
+import { SongIndexItem } from "../generalshow/SongIndexItem";
 import Spinner from "../Spinner";
 import { compose, graphql } from "react-apollo";
 import BannerPhoto from "../generalshow/BannerPhoto";
@@ -81,7 +81,7 @@ class AlbumShow extends React.Component {
           if (loading) return <Spinner />;
           if (err) return `Error! ${err.message}`;
           if (!data) return null;
-          let bPhoto;
+          // let bPhoto;
           let songsArr = [];
           let dispSongs;
           dispSongs = data.album.songs.map((song, idx) => {
@@ -135,7 +135,7 @@ class AlbumShow extends React.Component {
                         <img
                           src={data.album.coverPhotoUrl}
                           className="album-show-cover-art"
-                          alt="cover photo"
+                          alt="wutang"
                         />
                       </div>
                     </div>
@@ -147,7 +147,7 @@ class AlbumShow extends React.Component {
                       data.user
                         ? data.user.username
                         : data.album.artist.username
-                    }`}</div>
+                      }`}</div>
                     <button id="dmodal" onClick={this.toggleDeleteModal}>
                       Delete this album
                     </button>

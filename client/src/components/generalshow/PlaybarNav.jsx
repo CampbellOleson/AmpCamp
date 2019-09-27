@@ -10,6 +10,7 @@ const PlaybarNav = props => (
   <div className="audio-player-element">
     <div className="currently-playing-info-container">
       <img
+      alt='wutang'
         src={
           props.album
             ? props.album.coverPhotoUrl

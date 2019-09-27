@@ -36,8 +36,7 @@ class Register extends Component {
   }
 
   closeFormX() {
-    let regform = document.getElementById('register-form').classList = 'close'
-
+    document.getElementById('register-form').classList = 'close'
   }
 
 
@@ -136,25 +135,25 @@ class Register extends Component {
                   <div onClick={this.closeFormX} className="close-button">✕</div>
 
                   <div className="reg-item">
-                    <img className='register-icon' src="./email.svg"></img>
+                    <img alt="wutang" className='register-icon' src="./email.svg"></img>
 
                     <input
                       className='register-input-field'
                       type="email"
                       value={this.state.email}
                       placeholder="enter email"
-                      autocomplete="off"
+                      autoComplete="off"
                       onChange={this.update("email")}
                     />
                   </div>
                   <div className="reg-item">
-                    <img className='register-icon' src="./usericon.svg"></img>
+                    <img alt="wutang" className='register-icon' src="./usericon.svg"></img>
                     <input
                       className='register-input-field'
                       type="text"
                       value={this.state.username}
                       placeholder="enter username"
-                      autocomplete="off"
+                      autoComplete="off"
                       onChange={this.update("username")}
                     />
                   </div>
@@ -162,24 +161,24 @@ class Register extends Component {
 
 
                   <div className="reg-item">
-                    <img className='register-icon' src="./lock.svg"></img>
+                    <img alt="wutang" className='register-icon' src="./lock.svg"></img>
                     <input
                       className='register-input-field'
 
                       type="password"
                       value={this.state.password}
                       placeholder="enter password"
-                      autocomplete="off"
+                      autoComplete="off"
                       onChange={this.update("password")}
                     />
                   </div>
 
                   <div className='reg-item'>
-                    <img id='account-type-photo' className='register-icon'></img>
-                    <select onChange={this.determineAccount} id='account-selector' className='account-type' onChange={this.updateSelect("artist")}>
+                    <img alt="wutang" id='account-type-photo' className='register-icon'></img>
+                    <select id='account-selector' className='account-type' onChange={this.updateSelect("artist")}>
                       <option
-                        value={Boolean(false)}
-                        selected
+                        defaultValue={Boolean(false)}
+
                       >
                         Listener
               </option>

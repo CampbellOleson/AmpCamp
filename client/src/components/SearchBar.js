@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
         })
 
 
-        
+
 
         // let dropDownCont = document.querySelector('.dropdown-container')
 
@@ -34,13 +34,13 @@ class SearchBar extends React.Component {
         // }
 
         const { albums, users } = data
-        const value = e.target.value; // current value of search bar
+        const value = e.target.value;
         let sugs = [];
-        const regex = new RegExp(`${value}`, 'i'); // creates the pattern to search the text input for, 'i' specified that it ignore casing
+        const regex = new RegExp(`${value}`, 'i');
 
 
         if (albums) {
-            if (value.length > 0) { // if we have letters in the search bar
+            if (value.length > 0) {
                 sugs = albums.filter(v => {
                     return regex.test(v.title)
                 }).sort()
@@ -49,9 +49,8 @@ class SearchBar extends React.Component {
 
         }
         if (sugs.length === 0 && users) {
-            if (value.length > 0) { // if we have letters in the search bar
+            if (value.length > 0) {
                 sugs = users.filter(v => {
-
                     return regex.test(v.username)
                 }).sort()
             }
@@ -82,7 +81,7 @@ class SearchBar extends React.Component {
                                 <Link to={`/album/${item._id}`} onClick={this.closeSuggestions}>
 
                                     <div className="autofill-item">
-                                        <img src={item.coverPhotoUrl} />
+                                        <img alt="wutang" src={item.coverPhotoUrl} />
                                         <div className="autofill-artist-info">
                                             <li>{item.title}</li>
                                             <li>{item.by}</li>

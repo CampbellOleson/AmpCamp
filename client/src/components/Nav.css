@@ -224,6 +224,12 @@
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
+  background: none;
+  outline: none;
+  font-family: sans-serif;
+  color: white;
+  border: none;
+  font-size: 18px;
 }
 
 #amp-camp-logo {
