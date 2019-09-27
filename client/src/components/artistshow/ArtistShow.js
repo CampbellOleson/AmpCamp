@@ -30,7 +30,6 @@ class ArtistShow extends React.Component {
   }
 
   componentDidUpdate(prevProps, nextProps) {
-    // debugger;
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.song = null;
     }
@@ -81,8 +80,8 @@ class ArtistShow extends React.Component {
             album.songs.forEach(song => songsArr.push(song));
             return <AlbumIndexItem album={album} key={idx} />;
           });
-          displayedSongs = songsArr.map(song => (
-            <SongIndexItem song={song} pickSong={this.pickSong} type="artist" />
+          displayedSongs = songsArr.map((song,idx) => (
+            <SongIndexItem song={song} pickSong={this.pickSong} type="artist" key={idx}/>
           ));
           if (songsArr.length > 0 && this.song === null) {
             this.song = songsArr[Math.floor(Math.random() * songsArr.length)];
@@ -106,7 +105,7 @@ class ArtistShow extends React.Component {
                   </div>
                   <div className="artist-info-column">
                     <p>{data.user.username}</p>
-                    {/* <div className="artist-profile-photo" /> */}
+                    <div className="artist-profile-photo" />
                     <div className="artist-info-sub">Artist bio</div>
                     <div className="artist-info-sub">{`Contact ${data.user.username}`}</div>
                     <div className="artist-info-sub">Other info</div>

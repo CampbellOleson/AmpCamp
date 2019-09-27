@@ -2,7 +2,7 @@
 
 AmpCamp is a heavy-metal themed music-sharing site where users can stream, and download music. Users primarily sign up as "listeners", but they can also sign up as "artists" if they intend to upload music of their own. 
 
-AmpCamp is built with ExpressJS, MongoDB, and Apollo GraphQL/React on the frontend. Photos and audio files are stored on Amazon Web Services (AWS).
+AmpCamp is built with **ExpressJS, MongoDB, and Apollo GraphQL/React on the frontend.** Photos and audio files are stored on **Amazon Web Services (AWS).**
 
 ![Artist Show](./screenshots/artist.png)
 

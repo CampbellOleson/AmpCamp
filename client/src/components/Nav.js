@@ -87,10 +87,10 @@ class Nav extends React.Component {
                         <div className="nav-search-container">
                           <Link to="/">
                             <div className="logo" className="logo">
-                            <img
-                              id="amp-camp-logo"
-                              src={require("../ampcampinverted.png")}
-                            />
+                              <img
+                                id="amp-camp-logo"
+                                src={require("../ampcampinverted.png")}
+                              />
                             </div>
                           </Link>
 
@@ -142,9 +142,12 @@ class Nav extends React.Component {
                       <div className="nav">
                         <div className="nav-search-container">
                           <Link to="/">
-                            <h1 id="logo" className="logo">
-                              AmpCamp
-                            </h1>
+                            <div className="logo" className="logo">
+                              <img
+                                id="amp-camp-logo"
+                                src={require("../ampcampinverted.png")}
+                              />
+                            </div>
                           </Link>
                           <SearchBar />
                         </div>

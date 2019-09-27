@@ -8,7 +8,7 @@ import NewTrack from "./TrackForm";
 import TracksList from "./TracksList";
 import ReactLoading from "react-loading";
 const FAPI = require("../../util/fapi");
-const { NEW_ALBUM, NEW_SONG } = Mutations;
+const { NEW_ALBUM, NEW_SONG, DELETE_ALBUM } = Mutations;
 
 class AlbumUpload extends React.Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class AlbumUpload extends React.Component {
     this.submitPhoto = this.submitPhoto.bind(this);
     this.imageDrop = this.imageDrop.bind(this);
     this.uploadTrack = this.uploadTrack.bind(this);
+    this.errorComponent = this.errorComponent.bind(this);
     this.state = {
       title: "Untitled Album",
       description: "",
@@ -26,7 +27,8 @@ class AlbumUpload extends React.Component {
       tracks: {},
       image: null,
       imagePreview: null,
-      loading: false
+      loading: false,
+      error: false
     };
   }
 
@@ -68,6 +70,14 @@ class AlbumUpload extends React.Component {
     };
   }
 
+  errorComponent() {
+    return this.state.error ? (
+      <div className="upload-error">
+        Something went wrong with your upload. Try again in a moment.
+      </div>
+    ) : null;
+  }
+
   async submitTracks(newAlbum, cUserId) {
     async function asyncForEach(array, callback) {
       for (let index = 0; index < array.length; index++) {
@@ -78,8 +88,8 @@ class AlbumUpload extends React.Component {
     const uploadLoop = async () => {
       await asyncForEach(Object.values(this.state.tracks), async track => {
         const res = await this.uploadTrack(track);
-        console.log("audioUrl:");
-        console.log(res.data.audioUrl);
+        // console.log("audioUrl:");
+        // console.log(res.data.audioUrl);
         await this.props.newSong({
           variables: {
             title: track.title,
@@ -89,7 +99,7 @@ class AlbumUpload extends React.Component {
           }
         });
       });
-      console.log("Tracks upload succesfully!");
+      // console.log("Tracks upload succesfully!");
     };
     await uploadLoop();
   }
@@ -106,41 +116,52 @@ class AlbumUpload extends React.Component {
     const formData = new FormData();
     formData.set("image", image);
     const res = await FAPI.uploadImage(formData);
-    console.log("imageUrl:");
-    console.log(res.data.imageUrl);
+    // console.log("imageUrl:");
+    // console.log(res.data.imageUrl);
     this.setState({ coverPhotoUrl: res.data.imageUrl });
   }
 
   handleSubmit = async e => {
     e.preventDefault();
-    if (!this.validUpload()) return;
-    this.setState({ loading: true });
+    let catchAlbum;
+    try {
+      if (!this.validUpload()) return;
+      this.setState({ loading: true, error: false });
 
-    await this.submitPhoto();
-    const { title, description, by, coverPhotoUrl } = this.state;
-    const cUserId = localStorage.getItem("currentUserId");
-    const newAlbum = await this.props.newAlbum({
-      variables: {
-        title,
-        description,
-        by,
-        coverPhotoUrl,
-        artist: cUserId
-      }
-    });
+      await this.submitPhoto();
+      const { title, description, by, coverPhotoUrl } = this.state;
+      const cUserId = localStorage.getItem("currentUserId");
+      const newAlbum = await this.props.newAlbum({
+        variables: {
+          title,
+          description,
+          by,
+          coverPhotoUrl,
+          artist: cUserId
+        }
+      });
 
-    await this.submitTracks(newAlbum, cUserId);
+      catchAlbum = newAlbum;
+      await this.submitTracks(newAlbum, cUserId);
 
-    this.setState({
-      title: "",
-      description: "",
-      by: "",
-      coverPhotoUrl: "",
-      tracks: {},
-      loading: false
-    });
+      // throw "oh shit!";
 
-    this.props.history.push(`/artist/${cUserId}`);
+      this.setState({
+        title: "",
+        description: "",
+        by: "",
+        coverPhotoUrl: "",
+        tracks: {},
+        loading: false
+      });
+
+      this.props.history.push(`/artist/${cUserId}`);
+    } catch (err) {
+      await this.setState({ error: true, loading: false });
+      this.props.deleteAlbum({
+        variables: { id: catchAlbum.data.newAlbum._id }
+      });
+    }
   };
 
   imageDrop(image) {
@@ -193,6 +214,7 @@ class AlbumUpload extends React.Component {
     );
     return (
       <div className="background">
+        {this.errorComponent()}
         <div className="main-content-container">
           <div className="tracks-list-container">
             <div className="album-infobar">
@@ -211,7 +233,7 @@ class AlbumUpload extends React.Component {
             </div>
             <p className="track-header">Add some tracks:</p>
             <p className="track-header track-sub-header">
-              Make sure you file is compatable
+              Make sure your file is compatable
             </p>
             <NewTrack addTrack={this.addTrack} />
             <TracksList
@@ -256,5 +278,6 @@ class AlbumUpload extends React.Component {
 
 export default compose(
   graphql(NEW_ALBUM, { name: "newAlbum" }),
-  graphql(NEW_SONG, { name: "newSong" })
+  graphql(NEW_SONG, { name: "newSong" }),
+  graphql(DELETE_ALBUM, { name: "deleteAlbum" })
 )(AlbumUpload);

@@ -6,6 +6,15 @@
   margin-left: 10%;
 }
 
+.modal-bg {
+  background: rgba(0, 0, 0, 0.4);
+  color: #303030;
+}
+
+img.modal-bg {
+  filter: brightness(30%);
+}
+
 .album-show-cover-art-container {
   width: 80%;
   background: green;
@@ -84,4 +93,71 @@
   text-align: center;
   position: relative;
   width: 85%;
+}
+
+.album-delete-modal {
+  font-weight: 600;
+  padding: 20px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1b1b1b;
+  border: 1px solid white;
+  position: absolute;
+  top: 20%;
+  margin-left: 35%;
+  width: 30vw;
+  height: 30vh;
+  z-index: 20;
+  color: white;
+  -webkit-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 1);
+  box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 1);
+}
+
+.album-delete-modal section {
+  font-size: 30px;
+}
+
+.album-delete-modal p {
+  font-size: 20px;
+}
+
+.album-delete-modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  height: 30%;
+}
+
+.album-delete-modal-buttons button {
+  width: 40%;
+  height: 80%;
+  margin: 0 auto;
+  border-radius: 4px;
+  background-color: #100c08;
+  color: #bfff00;
+  border: none;
+}
+
+#dmodal {
+  width: 90%;
+  height: 10%;
+  margin: 0 auto;
+  border-radius: 3px;
+  background-color: #100c08;
+  color: red;
+  border: none;
+  margin-top: 20%;
+}
+
+.album-delete-modal-buttons button:hover {
+  background-color: #30b21a;
+  cursor: pointer;
+  color: black;
+}
+
+#dbutton:hover {
+  color: black;
+  background-color: red;
 }
