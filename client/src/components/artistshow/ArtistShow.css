@@ -5,6 +5,7 @@
 }
 
 .artist-show-page-container {
+  position: relative;
   display: inline-block;
   min-height: 100vh;
   width: 76%;

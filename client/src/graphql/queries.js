@@ -50,6 +50,7 @@ export default {
   FETCH_ALBUM: gql`
     query fetchAlbum($id: ID!) {
       album(_id: $id) {
+        _id
         title
         by
         coverPhotoUrl
