@@ -30,6 +30,8 @@ const PlaybarNav = props => (
         src={props.song.audioUrl}
         style={playerStyle}
         controls
+        autoPlay
+        volume={0.03}
       />
     </div>
   </div>

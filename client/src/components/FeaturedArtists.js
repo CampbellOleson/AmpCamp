@@ -122,6 +122,7 @@ class FeaturedArtists extends React.Component {
               ref={element => {
                 this.rap = element;
               }}
+              autoPlay
               src={this.song}
               controls
             />
