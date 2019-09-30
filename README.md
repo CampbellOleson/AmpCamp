@@ -17,21 +17,21 @@ AmpCamp is built with **ExpressJS, MongoDB, and Apollo GraphQL/React on the fron
 
     **Album Upload Code -- custom upload async loop function**
 
-    const uploadLoop = async () => {
-      await asyncForEach(Object.values(this.state.tracks), async track => {
-        const res = await this.uploadTrack(track);
-        await this.props.newSong({
-          variables: {
-            title: track.title,
-            audioUrl: res.data.audioUrl,
-            album: newAlbum.data.newAlbum._id,
-            artist: cUserId
-          }
+      const uploadLoop = async () => {
+        await asyncForEach(Object.values(this.state.tracks), async track => {
+          const res = await this.uploadTrack(track);
+          await this.props.newSong({
+            variables: {
+              title: track.title,
+              audioUrl: res.data.audioUrl,
+              album: newAlbum.data.newAlbum._id,
+              artist: cUserId
+            }
+          });
         });
-      });
-    };
-    await uploadLoop();
-  }
+      };
+      await uploadLoop();
+      }
 
 ![Album upload](./screenshots/upload.png)
 
@@ -43,7 +43,7 @@ AmpCamp is built with **ExpressJS, MongoDB, and Apollo GraphQL/React on the fron
 **Search Code**
 
 The following code illustrates the use of RegExp to auto fill a search bar with search suggestions for albums or artists based on each key entered into the search bar, with a limit of 8 search results shown at a given time.
-    {
+
         const { albums, users } = data
      
         const value = e.target.value; 
@@ -84,38 +84,38 @@ The following code illustrates the use of RegExp to auto fill a search bar with 
 
     **React Audio Player Bottom Play Bar**
 
-    const PlaybarNav = props => (
-  <div className="audio-player-element">
-    <div className="currently-playing-info-container">
-      <img
-      alt='wutang'
-        src={
-          props.album
-            ? props.album.coverPhotoUrl
-            : props.song.album.coverPhotoUrl
-        }
-        className="mini-cover-photo"
-      />
-      <div className="currently-playing-artist-title">
-        <span className="currently-playing-title">
-          <p>{props.song.title}</p>
-        </span>
-        <span className="currently-playing-artist">
-          {props.album ? props.album.by : props.song.album.by}
-        </span>
-      </div>
-    </div>
-    <div className="player-wrapper">
-      <ReactAudioPlayer
-        className="audio-player"
-        src={props.song.audioUrl}
-        style={playerStyle}
-        controls
-        autoPlay
-        volume={0.03}
-      />
-    </div>
-  </div>
-);
+          const PlaybarNav = props => (
+        <div className="audio-player-element">
+          <div className="currently-playing-info-container">
+            <img
+            alt='albumcover'
+              src={
+                props.album
+                  ? props.album.coverPhotoUrl
+                  : props.song.album.coverPhotoUrl
+              }
+              className="mini-cover-photo"
+            />
+            <div className="currently-playing-artist-title">
+              <span className="currently-playing-title">
+                <p>{props.song.title}</p>
+              </span>
+              <span className="currently-playing-artist">
+                {props.album ? props.album.by : props.song.album.by}
+              </span>
+            </div>
+          </div>
+          <div className="player-wrapper">
+            <ReactAudioPlayer
+              className="audio-player"
+              src={props.song.audioUrl}
+              style={playerStyle}
+              controls
+              autoPlay
+              volume={0.03}
+            />
+          </div>
+        </div>
+      );
 
 ![Album show](./screenshots/album.png)
