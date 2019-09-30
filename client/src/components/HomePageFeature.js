@@ -19,11 +19,10 @@ class HomePageFeature extends React.Component {
   }
 
   componentDidMount() {
-    let photoReel = document.addEventListener("DOMContentLoaded", function() {
-      let photoReel = document.getElementsByClassName("photo-reel-image");
+    let photoReel = document.addEventListener("DOMContentLoaded", function () {
     });
     if (photoReel)
-      photoReel.addEventListener("mouseover", function() {
+      photoReel.addEventListener("mouseover", function () {
         console.log("hovered over photo!");
       });
   }
@@ -54,56 +53,55 @@ class HomePageFeature extends React.Component {
                 <div id="daily-picks-container">
                   <div className="photobanner">
                     <Link to={`/album/${this.featuredAlbums[0]._id}`}>
-                      <img
-                        className="photo-reel-image"
-                        className="first"
+                      <img alt="wutang"
+                        className="photo-reel-image first"
                         src={this.featuredAlbums[0].coverPhotoUrl}
                       ></img>
                     </Link>
                     <Link to={`/album/${this.featuredAlbums[1]._id}`}>
-                      <img
+                      <img alt="wutang"
                         className="photo-reel-image"
                         src={this.featuredAlbums[1].coverPhotoUrl}
                       />
                     </Link>
                     <Link to={`/album/${this.featuredAlbums[2]._id}`}>
-                      <img
+                      <img alt="wutang"
                         className="photo-reel-image"
                         src={this.featuredAlbums[2].coverPhotoUrl}
                       />
                     </Link>
                     <Link to={`/album/${this.featuredAlbums[3]._id}`}>
-                      <img
+                      <img alt="wutang"
                         className="photo-reel-image"
                         src={this.featuredAlbums[3].coverPhotoUrl}
                       />
                     </Link>
                     <Link to={`/album/${this.featuredAlbums[4]._id}`}>
-                      <img
+                      <img alt="wutang"
                         className="photo-reel-image"
                         src={this.featuredAlbums[0].coverPhotoUrl}
                       />
                     </Link>
                     <Link to={`/album/${this.featuredAlbums[0]._id}`}>
-                      <img
+                      <img alt="wutang"
                         className="photo-reel-image"
                         src={this.featuredAlbums[1].coverPhotoUrl}
                       />
                     </Link>
                     <Link to={`/album/${this.featuredAlbums[1]._id}`}>
-                      <img
+                      <img alt="wutang"
                         className="photo-reel-image"
                         src={this.featuredAlbums[2].coverPhotoUrl}
                       />
                     </Link>
                     <Link to={`/album/${this.featuredAlbums[2]._id}`}>
-                      <img
+                      <img alt="wutang"
                         className="photo-reel-image"
                         src={this.featuredAlbums[3].coverPhotoUrl}
                       />
                     </Link>
                     <Link to={`/album/${this.featuredAlbums[3]._id}`}>
-                      <img
+                      <img alt="wutang"
                         className="photo-reel-image"
                         src={this.featuredAlbums[3].coverPhotoUrl}
                       />

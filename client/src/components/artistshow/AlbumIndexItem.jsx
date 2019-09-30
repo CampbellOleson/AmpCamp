@@ -6,7 +6,7 @@ const AlbumIndexItem = props => {
   return (
     <div key={album._id} className="album-list-item-container">
       <Link to={`/album/${album._id}`}>
-        <img
+        <img alt="wutang"
           className="album-cover-art"
           width="160px"
           height="160px"

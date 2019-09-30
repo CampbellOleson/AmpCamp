@@ -95,7 +95,7 @@ class AlbumShow extends React.Component {
           if (loading) return <Spinner />;
           if (err) return `Error! ${err.message}`;
           if (!data) return null;
-          let bPhoto;
+          // let bPhoto;
           let songsArr = [];
           let dispSongs;
           dispSongs = data.album.songs.map((song, idx) => {
@@ -150,7 +150,7 @@ class AlbumShow extends React.Component {
                         <img
                           src={data.album.coverPhotoUrl}
                           className="album-show-cover-art"
-                          alt="cover photo"
+                          alt="wutang"
                         />
                       </div>
                     </div>

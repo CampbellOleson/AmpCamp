@@ -1,7 +1,7 @@
 import React from "react";
 
 export const SongIndexItem = props => {
-  const type = props.type;
+  // const type = props.type;
   return (
     <li key={props.song._id}>
       <div className={`song-list-item-container`}>

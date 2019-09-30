@@ -32,14 +32,11 @@ class Login extends Component {
   }
 
   closeFormX() {
-    let logform = document.getElementById('login-form').classList = 'close'
-    let err = document.getElementById('login-errors')
+    document.getElementById('login-form').classList = 'close'
   }
 
   submitForm() {
-    let logform = document.getElementById('login-form').classList = 'close'
     document.getElementById('login-form').classList = 'log-form'
-
   }
 
   componentDidUpdate() {
@@ -110,7 +107,7 @@ class Login extends Component {
                 <div onClick={this.closeFormX} className="close-button-login">✕</div>
 
                 <div className="input-container">
-                  <img src="./usericon.svg" className="fa fa-user icon"></img>
+                  <img alt="wutangelo" src="./usericon.svg" className="fa fa-user icon"></img>
 
                   <input
                     value={this.state.username}
@@ -121,7 +118,7 @@ class Login extends Component {
                 </div>
 
                 <div className="input-container">
-                  <img src="./lock.svg" className="fa fa-user icon"></img>
+                  <img alt="wutangelo" src="./lock.svg" className="fa fa-user icon"></img>
 
                   <input
                     name="passWord"

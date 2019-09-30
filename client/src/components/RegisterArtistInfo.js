@@ -41,7 +41,7 @@ Why, dear musician friend, are you not yet yourself twirling with arms spread be
             <div className="register-artist-container">
 
                 <div className="register-artist--item">
-                    <img src="ampcamp1.png" />
+                    <img alt="wutang" src="ampcamp1.png" />
 
 
                     <h3>The Best Fan Experience</h3>
@@ -86,7 +86,7 @@ Why, dear musician friend, are you not yet yourself twirling with arms spread be
                 </div>
 
                 <div className="register-artist--item">
-                    <img src="ampcamp5.png" />
+                    <img alt="wutang" src="ampcamp5.png" />
                     <h3>Real-time Statistics</h3>
                     <p>
                         AmpCamp’s rich, up-to-the-instant stats system reveals who’s linking to you,
@@ -113,12 +113,12 @@ Why, dear musician friend, are you not yet yourself twirling with arms spread be
                     <br />
                     <br />
                     <br />
-                    <img src="ampcamp3.png" />
+                    <img alt="wutang" src="ampcamp3.png" />
                 </div>
 
 
                 <div className="register-artist--item">
-                    <img src="ampcamp6.png" />
+                    <img alt="wutang" src="ampcamp6.png" />
                     <h3> Physical and Digital, Side-by-Side</h3>
                     <p>
                         Bundle your digital music with your vinyl, posters, tickets,
@@ -206,7 +206,7 @@ Why, dear musician friend, are you not yet yourself twirling with arms spread be
 
 
                 <div className="register-artist--item">
-                    <img src="ampcamp4.png" />
+                    <img alt="wutang" src="ampcamp4.png" />
 
                     <h3>Gorgeous, Clean Players</h3>
                     <p>
@@ -237,8 +237,8 @@ Why, dear musician friend, are you not yet yourself twirling with arms spread be
                     <br />
                     <br />
                     <br />
-                    
-                    <img src="ampcamp2.png" />
+
+                    <img alt="wutang" src="ampcamp2.png" />
                 </div>
             </div>
         </div>

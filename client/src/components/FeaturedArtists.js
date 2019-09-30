@@ -1,10 +1,7 @@
 import React from "react";
-import { Query } from "react-apollo";
-import Queries from "../graphql/queries";
 import "./FeaturedArtists.css";
 import { Link } from "react-router-dom";
 import ReactAudioPlayer from "react-audio-player";
-const { FETCH_ALBUMS_AND_ARTISTS } = Queries;
 
 class FeaturedArtists extends React.Component {
   constructor(props) {
@@ -25,7 +22,7 @@ class FeaturedArtists extends React.Component {
       // debugger;
       return (
         <div className="featured-artists-container">
-          {albums.map(album => {
+          {albums.map((album, idx) => {
             //   album.songs[Math.floor(Math.random() * album.songs.length)];
             // song = album.songs[Math.floor(Math.random() * album.songs.length)];
             let song = album.songs[0]
@@ -35,9 +32,9 @@ class FeaturedArtists extends React.Component {
             //   console.log(song)
             //   const song = album.songs[Math.floor(Math.random() * album.songs.length)];
             return (
-              <div className="featured-artists--item">
+              <div key={idx} className="featured-artists--item">
                 <div className="album-image-container-home">
-                  <img
+                  <img alt="wutang"
                     className="home-page-album-art"
                     src={album.coverPhotoUrl}
                   />
@@ -72,12 +69,12 @@ class FeaturedArtists extends React.Component {
     let element = document.getElementById(id);
 
     let pausedArray = document.getElementsByClassName('pause');
- 
 
 
-    if (pausedArray.length > 0) { 
+
+    if (pausedArray.length > 0) {
       for (let i = 0; i < pausedArray.length; i++) {
-   
+
         let el = pausedArray[i];
         if (el !== event.target) {
 
@@ -86,7 +83,7 @@ class FeaturedArtists extends React.Component {
         }
       }
     }
-    if (mountedSong === song.audioUrl && this.playing === true) { 
+    if (mountedSong === song.audioUrl && this.playing === true) {
 
       this.rap.audioEl.pause();
 

@@ -11,7 +11,7 @@ const BannerPhoto = props => (
         </button>
       </div>
     ) : (
-      <img className="artist-show-banner-image" src={props.bannerPhoto} />
+      <img alt='wutang' className="artist-show-banner-image" src={props.bannerPhoto} />
     )}
   </div>
 );
