@@ -18,7 +18,9 @@ const PlaybarNav = props => (
         className="mini-cover-photo"
       />
       <div className="currently-playing-artist-title">
-        <span className="currently-playing-title">{props.song.title}</span>
+        <span className="currently-playing-title">
+          <p>{props.song.title}</p>
+        </span>
         <span className="currently-playing-artist">
           {props.album ? props.album.by : props.song.album.by}
         </span>

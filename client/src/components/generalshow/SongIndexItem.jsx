@@ -39,3 +39,14 @@ export const SongListHeader = () => (
     </div>
   </div>
 );
+
+export const SongListHeaderAlbum = () => (
+  <div className="songlist-header">
+    <div className="song-play-button-container"></div>
+    <div className="song-info songheader-item">
+      <p>TITLE</p>
+    </div>
+    <div className="song-info song-info-artist songheader-item"></div>
+    <div className="song-info song-info-album songheader-item"></div>
+  </div>
+);
