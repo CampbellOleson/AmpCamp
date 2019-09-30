@@ -88,8 +88,6 @@ class AlbumUpload extends React.Component {
     const uploadLoop = async () => {
       await asyncForEach(Object.values(this.state.tracks), async track => {
         const res = await this.uploadTrack(track);
-        // console.log("audioUrl:");
-        // console.log(res.data.audioUrl);
         await this.props.newSong({
           variables: {
             title: track.title,
@@ -99,7 +97,6 @@ class AlbumUpload extends React.Component {
           }
         });
       });
-      // console.log("Tracks upload succesfully!");
     };
     await uploadLoop();
   }
