@@ -207,7 +207,7 @@ class AlbumUpload extends React.Component {
     const preview = this.state.imagePreview ? (
       <img alt='wutang' className="image-preview" src={this.state.imagePreview} />
     ) : (
-      <img alt='wutangelo' className="image-preview" />
+      <img alt='' className="image-preview" />
     );
     return (
       <div className="background">

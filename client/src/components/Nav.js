@@ -73,6 +73,11 @@ class Nav extends React.Component {
   }
 
   render() {
+    // debugger;
+
+   
+    let profileLink;
+    let uploadLink;
     return (
       <div>
         <ApolloConsumer>
@@ -81,6 +86,29 @@ class Nav extends React.Component {
               {({ data, err }) => {
                 if (err) return `Error: !${err}`
                 if (data.isLoggedIn) {
+                  if (localStorage.artist === 'true') {
+                      profileLink = <li>
+                         <Link
+                           onClick={e => this.closeUserTab(e)}
+                           to={`/artist/${localStorage.currentUserId}`}
+                         >
+                           Profile
+                         </Link>
+                       </li>;
+                      uploadLink = <li>
+                                <Link
+                                  onClick={e => this.closeUserTab(e)}
+                                  to={`/upload`}
+                                >
+                                  Upload Album
+                                </Link>
+                              </li>
+                  } else {
+                    profileLink = <div></div>
+                    uploadLink = <div></div>
+                  }
+                  // console.log(data);
+                  // console.log(localStorage);
                   return (
                     <div className="outer-nav-container">
                       <div className="nav">
@@ -108,22 +136,24 @@ class Nav extends React.Component {
                           </button>
                           <div className="dropdown-container hide">
                             <ul>
-                              <li>
+                              {/* <li>
                                 <Link
                                   onClick={e => this.closeUserTab(e)}
                                   to={`/upload`}
                                 >
                                   Upload Album
                                 </Link>
-                              </li>
-                              <li>
+                              </li> */}
+                              {uploadLink}
+                              {profileLink}
+                              {/* <li>
                                 <Link
                                   onClick={e => this.closeUserTab(e)}
                                   to={`/artist/${localStorage.currentUserId}`}
                                 >
                                   Profile
                                 </Link>
-                              </li>
+                              </li> */}
                               <li>
                                 <Link to={'/'} onClick={this.handleLogout(client)}>
                                   Logout
