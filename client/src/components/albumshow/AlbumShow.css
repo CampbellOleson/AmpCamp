@@ -1,8 +1,12 @@
-.album-show-column {
-  width: 50%;
+.album-show-column-main {
+  width: 60%;
 }
 
-.album-show-column > div {
+.album-show-column-pic {
+  width: 40%;
+}
+
+.album-show-column-main > div {
   margin-left: 10%;
 }
 
@@ -16,9 +20,8 @@ img.modal-bg {
 }
 
 .album-show-cover-art-container {
-  width: 80%;
-  background: green;
-  padding-top: 80%;
+  width: 88%;
+  padding-top: 88%;
   position: relative;
   margin-top: 4%;
   margin-left: 30px;
@@ -68,7 +71,7 @@ img.modal-bg {
 .album-by {
   display: flex;
   flex-direction: row;
-  margin-bottom: 6%;
+  margin-bottom: 3%;
   margin-left: 5%;
 }
 
@@ -98,12 +101,12 @@ img.modal-bg {
 .album-delete-modal {
   font-weight: 600;
   padding: 20px;
-  border-radius: 3px;
+  radius: 3px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #1b1b1b;
-  border: 1px solid white;
+  border: 1px solid #282828;
   position: absolute;
   top: 20%;
   margin-left: 35%;
@@ -142,13 +145,17 @@ img.modal-bg {
 
 #dmodal {
   width: 90%;
-  height: 10%;
+  height: 7%;
   margin: 0 auto;
   border-radius: 3px;
-  background-color: #100c08;
+  background-color: #1b1b1b;
   color: red;
   border: none;
-  margin-top: 20%;
+  margin-bottom: 70%;
+}
+
+#dmodal:hover {
+  text-decoration: underline;
 }
 
 .album-delete-modal-buttons button:hover {
@@ -160,4 +167,8 @@ img.modal-bg {
 #dbutton:hover {
   color: black;
   background-color: red;
+}
+
+#dbutton {
+  color: red;
 }
