@@ -5,7 +5,10 @@ import "../generalshow/BannerPhoto.css";
 import "../generalshow/PlaybarNav.css";
 import "../generalshow/SongList.css";
 import "./AlbumShow.css";
-import { SongIndexItem } from "../generalshow/SongIndexItem";
+import {
+  SongIndexItem,
+  SongListHeaderAlbum
+} from "../generalshow/SongIndexItem";
 import Spinner from "../Spinner";
 import { compose, graphql } from "react-apollo";
 import BannerPhoto from "../generalshow/BannerPhoto";
@@ -23,6 +26,7 @@ class AlbumShow extends React.Component {
     this.toggleDeleteModal = this.toggleDeleteModal.bind(this);
     this.pickSong = this.pickSong.bind(this);
     this.deleteModal = this.deleteModal.bind(this);
+    this.deleteButton = this.deleteButton.bind(this);
     this.state = {
       currentlyPlaying: false,
       deleteMode: false
@@ -74,6 +78,16 @@ class AlbumShow extends React.Component {
     ) : null;
   }
 
+  deleteButton(data) {
+    const artist = data.user ? data.user : data.album.artist;
+    const cUserId = localStorage.getItem("currentUserId");
+    return artist._id === cUserId ? (
+      <button id="dmodal" onClick={this.toggleDeleteModal}>
+        Delete this album
+      </button>
+    ) : null;
+  }
+
   render() {
     return (
       <Query query={FETCH_ALBUM} variables={{ id: this.props.match.params.id }}>
@@ -114,7 +128,7 @@ class AlbumShow extends React.Component {
                     <div className="audio-player-element">
                       <PlaybarNav song={this.song} album={data.album} />
                     </div>
-                    <div className="album-show-column">
+                    <div className="album-show-column-main">
                       <div>
                         <div className="album-by">
                           <p id="by-text">by</p>
@@ -127,10 +141,11 @@ class AlbumShow extends React.Component {
                         </div>
                       </div>
                       <div className="album-song-list-item-container">
+                        <SongListHeaderAlbum />
                         <ul>{dispSongs}</ul>
                       </div>
                     </div>
-                    <div className="album-show-column">
+                    <div className="album-show-column-pic">
                       <div className="album-show-cover-art-container">
                         <img
                           src={data.album.coverPhotoUrl}
@@ -141,16 +156,17 @@ class AlbumShow extends React.Component {
                     </div>
                   </div>
                   <div className="artist-info-column">
-                    <p>{data.album.artist.username}</p>
-                    <div className="artist-info-sub">Artist bio</div>
-                    <div className="artist-info-sub">{`Contact ${
-                      data.user
-                        ? data.user.username
-                        : data.album.artist.username
+                    <div>
+                      <p>{data.album.artist.username}</p>
+                      <div className="artist-profile-photo" />
+                      <div className="artist-info-sub">Artist bio</div>
+                      <div className="artist-info-sub">{`Contact ${
+                        data.user
+                          ? data.user.username
+                          : data.album.artist.username
                       }`}</div>
-                    <button id="dmodal" onClick={this.toggleDeleteModal}>
-                      Delete this album
-                    </button>
+                    </div>
+                    {this.deleteButton(data)}
                   </div>
                 </div>
               </div>

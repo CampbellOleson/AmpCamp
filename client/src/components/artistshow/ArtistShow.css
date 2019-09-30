@@ -26,9 +26,9 @@
 }
 
 .album-cover-art {
-  -webkit-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 1px 16px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 16px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 1px 16px -1px rgba(0, 0, 0, 0.75);
 }
 
 .main-page-container {
@@ -39,12 +39,13 @@
 
 .artist-info-column {
   padding-top: 3%;
-  width: 15%;
+  width: 18%;
   color: whitesmoke;
   font-weight: 500;
   font-size: 20px;
   display: flex;
   justify-content: flex-start;
+  align-content: center;
   flex-direction: column;
   background-color: #1b1b1b;
   overflow-x: auto;
@@ -55,7 +56,7 @@
   flex-direction: column;
   text-align: center;
   position: relative;
-  width: 85%;
+  width: 82%;
 }
 
 .artist-show-album-info {
@@ -70,21 +71,33 @@
 
 .artist-profile-photo {
   background-color: grey;
-  width: 100%;
-  padding-top: 100%;
+  background-image: url("../../profile-icon.png");
+  background-position: center;
+  background-size: 120%;
+  width: 70%;
+  padding-top: 70%;
+  margin: 0 auto;
+  margin-top: 10%;
+  border-radius: 50%;
 }
 
 .artist-info-sub {
   font-size: 14px;
   margin-top: 10px;
-  margin-left: 5%;
+  /* margin-left: 5%; */
 }
 
-.artist-info-sub:hover {
-  cursor: pointer;
-  text-decoration: underline;
+.artist-info-sub p {
+  margin: 0 auto;
 }
 
 .artist-info-column p {
-  margin-left: 3%;
+  /* margin-left: 3%; */
+  margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist-info-column > div {
+  margin-bottom: 95%;
 }
