@@ -54,8 +54,19 @@
 
 @media only screen and (max-width: 1356px) {
   #daily-picks-container img {
-    width: 10%;
+    width: 8%;
     height: 20vh;
+  }
+  #daily-picks-container {
+    height: 20vh;
+  }
+}
+
+
+@media only screen and (max-height: 1000px) {
+  #daily-picks-container img {
+    width: 220px;
+    height: 220px;
   }
   #daily-picks-container {
     height: 20vh;
