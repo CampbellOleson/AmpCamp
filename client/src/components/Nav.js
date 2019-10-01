@@ -73,9 +73,7 @@ class Nav extends React.Component {
   }
 
   render() {
-    // debugger;
 
-   
     let profileLink;
     let uploadLink;
     return (
@@ -87,22 +85,22 @@ class Nav extends React.Component {
                 if (err) return `Error: !${err}`
                 if (data.isLoggedIn) {
                   if (localStorage.artist === 'true') {
-                      profileLink = <li>
-                         <Link
-                           onClick={e => this.closeUserTab(e)}
-                           to={`/artist/${localStorage.currentUserId}`}
-                         >
-                           Profile
+                    profileLink = <li>
+                      <Link
+                        onClick={e => this.closeUserTab(e)}
+                        to={`/artist/${localStorage.currentUserId}`}
+                      >
+                        Profile
                          </Link>
-                       </li>;
-                      uploadLink = <li>
-                                <Link
-                                  onClick={e => this.closeUserTab(e)}
-                                  to={`/upload`}
-                                >
-                                  Upload Album
-                                </Link>
-                              </li>
+                    </li>;
+                    uploadLink = <li>
+                      <Link
+                        onClick={e => this.closeUserTab(e)}
+                        to={`/upload`}
+                      >
+                        Upload Album
+                        </Link>
+                    </li>
                   } else {
                     profileLink = <div></div>
                     uploadLink = <div></div>
@@ -110,23 +108,29 @@ class Nav extends React.Component {
                   // console.log(data);
                   // console.log(localStorage);
                   return (
+
                     <div className="outer-nav-container">
                       <div className="nav">
                         <div className="nav-search-container">
-                          <Link to="/">
-                            <div className="logo">
-                              <img alt="wutang"
-                                id="amp-camp-logo"
-                                src={require("../ampcampinverted.png")}
-                              />
-                            </div>
-                          </Link>
+                          <div className="heading-and-logo">
+                            <Link to="/">
+                              <div className="logo">
+                                <img alt="wutang"
+                                  id="amp-camp-logo"
+                                  src={require("../ampcampinverted.png")}
+                                />
+                              </div>
+                              <h1 className="nav-heading">Upload your music and share it with the world.</h1>
 
-                          <SearchBar />
+                            </Link>
+                          </div>
+
                         </div>
 
                         {/************************************************************/}
                         <div className="user-profile-container">
+                          <SearchBar />
+                          <img className="search-icon" src="search-icon.png"></img>
                           <button
                             id="nav-link"
                             className="nav-link"
