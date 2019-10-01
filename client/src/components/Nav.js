@@ -175,6 +175,7 @@ class Nav extends React.Component {
                     <div className="outer-nav-container">
                       <div className="nav">
                         <div className="nav-search-container">
+                          <div className="heading-and-logo">
                           <Link to="/">
                             <div className="logo">
                               <img alt="wutang"
@@ -182,9 +183,20 @@ class Nav extends React.Component {
                                 src={require("../ampcampinverted.png")}
                               />
                             </div>
+                              <h1 className="nav-heading">Upload your music and share it with the world.</h1>
+
                           </Link>
-                          <SearchBar />
                         </div>
+
+                        </div>
+                        <div className="user-profile-container">
+
+                          <SearchBar />
+                          <img className="search-icon" src="search-icon.png"></img>
+                          
+                     
+
+
                         <div className="login-or-signup">
 
                           <Link
@@ -199,7 +211,7 @@ class Nav extends React.Component {
                           <Link to={'/register'} id="nav-signup" onClick={this.showRegister}>
                             Sign Up &nbsp;
                             </Link>
-
+                          </div>
 
                           <form id="reg-form" className="hideRegister">
                             <div
@@ -208,6 +220,7 @@ class Nav extends React.Component {
                             >
                               ✕
                             </div>
+                              
 
                             <h1> Sign up for an Amp Camp account</h1>
 

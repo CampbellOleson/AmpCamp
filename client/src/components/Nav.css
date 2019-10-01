@@ -119,7 +119,8 @@
 .login-or-signup {
   display: inline-flex;
   margin-right: -16px;
-  margin-top: 3px;
+  margin-top: -3px;
+  margin-left: 20px;
 }
 
 #nav-signup:hover {
