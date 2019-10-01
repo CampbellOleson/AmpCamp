@@ -45,7 +45,7 @@
   font-size: 20px;
   background-color: #555;
   border: 0;
-  margin: 10px 49px 30px;
+  margin: 10px 49px 16px;
 }
 
 .log-form label {
@@ -125,4 +125,14 @@
 #log-in-button {
   cursor: pointer;
   outline: none;
+}
+
+.guest-login {
+  color: white;
+  margin: 0 auto;
+}
+
+.guest-login:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import Mutations from '../graphql/mutations.js'
-import './LoginForm.css'
+import Mutations from "../graphql/mutations.js";
+import "./LoginForm.css";
 
-const { LOGIN_USER } = Mutations
+const { LOGIN_USER } = Mutations;
 // loginUser may be login from auth.js
 
 class Login extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -16,9 +15,8 @@ class Login extends Component {
       errors: []
     };
 
-    this.submitForm = this.submitForm.bind(this)
-    this.closeFormX = this.closeFormX.bind(this)
-
+    this.submitForm = this.submitForm.bind(this);
+    this.closeFormX = this.closeFormX.bind(this);
   }
 
   updateCache(client, { data }) {
@@ -32,67 +30,64 @@ class Login extends Component {
   }
 
   closeFormX() {
-    document.getElementById('login-form').classList = 'close'
+    document.getElementById("login-form").classList = "close";
   }
 
   submitForm() {
-    document.getElementById('login-form').classList = 'log-form'
+    document.getElementById("login-form").classList = "log-form";
   }
 
   componentDidUpdate() {
-    let that = this
-    document.getElementById('login-form').classList = 'log-form'
-    let dropButton = document.getElementById('nav-login')
-    dropButton.addEventListener('click', function () {
-      that.setState({ errors: [] })
-    })
+    let that = this;
+    document.getElementById("login-form").classList = "log-form";
+    let dropButton = document.getElementById("nav-login");
+    dropButton.addEventListener("click", function() {
+      that.setState({ errors: [] });
+    });
   }
 
   componentDidMount() {
-    document.getElementById('login-form').classList = 'log-form'
-    this.setState({ errors: [] })
+    document.getElementById("login-form").classList = "log-form";
+    this.setState({ errors: [] });
   }
 
   componentWillUnmount() {
-    let logout = document.getElementById('logout-tab')
-    let profile = document.getElementById('profile-tab')
-    let upload = document.getElementById('upload-tab')
+    let logout = document.getElementById("logout-tab");
+    let profile = document.getElementById("profile-tab");
+    let upload = document.getElementById("upload-tab");
 
     if (logout && profile && upload) {
-      logout.classList = ('hide')
-      profile.classList = ('hide')
-      upload.classList = ('hide')
+      logout.classList = "hide";
+      profile.classList = "hide";
+      upload.classList = "hide";
     }
   }
 
   render() {
-
-
     return (
       <div>
         <div className="login-photo"></div>
         <Mutation
           mutation={LOGIN_USER}
           onError={err => {
-
             this.setState({
               errors: err.graphQLErrors[0].message
-            })
-
+            });
           }}
           onCompleted={data => {
             const { token, username, _id } = data.login;
             localStorage.setItem("auth-token", token);
-            localStorage.setItem('username', username);
-            localStorage.setItem('currentUserId', _id);
+            localStorage.setItem("username", username);
+            localStorage.setItem("currentUserId", _id);
             this.props.history.push("/");
           }}
           update={(client, data) => this.updateCache(client, data)}
         >
           {login => (
             <div>
-
-              <form id="login-form" className="log-form"
+              <form
+                id="login-form"
+                className="log-form"
                 onSubmit={e => {
                   e.preventDefault();
                   login({
@@ -104,10 +99,16 @@ class Login extends Component {
                 }}
               >
                 <h1>Log in to your account</h1>
-                <div onClick={this.closeFormX} className="close-button-login">✕</div>
+                <div onClick={this.closeFormX} className="close-button-login">
+                  ✕
+                </div>
 
                 <div className="input-container">
-                  <img alt="wutangelo" src="./usericon.svg" className="fa fa-user icon"></img>
+                  <img
+                    alt="wutangelo"
+                    src="./usericon.svg"
+                    className="fa fa-user icon"
+                  ></img>
 
                   <input
                     value={this.state.username}
@@ -118,7 +119,11 @@ class Login extends Component {
                 </div>
 
                 <div className="input-container">
-                  <img alt="wutangelo" src="./lock.svg" className="fa fa-user icon"></img>
+                  <img
+                    alt="wutangelo"
+                    src="./lock.svg"
+                    className="fa fa-user icon"
+                  ></img>
 
                   <input
                     name="passWord"
@@ -128,19 +133,36 @@ class Login extends Component {
                     placeholder="Password"
                   />
                 </div>
-                <button id="log-in-button" onClick={this.submitForm} type="submit">Log In</button>
-                <div id="login-errors" className="login-errors">{this.state.errors ? this.state.errors : ''}</div>
-
+                <button
+                  id="log-in-button"
+                  onClick={this.submitForm}
+                  type="submit"
+                >
+                  Log In
+                </button>
+                <a
+                  onClick={e => {
+                    e.preventDefault();
+                    login({
+                      variables: {
+                        username: "guest",
+                        password: "guestuser"
+                      }
+                    });
+                  }}
+                  className="guest-login"
+                >
+                  Continue as guest
+                </a>
+                <div id="login-errors" className="login-errors">
+                  {this.state.errors ? this.state.errors : ""}
+                </div>
               </form>
-
             </div>
           )}
         </Mutation>
       </div>
-    )
+    );
   }
 }
 export default Login;
-
-
-
