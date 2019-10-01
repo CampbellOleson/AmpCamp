@@ -62,7 +62,6 @@
   }
 }
 
-
 @media only screen and (max-height: 1000px) {
   #daily-picks-container img {
     width: 220px;
@@ -85,11 +84,11 @@
 }
 
 .first {
-  -webkit-animation: bannermove 26s linear infinite;
-  -moz-animation: bannermove 26s linear infinite;
-  -ms-animation: bannermove 26s linear infinite;
-  -o-animation: bannermove 26s linear infinite;
-  animation: bannermove 26s linear infinite;
+  -webkit-animation: bannermove 38s linear infinite;
+  -moz-animation: bannermove 38s linear infinite;
+  -ms-animation: bannermove 38s linear infinite;
+  -o-animation: bannermove 38s linear infinite;
+  animation: bannermove 38s linear infinite;
   box-shadow: 10px 18px 9px 5px black;
 }
 
