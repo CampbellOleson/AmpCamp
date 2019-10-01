@@ -42,6 +42,8 @@ class Nav extends React.Component {
     regform.classList = "hideRegister";
   }
 
+
+
   closeForm() {
     document.getElementById("reg-form").classList = "close"
     let realform = document.getElementById("register-form");
@@ -113,7 +115,7 @@ class Nav extends React.Component {
                       <div className="nav">
                         <div className="nav-search-container">
                           <div className="heading-and-logo">
-                            <Link to="/">
+                            <Link to="/" onClick={this.hideRegister}>
                               <div className="logo">
                                 <img alt="wutang"
                                   id="amp-camp-logo"
@@ -176,40 +178,40 @@ class Nav extends React.Component {
                       <div className="nav">
                         <div className="nav-search-container">
                           <div className="heading-and-logo">
-                          <Link to="/">
-                            <div className="logo">
-                              <img alt="wutang"
-                                id="amp-camp-logo"
-                                src={require("../ampcampinverted.png")}
-                              />
-                            </div>
+                            <Link to="/" onClick={this.hideRegister}>
+                              <div className="logo">
+                                <img alt="wutang"
+                                  id="amp-camp-logo"
+                                  src={require("../ampcampinverted.png")}
+                                />
+                              </div>
                               <h1 className="nav-heading">Upload your music and share it with the world.</h1>
 
-                          </Link>
-                        </div>
+                            </Link>
+                          </div>
 
                         </div>
                         <div className="user-profile-container">
 
                           <SearchBar />
                           <img className="search-icon" src="search-icon.png"></img>
-                          
-                     
 
 
-                        <div className="login-or-signup">
 
-                          <Link
-                            onClick={this.hideRegister}
-                            id="nav-login"
-                            to="/login"
-                          >
-                            Login &nbsp;&nbsp;&nbsp;|
+
+                          <div className="login-or-signup">
+
+                            <Link
+                              onClick={this.hideRegister}
+                              id="nav-login"
+                              to="/login"
+                            >
+                              Login &nbsp;&nbsp;&nbsp;|
                             </Link>
 
 
-                          <Link to={'/register'} id="nav-signup" onClick={this.showRegister}>
-                            Sign Up &nbsp;
+                            <Link to={'/register'} id="nav-signup" onClick={this.showRegister}>
+                              Sign Up &nbsp;
                             </Link>
                           </div>
 
@@ -220,7 +222,7 @@ class Nav extends React.Component {
                             >
                               ✕
                             </div>
-                              
+
 
                             <h1> Sign up for an Amp Camp account</h1>
 

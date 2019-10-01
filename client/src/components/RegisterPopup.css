@@ -1,15 +1,13 @@
 .showRegister {
-
-    width: 500px;
-    margin: 0 auto;
-    position: absolute;
-    left: 37%;
-    top: 230px;
-    background-color: #222;
-    height: 470px;
-    z-index: 12;
-    box-shadow: 0px 1px 18px red;
-    border-radius: 20px;
+  width: 580px;
+  margin: 0 auto;
+  background-color: #222;
+  height: 490px;
+  z-index: 12;
+  box-shadow: 0 1px 8px red;
+  border-radius: 20px;
+  position: absolute;
+  transform: translate(-78%, 88%);
 }
 
 .hideRegister {
@@ -115,7 +113,7 @@
   color: white;
   top: 30px;
   position: relative;
-  left: 430px;
+  left: 90%;
   width: 20px;
   height: 20px;
   font-size: 22px;
