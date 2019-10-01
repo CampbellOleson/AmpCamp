@@ -1,129 +1,125 @@
-.search-bar{
-    width: 210px;
-    border-radius: 3px;
-    border:none;
-    padding:10px;
+.search-bar {
+  width: 210px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border: none;
+  padding: 10px;
 }
 
-.search-completer{
-    position: absolute;
-    top: 100%;
-    left: 0;
+.search-completer {
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 
-.nav a{
-    text-decoration: none;
-    color: white;
+.nav a {
+  text-decoration: none;
+  color: white;
 }
 
-.nav{
-    margin: auto;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.nav {
+  margin: auto;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.autofill-item-container{
+.autofill-item-container {
   /* height: 50px;
   width: 200px; */
 }
 
-.autofill-item{
-    /* display: flex;
+.autofill-item {
+  /* display: flex;
     width: 227px;
     margin-left: -29px */
-    /* border: 1px solid white; */
-    display: flex;
-    width: 228px;
+  /* border: 1px solid white; */
+  display: flex;
+  width: 228px;
 }
 
 .autofill-item:nth-child(odd) {
-    background: #222;
-    border: 1px solid #333;
+  background: #222;
+  border: 1px solid #333;
 }
 
 .autofill-item:nth-child(even) {
-    background: #783;
-
+  background: #783;
 }
 
-
-.autofill-item-container:hover{
-     cursor: pointer;
-       
+.autofill-item-container:hover {
+  cursor: pointer;
 }
 
-.autofill-item:hover{
-    cursor: pointer;
-            background: #555;
-
+.autofill-item:hover {
+  cursor: pointer;
+  background: #555;
 }
 
-.autofill-item-container img{
-    margin: 12px;
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
+.autofill-item-container img {
+  margin: 12px;
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
 }
 
-.search-bar:focus{
-    outline: none;
+.search-bar:focus {
+  outline: none;
 }
-
 
 .autofill-artist-info {
-    margin-top: 12px;
+  margin-top: 12px;
 }
 
-.autofill-artist-info li{
-    width: 100%;
-    margin-left: 5px;
+.autofill-artist-info li {
+  width: 100%;
+  margin-left: 5px;
 }
 
-.autofill-artist-info li:nth-child(1){
-
-    font-weight: 900;
-    text-align: left;
-    margin-bottom: 6px;
-    margin-top: 10px;
-    font-size: 14px;
+.autofill-artist-info li:nth-child(1) {
+  font-weight: 900;
+  text-align: left;
+  margin-bottom: 6px;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
-   .autofill-artist-info li:nth-child(2){
-    /* font-weight: 900;
+.autofill-artist-info li:nth-child(2) {
+  /* font-weight: 900;
     text-align: left;
     margin-top: -10px;
     background: none; */
 
-    font-weight: 900;
-    text-align: left;
-    background: none;
-    }
+  font-weight: 900;
+  text-align: left;
+  background: none;
+}
 
-
-.autofill-artist-info li{
+.autofill-artist-info li {
   max-width: 100%;
   max-height: 100%;
   list-style-type: none;
   font-size: 12px;
-
-  }
-#artist-first-letter {
-  margin: 2px;
-    min-width: 45px;
-    border-radius: 100px;
-    margin-left: 10px;
-    margin-right: 10px;
-    background: grey;
-    height: 35px;
-    text-decoration: none;
-    min-height: 45px;
-    font-size: 40px;
-    margin-top: 10px;
-    margin-bottom: 14px;
-    text-align: center;
-
-
 }
 
+.search-icon {
+  background: #fff;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+#artist-first-letter {
+  margin: 2px;
+  min-width: 45px;
+  border-radius: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background: grey;
+  height: 35px;
+  text-decoration: none;
+  min-height: 45px;
+  font-size: 40px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+  text-align: center;
+}

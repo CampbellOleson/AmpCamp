@@ -194,6 +194,8 @@
 
 .user-profile-container {
   position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
 .dropdown-container {
@@ -217,6 +219,16 @@
 
 .dropdown-container li a:hover {
   background: #555;
+}
+
+.heading-and-logo {
+  /* border: 1px solid white; */
+}
+
+.nav-heading {
+  margin-left: 47px;
+  margin-top: -10px;
+  margin-bottom: 15px;
 }
 
 .nav-link {
