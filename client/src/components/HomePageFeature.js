@@ -52,7 +52,7 @@ class HomePageFeature extends React.Component {
             return (
               <div>
                 <h1 id="daily-picks-heading">Amp Camp Daily Picks</h1>
-                <div id="photo-banner-container">
+                <div className="w3-content w3-display-container">
 
                   <Link to={`/album/${this.featuredAlbums[0]._id}`}>
                     <img
@@ -82,42 +82,6 @@ class HomePageFeature extends React.Component {
                       src={this.featuredAlbums[3].coverPhotoUrl}
                     />
                   </Link>
-                  <Link to={`/album/${this.featuredAlbums[4]._id}`}>
-                    <img
-                      alt="wutang"
-                      className="photo-banner-image"
-                      src={this.featuredAlbums[0].coverPhotoUrl}
-                    />
-                  </Link>
-                  <Link to={`/album/${this.featuredAlbums[0]._id}`}>
-                    <img
-                      alt="wutang"
-                      className="photo-banner-image"
-                      src={this.featuredAlbums[1].coverPhotoUrl}
-                    />
-                  </Link>
-                  <Link to={`/album/${this.featuredAlbums[1]._id}`}>
-                    <img
-                      alt="wutang"
-                      className="photo-banner-image"
-                      src={this.featuredAlbums[2].coverPhotoUrl}
-                    />
-                  </Link>
-                  <Link to={`/album/${this.featuredAlbums[2]._id}`}>
-                    <img
-                      alt="wutang"
-                      className="photo-banner-image"
-                      src={this.featuredAlbums[3].coverPhotoUrl}
-                    />
-                  </Link>
-                  <Link to={`/album/${this.featuredAlbums[3]._id}`}>
-                    <img
-                      alt="wutang"
-                      className="photo-banner-image"
-                      src={this.featuredAlbums[3].coverPhotoUrl}
-                    />
-                  </Link>
-
                 </div>
                 {/* <h1>Featured Artists</h1> */}
                 <FeaturedArtists data={data} />
