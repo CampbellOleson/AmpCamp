@@ -57,31 +57,59 @@ class HomePageFeature extends React.Component {
                   <Link to={`/album/${this.featuredAlbums[0]._id}`}>
                     <img
                       alt="wutang"
-                      className="photo-banner-image"
+                      className="mySlides"
                       src={this.featuredAlbums[0].coverPhotoUrl}
                     />
                   </Link>
                   <Link to={`/album/${this.featuredAlbums[1]._id}`}>
                     <img
                       alt="wutang"
-                      className="photo-banner-image"
+                      className="mySlides"
                       src={this.featuredAlbums[1].coverPhotoUrl}
                     />
                   </Link>
                   <Link to={`/album/${this.featuredAlbums[2]._id}`}>
                     <img
                       alt="wutang"
-                      className="photo-banner-image"
+                      className="mySlides"
                       src={this.featuredAlbums[2].coverPhotoUrl}
                     />
                   </Link>
                   <Link to={`/album/${this.featuredAlbums[3]._id}`}>
                     <img
                       alt="wutang"
-                      className="photo-banner-image"
+                      className="mySlides"
                       src={this.featuredAlbums[3].coverPhotoUrl}
                     />
                   </Link>
+
+                  <div className="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle">
+
+                    <div
+                      class="w3-left w3-hover-text-khaki"
+                      onclick="plusDivs(-1)"
+                    >
+                      &#10094;
+                    </div>
+                    <div
+                      class="w3-right w3-hover-text-khaki"
+                      onclick="plusDivs(1)"
+                    >
+                      &#10095;
+                    </div>
+                    <span
+                      class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                      onclick="currentDiv(1)"
+                    />
+                    <span
+                      class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                      onclick="currentDiv(2)"
+                    />
+                    <span
+                      class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                      onclick="currentDiv(3)"
+                    />
+                  </div>
                 </div>
                 {/* <h1>Featured Artists</h1> */}
                 <FeaturedArtists data={data} />
