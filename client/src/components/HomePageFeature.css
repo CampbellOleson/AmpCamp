@@ -1,8 +1,71 @@
 
-.mySlides {
-  width: 50%;
+
+#daily-picks-heading{
+  color: #fff;
+    font-size: 20px;
+    margin-top: 30px;
+    text-align: left;
+    z-index: 24540;
+    top: 110px;
+    left: 670px;
+    text-align: center;
 }
 
-.w3-content w3-display-container{
-  max-width: 800px;
+#daily-picks-container{
+  width: 100%;
+  position: relative;
+}
+
+.left-photo{
+    background-image: url('left-arrow.png');  margin:auto;
+    margin: auto;
+    margin-right: 5vh;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    z-index: 1;
+    background-position: center;
+    height: 80px;
+    width: 80px;
+}
+
+.right-photo{
+  background-image: url('left-arrow.png');
+  margin: auto;
+  margin-left: 5vh;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  z-index: 1;
+  background-position: center;
+  height: 80px;
+  width: 80px;
+  transform: scaleX(-1);
+
+}
+
+
+.photo-reel-image{
+  margin: 5% 0 5%;
+  max-height: 70vh;
+  max-width: 70vh;
+  min-width: 70vh;
+  min-height: 70vh;
+}
+
+.photobanner{
+  text-align: center;
+  display: flex;
+}
+
+@media only screen and (max-width: 600px){
+  .photobanner{
+    text-align: right;
+  }
 }
