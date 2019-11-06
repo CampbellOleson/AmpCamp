@@ -61,14 +61,11 @@ class HomePageFeature extends React.Component {
 
     newState.currentPhoto = this.state.currentPhoto
 
-    console.log(newState)
+    // console.log(newState)
     this.setState(newState)
-    console.log('state', this.state)
+    // console.log('state', this.state)
 
   }
-
-
-
 
   render() {
 
@@ -113,7 +110,7 @@ class HomePageFeature extends React.Component {
 
                   </div>
                 </div>
-                <h1>Featured Artists</h1>
+                {/* <h1>Featured Artists</h1> */}
                 <FeaturedArtists data={data} />
               </div>
             );
