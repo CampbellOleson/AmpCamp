@@ -49,6 +49,6 @@
     "react-loading": "^2.0.3",
     "react-router-dom": "^5.0.1",
     "styled-components": "^4.3.2",
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   }
 }
